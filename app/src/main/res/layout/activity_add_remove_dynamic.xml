@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <Button
+                android:id="@+id/add"
+                android:layout_width="60dp"
+                android:layout_height="@dimen/padding_40"
+                android:layout_alignParentRight="true"
+                style="@style/ButtonBorder.Accent"
+                android:text="Add" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:src="@drawable/ic_access_time_black_24dp"/>
+
+            <Spinner
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:id="@+id/textin"
+                android:spinnerMode="dropdown"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/padding_40" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/textin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:src="@drawable/ic_access_time_black_24dp"/>
+
+            <Spinner
+                android:id="@+id/textin2"
+                android:spinnerMode="dropdown"
+                android:layout_toRightOf="@+id/textin"
+                android:layout_marginLeft="20dp"
+                android:layout_toLeftOf="@+id/add"
+                android:layout_width="150dp"
+                android:layout_height="@dimen/padding_40" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"></LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:autoLink="web"
+            android:text="http://android-er.blogspot.com/"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/relist"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:background="#E0E0E0"/>
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textStyle="italic"
+            android:background="#D0D0D0"
+            android:gravity="bottom"/>
+
+    </LinearLayout>
+</LinearLayout>

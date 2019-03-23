@@ -1,0 +1,44 @@
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<View android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:background="@color/colorGrey"
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:background="@android:drawable/ic_delete"/>
+    <TextView
+        android:gravity="center_vertical"
+        android:id="@+id/textout2"
+        android:layout_width="80dp"
+        android:text="Text View"
+        android:layout_height="@dimen/padding_40"/>
+    <TextView
+        android:id="@+id/textout"
+        android:gravity="center_vertical"
+        android:text="Text View"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/padding_40"
+        android:layout_toRightOf="@+id/textout2"
+        android:layout_toLeftOf="@id/remove"/>
+</RelativeLayout>
+</LinearLayout>

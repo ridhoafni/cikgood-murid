@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/card_view"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="2dp"-->
+    <!--android:layout_marginBottom="4dp"-->
+    <!--android:layout_marginLeft="2dp"-->
+    <!--android:layout_marginRight="2dp"-->
+    <!--card_view:cardCornerRadius="4dp">-->
+
+    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:padding="2dp">&ndash;&gt;-->
+
+        <!--&lt;!&ndash;&lt;!&ndash;<FrameLayout android:layout_width="match_parent"&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;android:background="@color/background"&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;android:layout_height="160dp"/>&ndash;&gt;&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<de.hdodenhof.circleimageview.CircleImageView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="130dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="130dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:scaleType="centerCrop"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="4dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:src="@tools:sample/avatars"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toEndOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/tv_item_name"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="18sp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:text="Nama"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginTop="2dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="4dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="2dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="@dimen/activity_horizontal_margin"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@+id/tv_item_name"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toEndOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/tv_item_pendidikan"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="14sp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:text="Pendidikan"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="8dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="@dimen/activity_vertical_margin"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="@dimen/activity_vertical_margin"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<TableLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/table_rating"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@id/tv_item_pendidikan"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toEndOf="@id/img_item_photo">&ndash;&gt;-->
+            <!--&lt;!&ndash;<TableRow>&ndash;&gt;-->
+                <!--&lt;!&ndash;<RatingBar&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_below="@id/tv_item_pendidikan"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_toRightOf="@id/img_item_photo"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_toEndOf="@id/img_item_photo"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/ratingBar"&ndash;&gt;-->
+                    <!--&lt;!&ndash;style="?ratingBarStyleSmall"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="16dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginEnd="8dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginBottom="8dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:isIndicator="true"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:max="5"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:numStars="5"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:rating="4.2"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:stepSize=".1" />&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/tv_rating"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginStart="2dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="2dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_toEndOf="@+id/ratingBar"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_toRightOf="@id/ratingBar"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="4.2" />&ndash;&gt;-->
+            <!--&lt;!&ndash;</TableRow>&ndash;&gt;-->
+        <!--&lt;!&ndash;</TableLayout>&ndash;&gt;-->
+
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@id/table_rating"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toEndOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/tv_item_bio"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:text="Biodata"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="8dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="@dimen/activity_vertical_margin"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="@dimen/activity_vertical_margin"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@id/tv_item_bio"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toEndOf="@id/img_item_photo"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/tv_item_harga"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;tools:text="Harga"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="8dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="@dimen/activity_vertical_margin"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginLeft="@dimen/activity_vertical_margin"/>&ndash;&gt;-->
+    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+    <!---->
+
+<!--</android.support.v7.widget.CardView>-->
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/card_view"
+android:layout_gravity="center"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="2dp"
+android:clickable="true"
+android:layout_marginBottom="4dp"
+android:layout_marginLeft="2dp"
+android:layout_marginRight="2dp"
+card_view:cardCornerRadius="4dp"
+android:foreground="?attr/selectableItemBackground">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="@dimen/padding_10"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thumbnail"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:textColor="@color/item_name"
+        android:textSize="@dimen/font_18"
+        android:text="nama"/>
+
+    <TextView
+        android:id="@+id/tv_pendidikan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_10"
+        android:layout_below="@id/tv_nama"
+        android:layout_toRightOf="@id/thumbnail"
+        android:maxLines="1"
+        android:text="pendidikan"
+        android:textColor="@color/chef"
+        android:textSize="@dimen/chef" />
+
+    <TableLayout
+        android:layout_marginTop="@dimen/padding_10"
+        android:id="@+id/table_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_pendidikan"
+        android:layout_toRightOf="@id/thumbnail"
+        android:layout_toEndOf="@id/thumbnail">
+    <TableRow>
+    <RatingBar
+        android:layout_below="@id/tv_pendidikan"
+        android:layout_toRightOf="@id/thumbnail"
+        android:layout_toEndOf="@id/thumbnail"
+        android:id="@+id/ratingBar"
+        style="?ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="8dp"
+        android:isIndicator="true"
+        android:max="5"
+        android:numStars="5"
+        android:rating="4.2"
+        android:stepSize=".1" />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_toEndOf="@+id/ratingBar"
+        android:layout_toRightOf="@id/ratingBar"
+        android:text="4.2" />
+    </TableRow>
+    </TableLayout>
+
+    <ImageView
+        android:id="@+id/iv_status"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thumbnail"
+        android:src="@drawable/ic_check_circle_black_24dp" />
+
+    <TextView
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/padding_10"
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/thumbnail"
+        android:layout_toRightOf="@id/iv_status"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:textColor="@color/description"
+        android:textSize="@dimen/name"
+        android:text="status"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/padding_10"
+        android:id="@+id/tv_biodata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_status"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="biodata"
+        android:textColor="@color/description"
+        android:textSize="@dimen/description" />
+
+    <TextView
+        android:id="@+id/tv_titile_harga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_biodata"
+        android:layout_marginTop="@dimen/padding_10"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/price"
+        android:text="Harga : "
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_harga"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tv_biodata"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_titile_harga"
+        android:layout_marginTop="@dimen/padding_10"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/price"
+        android:layout_marginRight="@dimen/padding_10"
+        android:text="Harga"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/tv_biodata"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_harga"
+        android:layout_marginTop="@dimen/padding_10"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/price"
+        android:layout_marginRight="@dimen/padding_10"
+        android:text="/Jam"
+        android:textStyle="bold" />
+
+</RelativeLayout>
+
+</android.support.v7.widget.CardView>
