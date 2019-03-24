@@ -90,10 +90,7 @@ public class GuruActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case android.R.id.home:
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_frame, homeFragment)
-                        .addToBackStack(GuruActivity.class.getSimpleName())
-                        .commit();
+                startActivity(new Intent(GuruActivity.this, NavigationView.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
