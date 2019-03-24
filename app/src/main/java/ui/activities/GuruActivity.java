@@ -85,10 +85,15 @@ public class GuruActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        HomeFragment homeFragment = new HomeFragment();
+
         switch (item.getItemId()) {
             case android.R.id.home:
-                onBackPressed();
-//                loadHomeFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_frame, homeFragment)
+                        .addToBackStack(GuruActivity.class.getSimpleName())
+                        .commit();
                 break;
         }
         return super.onOptionsItemSelected(item);

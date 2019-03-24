@@ -1,10 +1,13 @@
 package ui.fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,21 +50,37 @@ public class ProfileFragment extends Fragment {
         View view;
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        toolbar.setTitle("Profile");
+//        toolbar.getResources().setTitleTextColor(R.color.colorAccent);
+//        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black);
+
+        // click button back pada title bar
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
+
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        signOut = (Button) view.findViewById(R.id.sign_out);
-
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), MainActivity.class));
-
-            }
-        });
+//        signOut = (Button) view.findViewById(R.id.sign_out);
+//
+//        signOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                    startActivity(new Intent(getActivity(), MainActivity.class));
+//
+//            }
+//        });
 
 //        authListener = new FirebaseAuth.AuthStateListener() {
 //            @Override
@@ -75,12 +94,12 @@ public class ProfileFragment extends Fragment {
 //            }
 //        };
 
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Logout();
-            }
-        });
+//        signOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Logout();
+//            }
+//        });
 
         return view;
 

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/white"
     style="@style/AppTheme2">
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:layout_marginTop="10dp"
             android:text="CIKGOOD"
             android:textSize="40sp"
-            android:textColor="@color/white"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

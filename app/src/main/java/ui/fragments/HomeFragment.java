@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -231,34 +232,38 @@ public class HomeFragment extends Fragment {
                         listSpinner.add(semuaKabupatenItems.get(i).getName());
                     }
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                            android.R.layout.simple_spinner_item, listSpinner);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerKabupaten.setAdapter(adapter);
-                    spinnerKabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            String selectedName = parent.getItemAtPosition(position).toString();
+                    if (getActivity()!=null){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                                android.R.layout.simple_spinner_item, listSpinner);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerKabupaten.setAdapter(adapter);
+                        spinnerKabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                String selectedName = parent.getItemAtPosition(position).toString();
 //                           requestDetailDosen(selectedName);
 
 //                            Toast.makeText(getActivity(), "Kamu memilih " + selectedName, Toast.LENGTH_SHORT).show();
 
 
-                            for (Kabupaten semuaKabupaten : semuaKabupatenItems){
+                                for (Kabupaten semuaKabupaten : semuaKabupatenItems){
 
 
-                                if (semuaKabupaten.getName().equals( spinnerKabupaten.getSelectedItem().toString())){
+                                    if (semuaKabupaten.getName().equals( spinnerKabupaten.getSelectedItem().toString())){
 //                                    loadDataMatpel(semuaTingkatan.getId());
-                                    kota = semuaKabupaten.getName();
+                                        kota = semuaKabupaten.getName();
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
 
-                        }
-                    });
+                            }
+                        });
+                    }
+
+
                 } else {
                     loading.dismiss();
                     Toast.makeText(getActivity(), "Gagal mengambil data kabupaten", Toast.LENGTH_SHORT).show();
@@ -345,5 +350,21 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();}
 
 }

@@ -86,13 +86,14 @@
     </android.support.v4.widget.NestedScrollView>
 
 
-    <!--<android.support.design.widget.FloatingActionButton-->
-    <!--android:id="@+id/fab"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_margin="@dimen/fab_margin"-->
-    <!--app:layout_anchor="@id/app_bar"-->
-    <!--app:layout_anchorGravity="bottom|end"-->
-    <!--android:src="@drawable/ic_location_on_white" />-->
+    <android.support.design.widget.FloatingActionButton
+    android:id="@+id/fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/fab_margin"
+    app:layout_anchor="@id/app_bar"
+    android:background="@color/colorAccent"
+    app:layout_anchorGravity="bottom|end"
+    android:src="@drawable/ic_chat_black_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>

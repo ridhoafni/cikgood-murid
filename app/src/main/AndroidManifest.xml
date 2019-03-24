@@ -33,16 +33,7 @@
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
-
-        <activity
-            android:name="ui.activities.AddRemoveDynamicActivity"
-            android:label="@string/title_activity_add_remove_dynamic">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name="ui.activities.AddRemoveDynamicActivity" />
         <activity android:name="ui.activities.DinamicSpinnerActivity" />
         <activity android:name=".adapters.InsertMapsActivity" />
         <activity android:name="ui.activities.PemesananActivity" />
