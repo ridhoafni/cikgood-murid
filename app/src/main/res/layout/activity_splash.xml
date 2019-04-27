@@ -21,6 +21,7 @@
         <!--android:layout_width="150dp"-->
         <!--android:layout_height="150dp"/>-->
         <TextView
+            android:fontFamily="@font/mlight"
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +30,18 @@
             android:text="CIKGOOD"
             android:textSize="40sp"
             android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+
+        <TextView
+            android:fontFamily="@font/mregular"
+            android:id="@+id/tv_sloan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Belajar jadi lebih mudah"
+            android:textSize="12sp"
+            android:textColor="@color/colorGreyDrag"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.anonymous.cikgood.R;
 
 public class SplashActivity extends AppCompatActivity {
-    private TextView tv;
+    private TextView tv, tv_slogan;
 //    private ImageView iv;
 
     @Override
@@ -23,10 +23,12 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 //        iv = (ImageView) findViewById(R.id.iv);
         tv = (TextView) findViewById(R.id.tv);
+        tv_slogan = (TextView) findViewById(R.id.tv_sloan);
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransation);
         tv.startAnimation(myanim);
+        tv_slogan.startAnimation(myanim);
 //        iv.startAnimation(myanim);
-        final Intent i = new Intent(this, LoginActivity.class);
+        final Intent i = new Intent(this, SliderActivity.class);
         Thread timer = new Thread(){
             public void run(){
                 try {
@@ -45,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
         // change color in primaryDark
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.white));
         }
         // change color in primaryDark
 

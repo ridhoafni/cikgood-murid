@@ -3,8 +3,13 @@
     <color name="colorPrimary">#fcfcfc</color>
     <color name="colorPrimaryDark">#fcfcfc</color>
     <color name="colorAccent">#1DA1F2</color>
+    <color name="backgroundPisa">#5D5B61</color>
     <color name="backgroundColor">#fafafa</color>
     <color name="placeholder_bg">#dddddd</color>
+    <color name="splashPrimary">#C6DEEA</color>
+    <color name="blakPrimary">#21272C</color>
+    <color name="backgroundPrimary">#EDF1F8</color>
+    <color name="sliderPrimary">#202332</color>
     <color name="item_name">#0c0c0c</color>
     <color name="description">#1a1a1a</color>
     <color name="chef">#777</color>
@@ -24,6 +29,7 @@
     <color name="backgroundwhite">#FFFFFF</color>
     <color name="colorPink">#FCC3D7</color>
     <color name="colorGrey">#F1EFF0</color>
+    <color name="colorGreyDrag">#E9E7E8</color>
     <color name="colorBlue">#D4E4FA</color>
     <color name="colorBlue2">#94AACA</color>
     <color name="colorRed">#D5AEB7</color>
@@ -42,4 +48,7 @@
     <color name="btn_logut_bg">#ff6861</color>
     <color name="btn_login_g">#F4511E</color>
     <color name="colorTransparent">#fcfcfc</color>
+    <color name="colorTransparentWhite">#cccccc</color>
+    <color name="album_title">#4c4c4c</color>
+
 </resources>

@@ -5,9 +5,6 @@
     android:installLocation="preferExternal">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,15 +14,56 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/cikgood"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="ui.activities.SplitKitActivity"></activity>
+        <activity android:name="ui.activities.SpinKitActivity" />
+        <activity android:name="ui.activities.LoginAnimationsActivity" />
+        <activity android:name="ui.activities.CariGuruActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity
+            android:name="ui.activities.SliderActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.MyProfileActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.SuccesBuyActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.GuruCheckoutActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.TiketDetailActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.HomeActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.RegisterAccount2Activity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.SuccessRegisterActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.RegisterAccountActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.SignInActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.GetStartedActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name="ui.activities.RegisterOneActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
         <uses-library
             android:name="com.google.android.wearable"
             android:required="false" />
-
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -33,6 +71,7 @@
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
+
         <activity android:name="ui.activities.AddRemoveDynamicActivity" />
         <activity android:name="ui.activities.DinamicSpinnerActivity" />
         <activity android:name=".adapters.InsertMapsActivity" />

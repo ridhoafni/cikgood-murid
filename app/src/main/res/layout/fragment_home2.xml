@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/lightgray">
+
+        <com.smarteist.autoimageslider.SliderLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:outlineAmbientShadowColor="@color/colorAccent"
+            android:animateLayoutChanges="true"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/imageSlider"/>
+    </LinearLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tv_tingkatan"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tingkatan"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+            <ImageView
+                android:id="@+id/icon_matpel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tingkatan"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/padding_5"
+                android:src="@drawable/ic_account_balance_black_24dp" />
+
+            <Spinner
+                android:layout_below="@+id/tv_tingkatan"
+                android:layout_toRightOf="@+id/icon_matpel"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:id="@+id/spinnerTingkatan"
+                android:layout_width="match_parent"
+                android:spinnerMode="dropdown"
+                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/bg_register"
+                android:hint="@string/tingkatan"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <View
+                android:id="@+id/view04"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/spinnerTingkatan"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="@color/colorGrey" />
+
+
+            <TextView
+                android:id="@+id/tv_matpel_spinner"
+                android:layout_below="@+id/view04"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/matpel"/>
+
+            <ImageView
+                android:id="@+id/icon_matpel_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_matpel_spinner"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/padding_5"
+                android:src="@drawable/ic_book_black_24dp" />
+
+            <Spinner
+                android:layout_below="@+id/tv_matpel_spinner"
+                android:layout_toRightOf="@+id/icon_matpel_spinner"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:id="@+id/spinnerMatpel"
+                android:layout_width="match_parent"
+                android:spinnerMode="dropdown"
+                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/bg_register"
+                android:hint="@string/tingkatan"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <View
+                android:id="@+id/view05"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/spinnerMatpel"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tv_lok_kecamatan"
+                android:layout_below="@+id/view05"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/kabupaten"/>
+
+            <ImageView
+                android:id="@+id/icon_kec_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_lok_kecamatan"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/padding_5"
+                android:src="@drawable/ic_location_searching_black_24dp" />
+
+            <Spinner
+                android:layout_below="@+id/tv_lok_kecamatan"
+                android:layout_toRightOf="@+id/icon_kec_spinner"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:id="@+id/spinnerKabupaten"
+                android:layout_width="match_parent"
+                android:spinnerMode="dropdown"
+                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/bg_register"
+                android:hint="@string/tingkatan"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <Button
+                android:layout_below="@+id/spinnerKabupaten"
+                android:id="@+id/btn_cari"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:layout_marginBottom="@dimen/padding_20"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="@dimen/padding_20"
+                android:layout_gravity="center"
+                android:text="@string/cariguru"
+                android:textStyle="bold"
+                style="@style/ButtonBorder.Accent"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+`
+
+</android.support.v4.widget.NestedScrollView>

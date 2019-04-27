@@ -47,7 +47,7 @@ import ui.activities.GuruActivity;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class Home2Fragment extends Fragment {
 
     private CardView CvCars, CvBikes, CvBluebird, CvOthers;
     Spinner spinnerTingkatan, spinnerDataMatpel, spinnerKabupaten;
@@ -63,11 +63,11 @@ public class HomeFragment extends Fragment {
     public static final String MATPEL = "matpel";
     public static final String KOTA = "kota";
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static Home2Fragment newInstance() {
+        return new Home2Fragment();
     }
 
-    public HomeFragment() {
+    public Home2Fragment() {
         // Required empty public constructor
     }
 
@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home2, container, false);
 
         sliderLayout = view.findViewById(R.id.imageSlider);
         sliderLayout.setIndicatorAnimation(SliderLayout.Animations.THIN_WORM); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!

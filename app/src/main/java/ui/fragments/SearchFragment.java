@@ -156,7 +156,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
         TxtNama        = (EditText) dialogView.findViewById(R.id.txt_nama);
         TxtTingkatan   = (EditText) dialogView.findViewById(R.id.txt_tingkatan);
         SpinnerMateri  = (Spinner) dialogView.findViewById(R.id.spinner_materi);
-        SpinnerJk      = (Spinner) dialogView.findViewById(R.id.spinner_jk);
+            SpinnerJk      = (Spinner) dialogView.findViewById(R.id.spinner_jk);
 
         List<String> jk = new ArrayList<String>();
         jk.add("Laki-Laki");
