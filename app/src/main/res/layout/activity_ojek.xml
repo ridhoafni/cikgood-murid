@@ -139,15 +139,15 @@
         </LinearLayout>
 
         <Button
+            android:fontFamily="@font/mmedium"
+            android:textSize="18sp"
+            android:text="Ambil Posisi"
             android:layout_marginBottom="@dimen/padding_10"
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="1dp"
+            android:layout_height="40dp"
             android:textColor="@color/white"
-            android:background="@drawable/button_shape"
-            android:paddingVertical="20dp"
-            android:text="Ambil Posisi" />
+            android:background="@drawable/bg_btn_accent_primary" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -16,10 +16,10 @@ import com.example.anonymous.cikgood.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TwoFragment extends Fragment {
+public class RiwayatPesananan extends Fragment {
 
 
-    public TwoFragment() {
+    public RiwayatPesananan() {
         // Required empty public constructor
     }
 

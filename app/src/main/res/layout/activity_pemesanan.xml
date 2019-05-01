@@ -1,450 +1,524 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:background="@color/backgroundPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout android:orientation="vertical"
-        android:background="@color/lightgray"
-        android:layout_height="match_parent"
+    <!-- tambah comment -->
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp">
 
+<!--        <ImageView-->
+<!--            android:id="@+id/ticket_checkout_v1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:background="@drawable/bgheader_pisa"-->
+<!--            android:scaleType="centerCrop" />-->
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector"
-            android:padding="@dimen/padding_10"
-            android:layout_marginTop="@dimen/padding_5"
-            android:layout_marginRight="@dimen/padding_5"
-            android:layout_marginLeft="@dimen/padding_5"
-            xmlns:tools="http://schemas.android.com/tools">
+<!--        <View-->
+<!--            android:id="@+id/ticket_checkout_v2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:background="@drawable/get_started_window_bg_overlay_blue" />-->
+<LinearLayout
+    android:orientation="horizontal"
+    android:id="@+id/linearLayout"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <ImageView
+        android:layout_marginStart="24dp"
+        android:id="@+id/btn_back"
+        android:layout_width="30dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_back" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="@dimen/placeholder_image"
-                android:layout_height="@dimen/placeholder_image"
-                android:layout_marginRight="@dimen/padding_10"
-                android:scaleType="centerCrop"
-                android:src="@drawable/com_facebook_profile_picture_blank_portrait"/>
-            <TextView
-                android:id="@+id/tv_nama"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/thumbnail"
-                android:ellipsize="end"
-                android:fontFamily="sans-serif-medium"
-                android:maxLines="1"
-                android:textColor="@color/item_name"
-                android:textSize="@dimen/name"
-                android:text="nama"/>
-            <TableLayout
-                android:layout_marginTop="@dimen/padding_10"
-                android:id="@+id/table_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_nama"
-                android:layout_toRightOf="@id/thumbnail"
-                android:layout_toEndOf="@id/thumbnail">
-                <TableRow>
-                    <RatingBar
-                        android:layout_below="@id/tv_pendidikan"
-                        android:layout_toRightOf="@id/thumbnail"
-                        android:layout_toEndOf="@id/thumbnail"
-                        android:id="@+id/ratingBar"
-                        style="?ratingBarStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginEnd="9dp"
-                        android:layout_marginBottom="8dp"
-                        android:isIndicator="true"
-                        android:max="5"
-                        android:numStars="5"
-                        android:rating="4.2"
-                        android:stepSize=".1" />
-
-                    <TextView
-                        android:id="@+id/tv_rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toEndOf="@+id/ratingBar"
-                        android:layout_toRightOf="@id/ratingBar"
-                        android:text="4.2" />
-                </TableRow>
-            </TableLayout>
-
-            <TextView
-                android:id="@+id/tv_gelar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_10"
-                android:layout_below="@id/table_rating"
-                android:layout_toRightOf="@id/thumbnail"
-                android:maxLines="1"
-                android:text="pendidikan"
-                android:textColor="@color/chef"
-                android:textSize="@dimen/chef" />
-
-            <TextView
-                android:id="@+id/tv_univ"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_10"
-                android:layout_below="@id/table_rating"
-                android:layout_marginLeft="@dimen/padding_5"
-                android:layout_toRightOf="@id/tv_gelar"
-                android:maxLines="1"
-                android:text="pendidikan"
-                android:textColor="@color/chef"
-                android:textSize="@dimen/chef" />
-
-            <TextView
-                android:id="@+id/tv_jurusan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_10"
-                android:layout_below="@id/table_rating"
-                android:layout_marginLeft="@dimen/padding_5"
-                android:layout_toRightOf="@id/tv_univ"
-                android:maxLines="1"
-                android:text="pendidikan"
-                android:textColor="@color/chef"
-                android:textSize="@dimen/chef" />
-
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/ticket_checkout_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_back"
+        android:paddingLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
+        android:text="Pemesanan"
+        android:textColor="@color/blackPrimary"
+        android:textSize="20sp" />
+</LinearLayout>
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/padding_5"
-            android:background="@color/white">
+            android:id="@+id/home_activity_v2"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/avatar_stroke_bold"
+            android:elevation="1dp"
+            android:gravity="center">
 
-
-            <TextView
-                android:id="@+id/tv_matpel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/padding_10"
-                android:text="Mata Pelajaran"
-                android:textColor="@android:color/black" />
-
-            <ImageView
-                android:id="@+id/icon_matpel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_matpel"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_5"
-                android:src="@drawable/ic_book_black_24dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGrey" />
-
-            <Spinner
-                android:id="@+id/spinner_matpel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_matpel"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="@dimen/padding_5"
-                android:text="" />
-
-            <View
-                android:id="@+id/view01"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/spinner_matpel"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@color/colorGrey" />
-
-
-            <TextView
-                android:id="@+id/tv_durasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/view01"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/padding_10"
-                android:text="@string/jumlah_per_min"
-                android:textColor="@android:color/black" />
-
-
-            <TextView
-                android:id="@+id/tv_durasi_jam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/view01"
-                android:layout_marginLeft="34dp"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginBottom="@dimen/padding_10"
-                android:layout_toRightOf="@+id/tv_durasi"
-                android:text="@string/durasi_per_pertemuan"
-                android:textColor="@android:color/black" />
-
-            <ImageView
-                android:id="@+id/icon_durasi_pertemuan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_durasi_jam"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_5"
-                android:src="@drawable/ic_event_black_24dp" />
-
-
-            <Spinner
-                android:id="@+id/spinner_durasi_pertemuan"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_durasi"
-                android:layout_marginLeft="@dimen/padding_40"
-                android:layout_marginTop="@dimen/padding_5"
-                android:spinnerMode="dropdown"
-                android:text="" />
-
-            <ImageView
-                android:id="@+id/icon_durasi_jam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_durasi_jam"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_5"
-                android:layout_toRightOf="@+id/spinner_durasi_pertemuan"
-                android:src="@drawable/ic_access_time_black_24dp" />
-
-            <Spinner
-                android:id="@+id/spinner_durasi_pertemuan_jam"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_durasi"
-                android:layout_marginTop="@dimen/padding_5"
-                android:layout_toRightOf="@+id/icon_durasi_jam"
-                android:spinnerMode="dropdown"
-                android:text="" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_durasi_jam"
-                android:layout_marginTop="@dimen/padding_5"
-                android:layout_toRightOf="@+id/spinner_durasi_pertemuan_jam"
-                android:text="Jam" />
-
-            <ImageView
-                android:id="@+id/icon_alamat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_alamat"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:src="@drawable/ic_location_searching_black_24dp" />
-
-            <EditText
-                android:id="@+id/et_alamat_lengkap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_alamat"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_5"
-                android:layout_marginRight="50dp"
-                android:layout_toRightOf="@+id/icon_alamat"
-                android:hint="@string/alamat"
-                android:text="" />
-
-            <TextView
-                android:id="@+id/tv_map"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_alamat"
-                android:layout_marginTop="@dimen/padding_20"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:textStyle="bold"
-                android:text="MAP"
-                android:textColor="@color/colorAccent" />
-
-
-            <TextView
-                android:id="@+id/tv_alamat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/view03"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:text="@string/alamat"
-                android:textColor="@android:color/black" />
-
-            <View
-                android:id="@+id/view03"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/et_tambahan"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@color/colorGrey" />
-
-            <TextView
-                android:id="@+id/tv_pesan_tambahan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/view04"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:text="@string/tambahan"
-                android:textColor="@android:color/black" />
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/et_tambahan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_pesan_tambahan"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_5"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:hint="@string/pesan_tambahan" />
-
-            <Button
-                android:id="@+id/btn_ambil_posisi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_alamat_lengkap"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:background="@drawable/button_shape"
-                android:text="@string/pesan"
-                android:textColor="@color/white" />
-
-
-            <RelativeLayout
-                android:id="@+id/rl_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/spinner_durasi_pertemuan"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_20"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@drawable/selector">
-
-                <TextView
-                    android:id="@+id/tv_d_biaya"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/padding_5"
-                    android:text="Detail Biaya"
-                    android:textColor="@android:color/black" />
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/tv_d_biaya"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:background="@color/colorAccent" />
-
-                <TextView
-                    android:id="@+id/tv_detail_durasi_pertemuan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/view"
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:text="10" />
-
-                <TextView
-                    android:id="@+id/pertemuan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/view"
-                    android:layout_marginLeft="@dimen/padding_5"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:layout_toRightOf="@id/tv_detail_durasi_pertemuan"
-                    android:text="pertemuan" />
-
-                <TextView
-                    android:id="@+id/x2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/view"
-                    android:layout_marginLeft="@dimen/padding_5"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:layout_toRightOf="@id/pertemuan"
-                    android:text="x" />
-
-                <TextView
-                    android:id="@+id/jam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/view"
-                    android:layout_marginLeft="@dimen/padding_5"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:layout_toRightOf="@id/x2"
-                    android:text="(1 jam)" />
-
-                <TextView
-                    android:id="@+id/total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/jam"
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:text="Total :"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_total_jam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/jam"
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:layout_toRightOf="@+id/total"
-                    android:text="10 Jam"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_total_rp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_total_jam"
-                    android:layout_marginLeft="@dimen/padding_10"
-                    android:layout_marginRight="@dimen/padding_10"
-                    android:layout_marginBottom="@dimen/padding_10"
-                    android:text="Rp. 100.000,00"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_large"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-            <View
-                android:id="@+id/view04"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@+id/rl_detail"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/padding_20"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:background="@color/colorGrey" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/icon_nopic" />
         </RelativeLayout>
 
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/home_activity_v2"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/home_activity_v2"
+            android:text="Ridho Afni"
+            android:textColor="@color/blackPrimary"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_gelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nama"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/home_activity_v2"
+            android:text="S1"
+            android:textColor="@color/grayPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_univ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nama"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tv_gelar"
+            android:text="Uin Suska"
+            android:textColor="@color/grayPrimary"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_jurusan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nama"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tv_univ"
+            android:text="Teknik Informatika"
+            android:textColor="@color/grayPrimary"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/ticket_checkout_layout"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_layout_white"
+            android:orientation="vertical"
+            android:paddingLeft="24dp"
+            android:paddingTop="20dp"
+            android:paddingRight="24dp"
+            android:paddingBottom="10dp">
+
+
+            <TextView
+                android:id="@+id/ticket_checkout_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detailnya"
+                android:textColor="@color/blackPrimary"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ticket_checkout_tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap arrow to view story"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/ticket_checkoutdrop"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/ic_dropdown" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/divider_bg" />
+
+
+            <TextView
+                android:id="@+id/ticket_checkout_tv7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="8dp"
+                android:text="The leaning of the Tower of Pisa comes into the story in 1173, when consruction began."
+                android:textColor="@color/grayPrimary"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/ticket_checkoutview"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/divider_bg"
+                android:visibility="gone" />
+
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/mlight"
+                            android:text="@string/matpel"
+                            android:textColor="#8D8D8D"
+                            android:textSize="16sp" />
+
+                        <Spinner
+                            android:id="@+id/spinner_matpel"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_input_edit"
+                            android:fontFamily="@font/_mmedium"
+                            android:lines="1"
+                            android:paddingLeft="12dp"
+                            android:textColor="@color/blakPrimary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/mlight"
+                            android:text="@string/durasi_per_pertemuan"
+                            android:textColor="#8D8D8D"
+                            android:textSize="16sp" />
+
+                        <Spinner
+                            android:id="@+id/spinner_durasi_pertemuan_jam"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_input_edit"
+                            android:fontFamily="@font/_mmedium"
+                            android:lines="1"
+                            android:paddingLeft="12dp"
+                            android:textColor="@color/blakPrimary" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/mlight"
+                            android:text="@string/jumlah_per_min"
+                            android:textColor="#8D8D8D"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/ticket_checkout_tv6"
+                                android:layout_width="70dp"
+                                android:layout_height="30dp"
+                                android:layout_marginRight="16dp"
+                                android:background="@drawable/sign_in_edittext_bg_pressed"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/blackPrimary"
+                                android:textSize="18sp" />
+
+                            <Button
+                                android:id="@+id/ticket_checkout_btn_pls"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginRight="12dp"
+                                android:background="@drawable/btn_circle_plus"
+                                android:text="+"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/ticket_checkout_btn_min"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginRight="16dp"
+                                android:background="@drawable/btn_circle_minus"
+                                android:text="-"
+                                android:textColor="@color/white" />
+
+                            <Button
+                                android:id="@+id/ticket_checkout_btn_pls10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="14dp"
+                                android:background="@drawable/btn_circle_plus"
+                                android:text="+ 10"
+                                android:textColor="@color/white" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/mlight"
+                                android:text="@string/pesantambahan"
+                                android:textColor="#8D8D8D"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:id="@+id/et_pesan_tambahan"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bg_input_edit"
+                                android:fontFamily="@font/_mmedium"
+                                android:lines="1"
+                                android:paddingLeft="12dp"
+                                android:textColor="@color/blakPrimary" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+
+
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_below="@+id/ticket_checkout_layout"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="0dp"-->
+<!--            android:overScrollMode="never"-->
+<!--            android:scrollbars="none">-->
+
+            <RelativeLayout
+                android:id="@+id/ticket_checkout_r1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/ticket_checkout_layout">
+
+                <LinearLayout
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/ticket_checkout_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_layout_white"
+                    android:orientation="vertical"
+                    android:paddingLeft="24dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="24dp"
+                    android:paddingBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/ticket_checkout_tv8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Harga"
+                        android:textColor="@color/blackPrimary"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/ticket_checkout_tv9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Saldo sekarang"
+                            android:textColor="@color/grayPrimary"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/ticket_checkout_tv10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="Rp. 228"
+                            android:textColor="@color/bluePrimary"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/ticket_checkout_btn_alert"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/btn_circle_minus"
+                            android:text="!"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/divider_bg" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/ticket_checkout_tv11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Pembayaran"
+                            android:textColor="@color/greenPrimary"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/ticket_checkout_tv12"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:gravity="left"
+                            android:text="Rp. 20"
+                            android:textColor="@color/greenPrimary"
+                            android:textSize="25sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ticket_checkout_btn1"
+                    android:layout_width="230dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/ticket_checkout_layout2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="22dp"
+                    android:background="@drawable/bg_btn_green_primary"
+                    android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
+                    android:paddingRight="10dp"
+                    android:text="Selanjutnya"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/btn_back"-->
+                    <!--android:layout_width="60dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_below="@+id/ticket_checkout_layout2"-->
+                    <!--android:layout_marginStart="20dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:background="@drawable/bg_layout_white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/iv_lokasi"-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="18dp"-->
+                        <!--android:src="@drawable/ic_back" />-->
+                <!--</LinearLayout>-->
+
+                <Button
+                    android:id="@+id/btn_tambah_saldo"
+                    android:layout_below="@+id/ticket_checkout_layout2"
+                    android:layout_width="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/btn_circle_big_green_primary"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+<!--        </ScrollView>-->
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

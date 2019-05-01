@@ -14,6 +14,10 @@ import com.example.anonymous.cikgood.R;
  */
 public class ChatFragment extends Fragment {
 
+    public static ChatFragment newInstance() {
+        return new ChatFragment();
+    }
+
 
     public ChatFragment() {
         // Required empty public constructor

@@ -2,7 +2,10 @@ package ui.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +52,7 @@ public class CariGuruActivity extends AppCompatActivity {
     SessionManager sessionManager;
     ApiInterface apiService;
     ProgressDialog loading;
-    ProgressBar progressBarTingkatan, progressBarMatpel;
+    ProgressBar progressBarTingkatan, progressBarMatpel, progressBarKabupaten, progressBarCari, progressBarBtn;
 
 
 
@@ -64,11 +67,39 @@ public class CariGuruActivity extends AppCompatActivity {
         btnCari = (Button) findViewById(R.id.btn_cari);
         progressBarTingkatan = findViewById(R.id.SpinKitTingkatan);
         progressBarMatpel = findViewById(R.id.SpinKitMatpel);
+        progressBarKabupaten = findViewById(R.id.SpinKitKabupaten);
+        progressBarCari = findViewById(R.id.SpinKitCari);
+        progressBarBtn = findViewById(R.id.SpinKitBtn);
 
         btnCari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cariGuru();
+                new Runnable() {
+                    int interfal = 500;
+                    @Override
+                    public void run() {
+                        new CountDownTimer(1500, 1500) {
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                btnCari.setText("MENCARI...");
+                            }
+                            @Override
+                            public void onFinish() {
+                                btnCari.setText("CARI GURU");
+                                cariGuru();
+                            }
+                        }.start();
+                    }
+                }.run();
+                new Handler().postDelayed(new Runnable(){
+                    @Override
+                    public void run(){
+//                        Bitmap bitmap = takeScreenshot();
+//                        saveBitmap(bitmap);
+//                        Toast.makeText(TicketInformation.this, "Successfull Print Ticket on Storage\nPlease check your Gallery or Storage", Toast.LENGTH_SHORT).show();
+
+                    }
+                },1500);
             }
         });
 
@@ -76,6 +107,7 @@ public class CariGuruActivity extends AppCompatActivity {
 
 //        initSpinnerKabupaten();
         initSpinnerTingkatan();
+        initSpinnerKabupaten();
         // change color in primaryDark
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -88,37 +120,6 @@ public class CariGuruActivity extends AppCompatActivity {
         // change icon color status bar
 
 
-    }
-
-    private void cariGuru() {
-        loading = ProgressDialog.show(this, null, "harap tunggu...", true, false);
-
-        System.out.println("Kota :"+kota);
-        System.out.println("Tingkatan :"+tingkatan);
-        System.out.println("Matpel :"+matpel);
-
-        apiService.cariGuru(tingkatan, matpel, kota).enqueue(new Callback<ResponseCariGuru>() {
-            @Override
-            public void onResponse(Call<ResponseCariGuru> call, Response<ResponseCariGuru> response) {
-                System.out.println("Response Home "+response);
-                if (response.isSuccessful()){
-                    loading.dismiss();
-                    Intent i ;
-                    i = new Intent(CariGuruActivity.this, GuruActivity.class);
-                    i.putExtra(GuruActivity.TINGKATAN, tingkatan);
-                    i.putExtra(GuruActivity.MATPEL, matpel);
-                    i.putExtra(GuruActivity.KOTA, kota);
-                    startActivity(i);
-                    Toast.makeText(CariGuruActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseCariGuru> call, Throwable t) {
-
-            }
-        });
     }
 
     private void initSpinnerTingkatan(){
@@ -239,58 +240,82 @@ public class CariGuruActivity extends AppCompatActivity {
         });
     }
 
-//    private void initSpinnerKabupaten(){
-////        loading = ProgressDialog.show(getActivity(), null, "harap tunggu...", true, false);
-//
-//        apiService.getDataKabupaten().enqueue(new Callback<ResponseKabupaten>() {
-//            @Override
-//            public void onResponse(Call<ResponseKabupaten> call, Response<ResponseKabupaten> response) {
-//                if (response.isSuccessful()) {
+    private void initSpinnerKabupaten(){
+//        loading = ProgressDialog.show(getActivity(), null, "harap tunggu...", true, false);
+        progressBarKabupaten.setVisibility(View.VISIBLE);
+        progressBarBtn.setVisibility(View.VISIBLE);
+
+        apiService.getDataKabupaten().enqueue(new Callback<ResponseKabupaten>() {
+            @Override
+            public void onResponse(Call<ResponseKabupaten> call, Response<ResponseKabupaten> response) {
+                if (response.isSuccessful()) {
 //                    loading.dismiss();
-//                    List<Kabupaten> semuaKabupatenItems = response.body().getMaster();
-//                    List<String> listSpinner = new ArrayList<String>();
-//                    for (int i = 0; i < semuaKabupatenItems.size(); i++){
-//                        listSpinner.add(semuaKabupatenItems.get(i).getName());
-//                    }
-//
-//                    if (this != null){
-//                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CariGuruActivity.this,
-//                                android.R.layout.simple_spinner_item, listSpinner);
-//                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spinnerKabupaten.setAdapter(adapter);
-//                        spinnerKabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                                String selectedName = parent.getItemAtPosition(position).toString();
-//
-//                                for (Kabupaten semuaKabupaten : semuaKabupatenItems){
-//
-//                                    if (semuaKabupaten.getName().equals( spinnerKabupaten.getSelectedItem().toString())){
-////                                    loadDataMatpel(semuaTingkatan.getId());
-//                                        kota = semuaKabupaten.getName();
-//                                    }
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> parent) {
-//
-//                            }
-//                        });
-//                    }
-//
-//
-//                } else {
-//                    loading.dismiss();
-//                    Toast.makeText(CariGuruActivity.this, "Gagal mengambil data kabupaten", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseKabupaten> call, Throwable t) {
-//                loading.dismiss();
-//                Toast.makeText(CariGuruActivity.this, "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+
+                    progressBarKabupaten.setVisibility(View.INVISIBLE);
+                    progressBarBtn.setVisibility(View.INVISIBLE);
+                    List<Kabupaten> semuaKabupatenItems = response.body().getMaster();
+                    List<String> listSpinner = new ArrayList<String>();
+                    for (int i = 0; i < semuaKabupatenItems.size(); i++){
+                        listSpinner.add(semuaKabupatenItems.get(i).getName());
+                    }
+
+                    if (this != null){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(CariGuruActivity.this,
+                                android.R.layout.simple_list_item_1, listSpinner);
+                        autoCompleteKabupaten.setAdapter(adapter);
+                    }
+
+
+                } else {
+                    loading.dismiss();
+                    Toast.makeText(CariGuruActivity.this, "Gagal mengambil data kabupaten", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseKabupaten> call, Throwable t) {
+                loading.dismiss();
+                Toast.makeText(CariGuruActivity.this, "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void cariGuru() {
+//        loading = ProgressDialog.show(this, null, "harap tunggu...", true, false);
+        progressBarCari.setVisibility(View.INVISIBLE);
+
+
+        kota = autoCompleteKabupaten.getText().toString();
+
+
+        System.out.println("Kota :"+kota);
+        System.out.println("Tingkatan :"+tingkatan);
+        System.out.println("Matpel :"+matpel);
+
+        apiService.cariGuru(tingkatan, matpel, kota).enqueue(new Callback<ResponseCariGuru>() {
+            @Override
+            public void onResponse(Call<ResponseCariGuru> call, Response<ResponseCariGuru> response) {
+                System.out.println("Response Home "+response);
+                if (response.isSuccessful()){
+                    progressBarCari.setVisibility(View.VISIBLE);
+
+                    Intent i ;
+                    i = new Intent(CariGuruActivity.this, GuruActivity.class);
+                    i.putExtra(GuruActivity.TINGKATAN, tingkatan);
+                    i.putExtra(GuruActivity.MATPEL, matpel);
+                    i.putExtra(GuruActivity.KOTA, kota);
+                    startActivity(i);
+//                    Toast.makeText(CariGuruActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toasty.error(CariGuruActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCariGuru> call, Throwable t) {
+
+            }
+        });
+    }
 }

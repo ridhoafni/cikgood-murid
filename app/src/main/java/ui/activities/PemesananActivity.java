@@ -1,159 +1,297 @@
 package ui.activities;
 
-import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.media.Image;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.anonymous.cikgood.R;
 import com.example.anonymous.cikgood.adapters.MengajarAdapter;
 import com.example.anonymous.cikgood.config.ServerConfig;
-import com.example.anonymous.cikgood.models.DataMatpel;
 import com.example.anonymous.cikgood.models.GuruDataMatpel;
-import com.example.anonymous.cikgood.models.Mengajar;
-import com.example.anonymous.cikgood.models.Tingkatan;
+import com.example.anonymous.cikgood.models.Saldo;
 import com.example.anonymous.cikgood.response.ResponseGuruDataMatpel;
-import com.example.anonymous.cikgood.response.ResponseMengajar;
+import com.example.anonymous.cikgood.response.ResponseSaldo;
 import com.example.anonymous.cikgood.rests.ApiClient;
 import com.example.anonymous.cikgood.rests.ApiInterface;
+import com.example.anonymous.cikgood.utils.SessionManager;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PemesananActivity extends AppCompatActivity {
 
-    public static final String KEY_ID_GURU = "id_guru";
-    public static final String KEY_PHOTO_GURU = "photo_profile";
-    public static final String KEY_NAMA_GURU = "nama";
+    // Inisialisai variable static
+    public static final String KEY_NAMA_GURU    = "nama";
+    public static final String KEY_ID_GURU      = "id_guru";
+    public static final String KEY_GELAR_GURU   = "gelar";
     public static final String KEY_JURUSAN_GURU = "jurusan";
-    public static final String KEY_UNIV_GURU = "nama_institusi";
-    public static final String KEY_GELAR_GURU = "gelar";
+    public static final String KEY_ADDRESS      = "alamat_lengkap";
+    public static final String KEY_PHOTO_GURU   = "photo_profile";
+    public static final String KEY_UNIV_GURU    = "nama_institusi";
 
-    public static final String KEY_ADDRESS= "alamat_lengkap";
-    public static final String KEY_LATITUDE= "latitude";
-    public static final String KEY_LONGITUDE= "longitude";
+    private Locale localeID = new Locale("in", "ID");
+    private NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 
-    int id, tarif, harga;
-    TextView tvDurasiPertemuanJam, tvDurasiPertemuan, tvTotalJam, tvTotalRp, tvNamaGuru, tvGelarGuru, tvUnivGuru, tvJurusanGuru;
-    ImageView photo_profil, ivAlamat;
-    String nama, gelar, univ, jurusan, photo, x, selectedSpinnerMatpel, selectedSpinnerDurasiPertemuan, alamat;
-    double selectedSpinnerDurasiJam;
-    Spinner spinnerDurasiPertemuan, spinnerDurasiPertemuanJam, spinnerMatpel;
-    EditText etAlamat;
-    ApiInterface apiService;
-    MengajarAdapter mengajarAdapter;
+    private int Click=0;
+    private Integer money;
+    private int my_money = 250000;
+    private String pesan_tambahan;
+    private Integer jumlah_pesanan = 0;
+    private int id, tarif, harga, murid_id;
+    private double selectedSpinnerDurasiJam;
+    private String nama, gelar, univ, jurusan, photo, x, selectedSpinnerMatpel, selectedSpinnerDurasiPertemuan, alamat, matpel_sected;
+
+    private ApiInterface apiService;
+    private PemesananJadwalActivity pemesananJadwalActivity;
+
+    private View view1;
+    private Animation in;
+    private Animation out;
+    private ImageView img2;
+    private Dialog myDialog;
+    private EditText etPesanTambahan;
+    private CircleImageView photo_profil;
+    private SessionManager sessionManager;
+    private Spinner spinnerDurasiPertemuanJam, spinnerMatpel;
+    private TextView tvTotalHargaPesanan, tvJumlahSaldo, tv7;
+    private TextView tvNamaGuru, tvGelarGuru, tvUnivGuru, tvJurusanGuru, tvTotalPertemuan;
+    private Button btnIncrease, btnDecrease,btnSelanjutnya, btnAlertSaldo, btnTambah10, btnTambahSaldo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pemesanan);
 
-        spinnerDurasiPertemuan = (Spinner)findViewById(R.id.spinner_durasi_pertemuan);
+        // findViewById
+        tvNamaGuru                = (TextView) findViewById(R.id.tv_nama);
+        tvUnivGuru                = (TextView) findViewById(R.id.tv_univ);
+        tvGelarGuru               = (TextView) findViewById(R.id.tv_gelar);
+        tvJurusanGuru             = (TextView) findViewById(R.id.tv_jurusan);
+        spinnerMatpel             = (Spinner) findViewById(R.id.spinner_matpel);
+        btnTambahSaldo            = (Button) findViewById(R.id.btn_tambah_saldo);
+        photo_profil              = (CircleImageView) findViewById(R.id.thumbnail);
+        etPesanTambahan           = (EditText)findViewById(R.id.et_pesan_tambahan);
+        btnSelanjutnya            = (Button) findViewById(R.id.ticket_checkout_btn1);
+        btnSelanjutnya            = (Button) findViewById(R.id.ticket_checkout_btn1);
+        tvTotalPertemuan          = (TextView) findViewById(R.id.ticket_checkout_tv6);
+        tvJumlahSaldo             = (TextView) findViewById(R.id.ticket_checkout_tv10);
+        tvTotalHargaPesanan       = (TextView) findViewById(R.id.ticket_checkout_tv12);
+        img2                      = (ImageView) findViewById(R.id.ticket_checkoutdrop);
+        btnIncrease               = (Button) findViewById(R.id.ticket_checkout_btn_pls);
+        btnDecrease               = (Button) findViewById(R.id.ticket_checkout_btn_min);
+        btnTambah10               = (Button) findViewById(R.id.ticket_checkout_btn_pls10);
+        btnAlertSaldo             = (Button) findViewById(R.id.ticket_checkout_btn_alert);
         spinnerDurasiPertemuanJam = (Spinner)findViewById(R.id.spinner_durasi_pertemuan_jam);
-        spinnerMatpel = (Spinner)findViewById(R.id.spinner_matpel);
-        tvDurasiPertemuanJam = (TextView) findViewById(R.id.jam);
-        tvDurasiPertemuan = (TextView) findViewById(R.id.tv_detail_durasi_pertemuan);
-        tvTotalJam = (TextView) findViewById(R.id.tv_total_jam);
-        tvTotalRp = (TextView) findViewById(R.id.tv_total_rp);
-        tvGelarGuru = (TextView) findViewById(R.id.tv_gelar);
-        photo_profil = (ImageView) findViewById(R.id.thumbnail);
-        tvNamaGuru = (TextView) findViewById(R.id.tv_nama);
-        tvUnivGuru = (TextView) findViewById(R.id.tv_univ);
-        tvJurusanGuru = (TextView) findViewById(R.id.tv_jurusan);
-        ivAlamat = (ImageView) findViewById(R.id.icon_alamat);
-        etAlamat = (EditText) findViewById(R.id.et_alamat_lengkap);
 
-        apiService = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
+        //Dialog
+        myDialog = new Dialog(this, R.style.DialogTrans);
 
-        initSpinnerDurasiPertemuan();
-        initSpinnerDurasiPertemuanJam();
-        initSpinnerMatpel();
+        // SessionManager
+        sessionManager = new SessionManager(PemesananActivity.this);
+        murid_id = Integer.parseInt((sessionManager.getMuridProfile().get("id")));
 
+        Log.d("log murid id", ""+murid_id);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Pemesanan");
-
-        photo = getIntent().getStringExtra(KEY_PHOTO_GURU);
-        nama = getIntent().getStringExtra(KEY_NAMA_GURU);
-        gelar = getIntent().getStringExtra(KEY_GELAR_GURU);
+        // getIntent
         univ = getIntent().getStringExtra(KEY_UNIV_GURU);
-        jurusan = getIntent().getStringExtra(KEY_JURUSAN_GURU);
+        nama = getIntent().getStringExtra(KEY_NAMA_GURU);
         alamat = getIntent().getStringExtra(KEY_ADDRESS);
+        photo = getIntent().getStringExtra(KEY_PHOTO_GURU);
+        gelar = getIntent().getStringExtra(KEY_GELAR_GURU);
+        jurusan = getIntent().getStringExtra(KEY_JURUSAN_GURU);
+        id = getIntent().getIntExtra(KEY_ID_GURU, 0);
+
+        // Event tambah saldo
+        btnTambahSaldo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PemesananActivity.this, TambahSaldo.class));
+            }
+        });
+
+        view1   = (View) findViewById(R.id.ticket_checkoutview);
+        tv7     = (TextView) findViewById(R.id.ticket_checkout_tv7);
+
+        tv7.setText("The leaning of the Tower of Pisa comes into the story in 1173, when consruction began.");
+
+        // get text
+        pesan_tambahan = etPesanTambahan.getText().toString();
+        Log.d("pesan  tambahan", ""+pesan_tambahan);
+
+        // set text widget
         tvNamaGuru.setText(nama);
-        tvGelarGuru.setText(gelar);
         tvUnivGuru.setText(univ);
+        tvGelarGuru.setText(gelar);
         tvJurusanGuru.setText(jurusan);
         Glide.with(this)
                 .load(ServerConfig.GURU_PATH+photo)
                 .apply(new RequestOptions().override(100, 100))
                 .into(photo_profil);
 
-        etAlamat.setText(alamat);
-
-        System.out.println("id guru :"+id);
-        System.out.println("photo guru :"+photo);
-        System.out.println("gelar guru :"+gelar);
-        System.out.println("nama guru :"+nama);
-        System.out.println("univ guru :"+univ);
-        System.out.println("jurusan guru :"+jurusan);
-
-        // Here, thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Permission is not granted
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Toast.makeText(this, "Membutuhkan Izin Lokasi", Toast.LENGTH_SHORT).show();
-            } else {
-
-                // No explanation needed; request the permission
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                        1);
-            }
-        } else {
-            // Permission has already been granted
-//            Toast.makeText(this, "Izin Lokasi diberikan", Toast.LENGTH_SHORT).show();
-        }
-
-        ivAlamat.setOnClickListener(new View.OnClickListener() {
+        // ApiService
+        apiService = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
+        apiService.saldoFindById(id).enqueue(new Callback<ResponseSaldo>() {
             @Override
-            public void onClick(View v) {
-                Intent intent_maps;
-                intent_maps = new Intent(PemesananActivity.this, OjekActivity.class);
-                intent_maps.putExtra(OjekActivity.KEY_ID_GURU, id);
-                intent_maps.putExtra(OjekActivity.KEY_NAMA_GURU,nama);
-                intent_maps.putExtra(OjekActivity.KEY_GELAR_GURU,  gelar);
-                intent_maps.putExtra(OjekActivity.KEY_UNIV_GURU,  univ);
-                intent_maps.putExtra(OjekActivity.KEY_JURUSAN_GURU,  jurusan);
-                intent_maps.putExtra(OjekActivity.KEY_PHOTO_GURU,  photo);
-                startActivity(intent_maps);
+            public void onResponse(Call<ResponseSaldo> call, Response<ResponseSaldo> response) {
+                Log.d("response saldo",""+response);
+                if (response.isSuccessful()){
+                    System.out.println(response.body().toString());
+                    ArrayList<Saldo> gurus = new ArrayList<>();
+                    gurus.add(response.body().getMaster());
+                    Saldo guru = gurus.get(0);
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseSaldo> call, Throwable t) {
+                t.printStackTrace();
             }
         });
 
+        // method initialized spinner matpel
+        initSpinnerMatpel();
+
+        // method initialized spinner pertemuan
+        initSpinnerDurasiPertemuanJam();
+
+        if(my_money == 0) {
+            final Integer money = 0;
+
+            // make object Locale to indo
+            Locale localeID = new Locale("in", "ID");
+            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+
+            // set text
+            tvJumlahSaldo.setText(formatRupiah.format(money));
+            btnSelanjutnya.animate().translationY(250).alpha(0).setDuration(350).start();
+            btnSelanjutnya.setEnabled(false);
+            tvJumlahSaldo.setTextColor(Color.parseColor("#D1206B"));
+            tvTotalPertemuan.setTextColor(getResources().getColor(R.color.redPrimary));
+            tvTotalPertemuan.setBackgroundResource(R.drawable.sign_in_edittext_bg_pressed2);
+            btnAlertSaldo.animate().translationY(0).alpha(1).setDuration(300).start();
+        }else {
+            final Integer money = my_money;
+            Locale localeID = new Locale("in", "ID");
+            NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+            tvJumlahSaldo.setText(formatRupiah.format(money));
+        }
+
+        money = my_money;
+        btnDecrease.animate().alpha(0).setDuration(300).start();
+        btnDecrease.setEnabled(false);
+        btnAlertSaldo.setAlpha(0);
+        tvTotalPertemuan.setTextColor(getResources().getColor(R.color.blackPrimary));
+        tvTotalPertemuan.setBackgroundResource(R.drawable.sign_in_edittext_bg_pressed);
+        in = new AlphaAnimation(0.0f,1.0f);
+        in.setDuration(300);
+        out = new AlphaAnimation(1.0f,0.0f);
+        out.setDuration(300);
+        out.setAnimationListener(new Animation.AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // TODO Auto-generated method stub
+                tvTotalHargaPesanan.startAnimation(in);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+        });
+
+        // Event decrease
+        btnDecrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jumlah_pesanan -= 1;
+                tvTotalPertemuan.setText(jumlah_pesanan.toString());
+                tvTotalHargaPesanan.setText(String.valueOf(addResults()));
+                if(jumlah_pesanan < 2) {
+                    btnDecrease.animate().alpha(0).setDuration(300).start();
+                    btnDecrease.setEnabled(false);
+                }
+                tvTotalHargaPesanan.startAnimation(out);
+                Locale localeID = new Locale("in", "ID");
+                NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+            }
+        });
+
+        // Event button increase
+        btnIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jumlah_pesanan += 1;
+
+                tvTotalPertemuan.setText(jumlah_pesanan.toString());
+
+                tvTotalHargaPesanan.setText(String.valueOf(addResults()));
+
+                if(jumlah_pesanan > 1) {
+                    btnDecrease.animate().alpha(1).setDuration(300).start();
+                    btnDecrease.setEnabled(true);
+                    tvTotalHargaPesanan.startAnimation(out);
+                    Locale localeID = new Locale("in", "ID");
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+                }
+                SharedPreferences sp2 = getSharedPreferences("myfunds",0);
+                sp2.edit().putBoolean("my_funds_money",true).apply();
+                SharedPreferences.Editor edit2 = sp2.edit();
+                edit2.commit();
+            }
+        });
+
+        }
+
+    private void initSpinnerDurasiPertemuanJam() {
+        String[] array_durasi_pertemuan = {"1", "1.5", "2", "2.5", "3"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_durasi_pertemuan);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDurasiPertemuanJam.setPrompt("Durasi Per Pertemuan");
+        spinnerDurasiPertemuanJam.setAdapter( adapter);
+        spinnerDurasiPertemuanJam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedSpinnerDurasiJam = Double.parseDouble(parent.getItemAtPosition(position).toString());
+                tvTotalHargaPesanan.setText(String.valueOf(addResults()));
+                tvTotalHargaPesanan.startAnimation(out);
+                String durasi_jam = "("+String.valueOf(selectedSpinnerDurasiJam)+" Jam)";
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     private void initSpinnerMatpel() {
@@ -187,15 +325,6 @@ public class PemesananActivity extends AppCompatActivity {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             selectedSpinnerMatpel = parent.getItemAtPosition(position).toString();
-//                           requestDetailDosen(selectedName);
-
-//                            Toast.makeText(PemesananActivity.this, "Kamu memilih " +selectedSpinnerMatpel, Toast.LENGTH_SHORT).show();
-
-//                            System.out.println("Harganya :"+x);
-//                            System.out.println("Harganya2 :"+spinnerMatpel.getSelectedItem().toString());
-
-//                            tvDurasiPertemuanJam.setText(String.valueOf(selectedSpinnerDurasiJam));
-                            tvTotalRp.setText(addNumbers());
 
                             Locale localeID = new Locale("in", "ID");
                             NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
@@ -209,9 +338,19 @@ public class PemesananActivity extends AppCompatActivity {
                                 System.out.println("Oke:" +oke);
                                 if (oke.equals(spinnerMatpel.getSelectedItem().toString())){
 //                                    loadDataMatpel(semuaTingkatan.getId());
+
                                     tarif = Integer.parseInt(semuaDataMatpel.getTarif());
+                                    matpel_sected = semuaDataMatpel.getMatpelDetail();
+
+                                    // baru
+
+                                    tvTotalHargaPesanan.setText(String.valueOf(addResults()));
+                                    tvTotalHargaPesanan.startAnimation(out);
+                                    // baru
+
+
+                                    hitungPemesanan(tarif, matpel_sected);
                                     System.out.println("tarifnya:"+tarif);
-//                                    idMatpel = semuamastermatpel.getIdMasterMatpel();
                                 }
                             }
                         }
@@ -232,107 +371,137 @@ public class PemesananActivity extends AppCompatActivity {
         });
     }
 
-    private void initSpinnerDurasiPertemuanJam() {
-        String[] array_durasi_pertemuan = {"1", "1.5", "2", "2.5", "3"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_durasi_pertemuan);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDurasiPertemuanJam.setPrompt("Durasi Per Pertemuan");
-        spinnerDurasiPertemuanJam.setAdapter( adapter);
+    private String addResults() {
 
-        spinnerDurasiPertemuanJam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectedSpinnerDurasiJam = Double.parseDouble(parent.getItemAtPosition(position).toString());
-//                           requestDetailDosen(selectedName);
+            int number1_tarif;
+            double number2_jam;
+            int number3;
 
-//                Toast.makeText(PemesananActivity.this, "Kamu memilih " +selectedSpinnerDurasiJam, Toast.LENGTH_SHORT).show();
-
-//                            System.out.println("Harganya :"+x);
-//                            System.out.println("Harganya2 :"+spinnerMatpel.getSelectedItem().toString());
-                String durasi_jam = "("+String.valueOf(selectedSpinnerDurasiJam)+" Jam)";
-                tvDurasiPertemuanJam.setText(durasi_jam);
-                tvTotalRp.setText(addNumbers());
+            if( Integer.toString(tarif) != "" && tarif > 0) {
+                number1_tarif = tarif;
+            } else {
+                number1_tarif = 0;
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            if( tvTotalPertemuan.getText().toString() != "" && Integer.parseInt(tvTotalPertemuan.getText().toString()) > 0) {
+                number3 = Integer.parseInt(tvTotalPertemuan.getText().toString());
+            } else {
+                number3 = 0;
+            }
 
+            if(Double.toString(selectedSpinnerDurasiJam) != "" && selectedSpinnerDurasiJam > 0) {
+                number2_jam = selectedSpinnerDurasiJam;
+                Log.d("hasil", ""+number2_jam);
+
+            } else {
+                number2_jam = 0;
+             }
+
+             double hasil = (number1_tarif * number2_jam * number3);
+
+        if(hasil > money) {
+
+            DialogAlertSaldo();
+
+            btnSelanjutnya.animate().translationY(250).alpha(0).setDuration(350).start();
+            btnSelanjutnya.setEnabled(false);
+            btnIncrease.animate().translationY(250).alpha(0).setDuration(350).start();
+            btnIncrease.setEnabled(false);
+            tvJumlahSaldo.setTextColor(Color.parseColor("#D1206B"));
+            btnAlertSaldo.animate().translationY(0).alpha(1).setDuration(300).start();
+            tvTotalPertemuan.setTextColor(getResources().getColor(R.color.redPrimary));
+            tvTotalPertemuan.setBackgroundResource(R.drawable.sign_in_edittext_bg_pressed2);
+        }
+
+        if(hasil < money) {
+            btnSelanjutnya.animate().translationY(0).alpha(1).setDuration(350).start();
+            btnSelanjutnya.setEnabled(true);
+            btnIncrease.animate().translationY(0).alpha(1).setDuration(350).start();
+            btnIncrease.setEnabled(true);
+            tvJumlahSaldo.setTextColor(Color.parseColor("#203dd1"));
+            btnAlertSaldo.animate().alpha(0).setDuration(300).start();
+            tvTotalPertemuan.setTextColor(getResources().getColor(R.color.blackPrimary));
+            tvTotalPertemuan.setBackgroundResource(R.drawable.sign_in_edittext_bg_pressed);
+        }
+
+            methodSelanjutnya(id, murid_id, number3, number1_tarif, number2_jam, matpel_sected, hasil, pesan_tambahan);
+
+            return formatRupiah.format(hasil);
+
+    }
+
+    // method event next
+    private void methodSelanjutnya(int id, int murid_id, int number3, int number1_tarif, double number2_jam, String matpel_sected, double hasil, String pesan_tambahan) {
+        btnSelanjutnya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pembayaranSelanjutnya = new Intent(PemesananActivity.this, PemesananJadwalActivity.class);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_ID_GURU, id);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_ID_MURID, murid_id);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_HARGA_TOTAL, hasil);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_DURASI, number2_jam);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_HARGA, number1_tarif);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_MATPEL, matpel_sected);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_JML_PEMESANAN, number3);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_PESAN_TAMBAHAN,  etPesanTambahan.getText().toString());
+                startActivity(pembayaranSelanjutnya);
             }
         });
     }
 
-    private void initSpinnerDurasiPertemuan() {
-        String[] array_durasi_pertemuan_jam = {"8", "9", "10", "11", "13", "14"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, array_durasi_pertemuan_jam);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       spinnerDurasiPertemuan.setPrompt("Jumlah Pertemuan");
-       spinnerDurasiPertemuan.setAdapter( adapter);
+    private void hitungPemesanan(int valueTarif, String tarif) {
 
+        btnAlertSaldo.setOnClickListener(new View.OnClickListener() {
 
-       spinnerDurasiPertemuan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-           @Override
-           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               selectedSpinnerDurasiPertemuan = parent.getItemAtPosition(position).toString();
-//                           requestDetailDosen(selectedName);
+            @Override
+            public void onClick(View v) {
+                DialogAlertSaldo();
+            }
+        });
 
-//               Toast.makeText(PemesananActivity.this, "Kamu memilih " +selectedSpinnerDurasiPertemuan, Toast.LENGTH_SHORT).show();
+        img2.setOnClickListener(new View.OnClickListener() {
 
-//                            System.out.println("Harganya :"+x);
-//                            System.out.println("Harganya2 :"+spinnerMatpel.getSelectedItem().toString());
-               tvDurasiPertemuan.setText(selectedSpinnerDurasiPertemuan);
-               tvTotalRp.setText(addNumbers());
+            @Override
+            public void onClick(View v) {
+                if(Click==0) {
+                    img2.setImageResource(R.drawable.ic_droptop);
+                    tv7.startAnimation(in);
+                    view1.startAnimation(in);
+                    view1.setVisibility(View.VISIBLE);
+                    tv7.setVisibility(View.VISIBLE);
+                    Click++;
+                }
+                else if(Click==1) {
+                    Click=0;
+                    img2.setImageResource(R.drawable.ic_dropdown);
+                    view1.setVisibility(View.GONE);
+                    tv7.setVisibility(View.GONE);
+                }
+            }
+        });
 
-           }
-
-           @Override
-           public void onNothingSelected(AdapterView<?> parent) {
-
-           }
-       });
     }
 
-    private String addNumbers() {
-        int harga_matpel;
-        int jumlah_pertemuan;
-        double jumlah_pertemuan_jam;
+    public void DialogAlertSaldo() {
+        TextView stv1,stv2,stv3,stv4,stv5,stv6;
+        final RadioButton srb1;
+        RadioButton srb2, srb3, srb4, srb5;
+        Button btnTambahSaldoPop;
 
-            harga_matpel = tarif;
+        myDialog.setContentView(R.layout.popup_ticket);
 
-        if (spinnerDurasiPertemuan.getSelectedItem().toString() != "" && spinnerDurasiPertemuan.getSelectedItem().toString().length() > 0){
-            jumlah_pertemuan = Integer.parseInt(selectedSpinnerDurasiPertemuan);
-        }else {
-            jumlah_pertemuan = 0;
-        }
+        btnTambahSaldoPop = (Button) myDialog.findViewById(R.id.btn_tambah_saldo_pop);
 
-        if (spinnerDurasiPertemuanJam.getSelectedItem().toString() != "" && spinnerDurasiPertemuanJam.getSelectedItem().toString().length() > 0){
-            jumlah_pertemuan_jam = selectedSpinnerDurasiJam;
-        }else {
-            jumlah_pertemuan_jam = 0;
-        }
+        btnTambahSaldoPop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PemesananActivity.this, TambahSaldo.class));
+            }
+        });
 
-        double total_jam = jumlah_pertemuan_jam * jumlah_pertemuan;
 
-        double harga_total =  harga_matpel * total_jam;
-        String jam = String.valueOf(total_jam)+" Jam";
-        tvTotalJam.setText(jam);
-
-//        harga_total_db = (int) (harga * porsi);
-
-        Locale localeID = new Locale("in", "ID");
-        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
-
-        return formatRupiah.format(harga_total);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-//              loadHomeFragment();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialog.show();
     }
 
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.anonymous.cikgood.R;
 import com.example.anonymous.cikgood.config.ServerConfig;
+import com.example.anonymous.cikgood.response.ResponseCreateMurid;
 import com.example.anonymous.cikgood.response.ResponseCreatePemesanan;
 import com.example.anonymous.cikgood.response.ResponseLogin;
 import com.example.anonymous.cikgood.rests.ApiClient;
@@ -24,6 +25,7 @@ import retrofit2.Response;
 
 public class PemesananLokasiActivity extends AppCompatActivity {
 
+    /* Declaration static variable */
     public static final String KEY_TGL                  = "tgl";
     public static final String KEY_HARGA                = "harga";
     public static final String KEY_DURASI               = "durasi";
@@ -36,23 +38,27 @@ public class PemesananLokasiActivity extends AppCompatActivity {
     public static final String KEY_HARGA_TOTAL          = "harga_total";
     public static final String KEY_JML_PEMESANAN        = "jml_pemesanan";
     public static final String KEY_ADDRESS              = "alamat_lengkap";
+    public static final String KEY_PESAN_TAMBAHAN       = "pesan_tambahan";
 
+    /* Declaration widget */
     private View btnMaps;
     private Button btnBayar;
     private double lat, lng;
     private EditText etAlamat;
     private LinearLayout btnBack;
-    private ApiInterface apiService;
     private double durasi, total_harga;
-    private int guru_id, tarif, jml_pemesanan;
-    private String alamat, jadwal, tgl, murid_id, matpel;
+    private int guru_id, murid_id, tarif, jml_pemesanan;
+    private String alamat, jadwal, tgl, matpel, pesan_tambahan;
+
+    /* Declare & make object of ApiInterface */
+    ApiInterface apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pemesanan_lokasi);btnBack = findViewById(R.id.btn_back);
 
-        // ApiInterface
+        // Initialization object api service
         apiService = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
 
         // findViewById
@@ -64,35 +70,27 @@ public class PemesananLokasiActivity extends AppCompatActivity {
         tgl             = getIntent().getStringExtra(KEY_TGL);
         matpel          = getIntent().getStringExtra(KEY_MATPEL);
         alamat          = getIntent().getStringExtra(KEY_ADDRESS);
-        murid_id        = getIntent().getStringExtra(KEY_ID_MURID);
+        pesan_tambahan  = getIntent().getStringExtra(KEY_PESAN_TAMBAHAN);
         jadwal          = getIntent().getStringExtra(KEY_SELECTED_JADWAL);
         tarif           = getIntent().getIntExtra(KEY_HARGA, 0);
         guru_id         = getIntent().getIntExtra(KEY_ID_GURU, 0);
+        murid_id        = getIntent().getIntExtra(KEY_ID_MURID, 0);
         durasi          = getIntent().getDoubleExtra(KEY_DURASI, 0);
         lat             = getIntent().getDoubleExtra(KEY_LATITUDE, 0);
         lng             = getIntent().getDoubleExtra(KEY_LONGITUDE, 0);
         jml_pemesanan   = getIntent().getIntExtra(KEY_JML_PEMESANAN, 0);
         total_harga     = getIntent().getDoubleExtra(KEY_HARGA_TOTAL, 0);
 
-        Log.d("ayam2 tgl", ""+tgl);
-        Log.d("ayam2 lat", ""+lat);
-        Log.d("ayam2 lng", ""+lng);
-        Log.d("ayam2 durasi", ""+durasi);
-        Log.d("ayam2 alamat", ""+alamat);
-        Log.d("ayam2 jadwal", ""+jadwal);
-        Log.d("ayam2 guru id", ""+guru_id);
-        Log.d("ayam2 murid id", ""+murid_id);
-        Log.d("ayam2 tarif harga", ""+tarif);
-        Log.d("ayam2 tarif matpel", ""+matpel);
-        Log.d("ayam2 total harga", ""+total_harga);
-        Log.d("ayam2 jumlah tarif", ""+jml_pemesanan);
+        /* Method to redirect to save data order */
+        saveDataPemesanan(guru_id, murid_id, matpel, jml_pemesanan, durasi, alamat, lat, lng, jadwal, pesan_tambahan, tarif, total_harga);
 
-        // setText to widget
+        /* Set data to widget */
         etAlamat.setText(alamat);
 
         // getText alamat
         alamat = etAlamat.getText().toString();
 
+        /* Event intent to ObjekActivity */
         btnMaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,58 +107,85 @@ public class PemesananLokasiActivity extends AppCompatActivity {
                 intent_maps.putExtra(OjekActivity.KEY_SELECTED_JADWAL, jadwal);
                 intent_maps.putExtra(OjekActivity.KEY_HARGA_TOTAL, total_harga);
                 intent_maps.putExtra(OjekActivity.KEY_JML_PEMESANAN, jml_pemesanan);
+                intent_maps.putExtra(OjekActivity.KEY_PESAN_TAMBAHAN, pesan_tambahan);
                 startActivity(intent_maps);
             }
         });
+
+        /* Event back */
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    /* Method to back before activity */
+                    onBackPressed();
+            }
+        });
+    }
+
+    /* method to binding data and save order */
+    private void saveDataPemesanan(int guru_id, int murid_id, String matpel, int jml_pemesanan, double durasi, String alamat, double lat, double lng, String jadwal, String pesan_tambahan, int tarif, double total_harga) {
+
+        /* Splite data jadwal */
+        Log.d("data array schedule", ""+jadwal);
+
+        /* Replace character " [ " */
+        String replace_character_jadwal = jadwal;
+        String new_replace = replace_character_jadwal.replace('[', ' ');
+
+        /* Replace character " ] " */
+        String replace_character_jadwal2 = new_replace;
+        String replace_jadwal = replace_character_jadwal2.replace(']', ' ');
+
+        /* Splite jadwal */
+        String[] splite_jadwal = replace_jadwal.split(",");
+        for (String value_jadwal : splite_jadwal){
+            Log.d("result splite jadwal", ""+value_jadwal);
+        }
 
         // Event bayar
         btnBayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /* Declaration inner variable */
                 String inputAlamat = etAlamat.getText().toString().trim();
                 boolean isEmptyFields   = false;
                 boolean isInvalidDouble = false;
 
+                /* cek if data not null or null */
                 if (TextUtils.isEmpty(inputAlamat)){
                     isEmptyFields = true;
-                    etAlamat.setError("Field tidak boleh kosong");
+                    etAlamat.setError("Tidak boleh kosong!");
                 }
 
                 if (!isEmptyFields && !isInvalidDouble) {
+                    Log.d("data durasi", ""+durasi);
 
-                    // Service to save data order
-                    apiService.simpanPemesanan(guru_id, murid_id, matpel, jml_pemesanan, durasi, alamat, lat, lng, "oooo",
-                            jadwal, "pesan tambahan", tarif, total_harga).enqueue(new Callback<ResponseCreatePemesanan>() {
-                        @Override
-                        public void onResponse(Call<ResponseCreatePemesanan> call, Response<ResponseCreatePemesanan> response) {
-                            if (response.isSuccessful()) {
-                                if (response.body().getCode().equals(200)) {
-                                    finish();
-                                    Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }else{
-                                Toast.makeText(getApplicationContext(), "Gagal..."+response.toString(), Toast.LENGTH_SHORT).show();
+                /* Service to save data order */
+                apiService.simpanPemesanan(guru_id, murid_id,matpel, jml_pemesanan, durasi, alamat, lat, lng, jadwal, pesan_tambahan, tarif, total_harga).enqueue(new Callback<ResponseCreatePemesanan>() {
+                    @Override
+                    public void onResponse(Call<ResponseCreatePemesanan> call, Response<ResponseCreatePemesanan> response) {
+                        Log.d("response order", ""+response);
+                        if (response.isSuccessful()){
+                            if (response.body().getCode().equals(200)){
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
+                    }
 
-                        @Override
-                        public void onFailure(Call<ResponseCreatePemesanan> call, Throwable t) {
-                            Toast.makeText(getApplicationContext(), "Gagal konek ke server", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    @Override
+                    public void onFailure(Call<ResponseCreatePemesanan> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "Error!" +t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        t.printStackTrace();
+                    }
+                });
+
                 }
             }
         });
 
-        // Event back
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(PemesananLokasiActivity.this, PemesananJadwalActivity.class));
-                    onBackPressed();
-            }
-        });
     }
 }

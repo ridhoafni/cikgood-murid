@@ -71,7 +71,7 @@ public class GuruActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Daftar Guru Les Privat");
+        getSupportActionBar().setTitle("Data Guru");
 
         guruAdapter = new GuruAdapter(this, datas);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -97,7 +97,7 @@ public class GuruActivity extends AppCompatActivity {
     }
 
     private void loadHomeFragment() {
-        HomeFragment fragment = HomeFragment.newInstance();
+        HomeFragment fragment = HomeFragment.Companion.newInstance();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();

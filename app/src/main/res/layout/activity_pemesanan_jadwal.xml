@@ -1,9 +1,319 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.activities.PemesananJadwalActivity">
+    android:id="@+id/constraint_layout"
+    android:layout_width="match_parent"
+    android:background="@color/backgroundPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ticket_checkout_v1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/bgheader_pisa"
+                android:scaleType="centerCrop" />
+
+            <View
+                android:id="@+id/ticket_checkout_v2"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/get_started_window_bg_overlay_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ticket_checkout_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Pemesanan Jadwal"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ticket_checkout_layout"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/ticket_checkout_tv1"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_layout_white"
+                android:orientation="vertical"
+                android:paddingLeft="24dp"
+                android:paddingTop="8dp"
+                android:paddingRight="24dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_tv1">
+
+
+                <TextView
+                    android:id="@+id/ticket_checkout_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mmedium"
+                    android:text="Jadwal"
+                    android:textColor="@color/blackPrimary"
+                    android:textSize="20sp" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/divider_bg" />
+
+
+                <TextView
+                    android:id="@+id/ticket_checkout_tv76"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="The leaning of the Tower of Pisa comes into the story in 1173, when consruction began."
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <View
+                    android:id="@+id/ticket_checkoutview8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/divider_bg"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/mlight"
+                        android:text="@string/hari"
+                        android:textColor="#8D8D8D"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_tanggal_mulai"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_input_edit"
+                        android:fontFamily="@font/_mmedium"
+                        android:lines="1"
+                        android:paddingLeft="12dp"
+                        android:textColor="@color/blackPrimary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/mlight"
+                        android:text="@string/jam"
+                        android:textColor="#8D8D8D"
+                        android:textSize="16sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_jams"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/bg_input_edit"
+                        android:fontFamily="@font/_mmedium"
+                        android:lines="1"
+                        android:paddingLeft="12dp"
+                        android:textColor="@color/blakPrimary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ticket_checkout_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_layout_white"
+                android:orientation="vertical"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout">
+
+                <TextView
+                    android:id="@+id/ticket_checkout_tv8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/mmedium"
+                    android:text="Detail Jadwal"
+                    android:textColor="@color/blackPrimary"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
+
+
+                    </ScrollView>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:autoLink="web"
+                            android:text="http://android-er.blogspot.com/"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/relist"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="#E0E0E0"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/info"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="#D0D0D0"
+                            android:gravity="bottom"
+                            android:textStyle="italic" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_lanjut"
+                android:layout_width="230dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/ticket_checkout_layout2"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_btn_green_primary"
+                android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
+                android:paddingRight="10dp"
+                android:text="Selanjutnya"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout2" />
+
+            <LinearLayout
+                android:id="@+id/btn_back_signup"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/ticket_checkout_layout2"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_layout_white"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout2">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="30dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_back" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/btn_circle_big_accent_primary"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ticket_checkout_layout" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.constraint.ConstraintLayout>

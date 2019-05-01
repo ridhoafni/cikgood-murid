@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -78,6 +79,8 @@ public class GuruAdapter extends RecyclerView.Adapter<GuruAdapter.GuruViewHolder
                 Intent i = new Intent(context, GuruDetailActivity.class);
                 System.out.println("IDNYA :"+id);
                 i.putExtra(GuruDetailActivity.KEY_ID_GURU, id);
+                i.putExtra(GuruDetailActivity.KEY_NAMA_GURU, nama);
+                i.putExtra(GuruDetailActivity.KEY_PHOTO_GURU, photo);
                 context.startActivity(i);
                 Toast.makeText(context, "You are click " +id, Toast.LENGTH_SHORT).show();
             }
@@ -90,14 +93,15 @@ public class GuruAdapter extends RecyclerView.Adapter<GuruAdapter.GuruViewHolder
     }
 
     public class GuruViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.thumbnail) ImageView imgViewPhoto;
+        @BindView(R.id.thumbnail) ImageView imgViewPhoto2;
+        @BindView(R.id.imageView2) ImageView imgViewPhoto;
         @BindView(R.id.tv_nama) TextView textViewNama;
         @BindView(R.id.tv_pendidikan) TextView textViewPendidikan;
         @BindView(R.id.tv_rating) TextView textViewRating;
         @BindView(R.id.tv_biodata) TextView textViewBiodata;
         @BindView(R.id.tv_harga) TextView textViewHarga;
         @BindView(R.id.tv_status) TextView textViewStatus;
-        @BindView(R.id.card_view) CardView cvGuru;
+        @BindView(R.id.linear_layout) LinearLayout cvGuru;
 
         public GuruViewHolder(@NonNull View itemView) {
             super(itemView);

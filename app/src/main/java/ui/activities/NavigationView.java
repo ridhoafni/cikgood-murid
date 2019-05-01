@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.anonymous.cikgood.R;
 
+import ui.fragments.ChatFragment;
 import ui.fragments.HomeFragment;
 import ui.fragments.PemesananFragment;
 import ui.fragments.ProfileFragment;
@@ -64,7 +65,7 @@ public class NavigationView extends AppCompatActivity {
     }
 
     private void loadHomeFragment() {
-        HomeFragment fragment = HomeFragment.newInstance();
+        HomeFragment fragment = HomeFragment.Companion.newInstance();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();

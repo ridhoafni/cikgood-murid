@@ -1,9 +1,248 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.activities.addfunds">
+    android:background="@color/bgPrimary" >
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/addfunds_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:text="Saldo"
+        android:textColor="@color/bluePrimary"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/addfunds_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addfunds_tv1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="6dp"
+        android:text="Saldo dibutuhkan saat anda  ingin melakukan transaksi."
+        android:textColor="@color/grayPrimary"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/addfunds_r1"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_below="@+id/addfunds_tv2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bgcardpay">
+
+        <View
+            android:id="@+id/addfunds_v1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/avatar_stroke" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/addfunds_riv1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/icon_nopic" />
+
+        <TextView
+            android:id="@+id/addfunds_tv3"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@+id/addfunds_riv1"
+            android:text="Ridho afni"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/addfunds_tv4"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addfunds_tv3"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@+id/addfunds_riv1"
+            android:text="Guru"
+            android:textColor="@color/grayDisable"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/addfunds_tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addfunds_riv1"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Saldo sekarang :"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/addfunds_tv6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/addfunds_tv5"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:text="Exp 2020"
+            android:textColor="@color/grayDisable"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addfunds_r1"
+        android:layout_marginTop="-9dp"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <!--<RelativeLayout-->
+        <!--android:id="@+id/my_profile_edit_r1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/addfunds_r1"-->
+        <!--&gt;-->
+
+        <LinearLayout
+            android:id="@+id/register_one_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_layout_white"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:id="@+id/addfunds_l1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/addfunds_tv7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lines="1"
+                    android:text="Isi saldo Rp."
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="20sp" />
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789"
+                        android:hint="Rp."
+                        android:inputType="number" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <!--<EditText-->
+                <!--android:id="@+id/addfunds_et1"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:lines="1"-->
+                <!--android:hint="Rp. "-->
+                <!--android:textColorHint="@color/grayDisable"-->
+                <!--android:paddingStart="12dp"-->
+                <!--android:paddingEnd="0dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:background="@drawable/sign_in_edittext_bg"-->
+                <!--android:textColor="@color/blackPrimary"-->
+                <!--android:inputType="number"-->
+                <!--android:digits="0123456789"-->
+                <!--/>-->
+
+                <LinearLayout
+                    android:id="@+id/addfunds_l2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/addfunds_tv8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="Tambah Saldo"
+                        android:textColor="@color/bluePrimary"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/addfunds_btn1"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/btn_circle_big_accent_primary"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="40sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addfunds_l3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/addfunds_l2"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/addfunds_tv9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center"
+                        android:text="Tarik Saldo"
+                        android:textColor="@color/redSecondary"
+                        android:textSize="20sp" />
+
+
+                    <Button
+                        android:id="@+id/addfunds_btn2"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:background="@drawable/btn_circle_big_red_primary"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="40sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <!--</RelativeLayout>-->
+    </ScrollView>
+</RelativeLayout>

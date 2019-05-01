@@ -2,6 +2,7 @@ package com.example.anonymous.cikgood.rests;
 
 import com.example.anonymous.cikgood.response.ResponGuruDetail;
 import com.example.anonymous.cikgood.response.ResponseCariGuru;
+import com.example.anonymous.cikgood.response.ResponseCreatePemesanan;
 import com.example.anonymous.cikgood.response.ResponseDataMatpel;
 import com.example.anonymous.cikgood.response.ResponseGuru;
 import com.example.anonymous.cikgood.response.ResponseGuruDataMatpel;
@@ -14,6 +15,7 @@ import com.example.anonymous.cikgood.response.ResponseCreateMurid;
 import com.example.anonymous.cikgood.response.ResponseMengajar;
 import com.example.anonymous.cikgood.response.ResponsePendidikan;
 import com.example.anonymous.cikgood.response.ResponsePengalamanKerja;
+import com.example.anonymous.cikgood.response.ResponseSaldo;
 import com.example.anonymous.cikgood.response.ResponseTingkatan;
 
 import retrofit2.Call;
@@ -34,6 +36,9 @@ public interface ApiInterface {
 
     @GET("guru/find-by-id")
     Call<ResponGuruDetail> guruFindById(@Query("id") int id);
+
+    @GET("saldo/find-by-id")
+    Call<ResponseSaldo> saldoFindById(@Query("id") int id);
 
     @FormUrlEncoded
     @POST("murid/create")
@@ -59,8 +64,7 @@ public interface ApiInterface {
     @POST("login/murid")
     Call<ResponseLogin> muridLogin(
             @Field("email") String email,
-            @Field("password") String password
-    );
+            @Field("password") String password);
 
     @GET("tingkatan/find-all")
     Call<ResponseTingkatan> tingkatanFindAll();
@@ -97,5 +101,50 @@ public interface ApiInterface {
 
     @GET("data-matpel/find")
     Call<ResponseGuruDataMatpel> getGuruDataMatpel(@Query("id") int guru_id);
+
+    /* Data Pemesanan */
+
+    // create data pemesanan
+    @FormUrlEncoded
+    @POST("pemesanan/create")
+    Call<ResponseCreatePemesanan> simpanPemesanan ( @Field("guru_id") int guru_id,
+                                                    @Field("murid_id") int murid_id,
+                                                    @Field("matpel") String matpel,
+                                                    @Field("jumlah_pertemuan") int jumlah_pertemuan,
+                                                    @Field("durasi") double durasi,
+                                                    @Field("alamat") String alamat,
+                                                    @Field("lat") double lat,
+                                                    @Field("lng") double lng,
+                                                    @Field("jadwal") String jadwal,
+                                                    @Field("pesan_tambahan") String pesan_tambahan,
+                                                    @Field("harga") double harga,
+                                                    @Field("harga_total") double harga_total
+                                                   );
+
+    @FormUrlEncoded
+    @POST("pemesanan/create2")
+    Call<ResponseCreatePemesanan> simpanPemesanan2 ( @Field("guru_id") int guru_id,
+                                                     @Field("murid_id") int murid_id,
+                                                     @Field("matpel") String matpel,
+                                                     @Field("jumlah_pertemuan") int jumlah_pertemuan,
+                                                     @Field("durasi") double durasi
+
+    );
+//    @FormUrlEncoded
+//    @POST("pemesanan/create")
+//    Call<ResponseCreatePemesanan> simpanPemesanan( @Field("guru_id") int guru_id,
+//                                                   @Field("murid_id") int murid_id,
+//                                                   @Field("matpel") String matpel,
+//                                                   @Field("jumlah_pertemuan") int jumlah_pertemuan,
+//                                                   @Field("durasi") double durasi,
+//                                                   @Field("alamat") String alamat,
+//                                                   @Field("lat") double lat,
+//                                                   @Field("lng") double lng,
+//                                                   @Field("jadwal") String jadwal,
+//                                                   @Field("pesan_tambahan") String pesan_tambahan,
+//                                                   @Field("harga") double harga,
+//                                                   @Field("harga_total") double harga_total
+//                                                );
+
 
 }

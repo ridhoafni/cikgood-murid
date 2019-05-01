@@ -9,10 +9,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
         android:background="@drawable/appbg_getstarted"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,30 +17,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view2"
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/br_overlay_getstarted"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:background="@drawable/br_overlay_getstarted_top" />
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="232dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="190dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mregular"
         android:lineSpacingExtra="@dimen/padding_10"
-        android:text="CIKGOOD"
+        android:text="Welcome to Cikgood!"
         android:textColor="#fff"
-        android:textSize="46sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toTopOf="@+id/view2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
         android:id="@+id/tv_slogan"
@@ -51,55 +47,119 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/mregular"
         android:lineSpacingExtra="@dimen/padding_10"
         android:text="Belajar jadi lebih mudah"
         android:textColor="#fff"
-        android:textSize="12sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv" />
 
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_input_login"
+        android:hint="Email Address"
+        android:paddingLeft="35dp"
+        android:textColor="@color/blakPrimary"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_slogan" />
+
+    <ImageView
+        android:id="@+id/img_pwd"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/man_user"
+        app:layout_constraintStart_toStartOf="@+id/et_search"
+        app:layout_constraintTop_toTopOf="@+id/et_search" />
+
+    <EditText
+        android:id="@+id/et_pwd"
+        android:layout_width="308dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_input_login"
+        android:hint="Password"
+        android:paddingLeft="35dp"
+        android:inputType="textPassword"
+        android:textColor="@color/blakPrimary"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_search" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/key_pwd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_pwd" />
+
     <Button
         android:id="@+id/btn_signin"
-        android:layout_width="274dp"
-        android:layout_height="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_btn_accent_primary"
+        android:background="@drawable/bg_btn_accent_primary_oval"
         android:fontFamily="@font/_mmedium"
         android:text="@string/signin"
         android:textColor="#FFF"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_slogan"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintTop_toBottomOf="@+id/et_pwd" />
 
-    <!--<Button-->
-        <!--android:id="@+id/btn_new_account"-->
-        <!--android:layout_width="274dp"-->
-        <!--android:layout_height="55dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginBottom="20dp"-->
-        <!--android:background="@drawable/bg_btn_white_primary"-->
-        <!--android:fontFamily="@font/_mmedium"-->
-        <!--android:text="@string/new_account"-->
-        <!--android:textColor="#B9B9B9"-->
-        <!--android:textSize="20sp"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/view2"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.495"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintVertical_bias="0.621" />-->
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_gradient_orange_primary"
+        android:fontFamily="@font/_mmedium"
+        android:text="@string/signup"
+        android:textColor="#FFF"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_forgot_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/mregular"
+        android:lineSpacingExtra="@dimen/padding_10"
+        android:text="@string/porgot_pwd"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signin" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -2,10 +2,14 @@ package ui.fragments
 
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
 import android.view.LayoutInflater
@@ -14,12 +18,7 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 
 import com.example.anonymous.cikgood.R
 import com.example.anonymous.cikgood.config.ServerConfig
@@ -35,14 +34,13 @@ import com.example.anonymous.cikgood.rests.ApiInterface
 import com.example.anonymous.cikgood.utils.SessionManager
 import com.smarteist.autoimageslider.SliderLayout
 import com.smarteist.autoimageslider.SliderView
-
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.fragment_home.*
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import ui.activities.CariGuruActivity
-import ui.activities.GuruActivity
+import ui.activities.*
+import java.util.*
 
 
 /**
@@ -54,18 +52,19 @@ class HomeFragment : Fragment() {
     private val CvBikes: CardView? = null
     private val CvBluebird: CardView? = null
     private val CvOthers: CardView? = null
-    internal var spinnerTingkatan: Spinner
-    internal var spinnerDataMatpel: Spinner
-    internal var spinnerKabupaten: Spinner
+//    private var slider: ViewPager? = null
+//    internal var spinnerTingkatan: Spinner? = null
+//    internal var spinnerDataMatpel: Spinner? = null
+//    internal var spinnerKabupaten: Spinner? = null
     internal var tingkatan: Int = 0
     internal var matpel: Int = 0
     internal var kota: String? = null
-    internal var btnCari: Button
-    internal var sliderLayout: SliderLayout? = null
+//    internal var sliderLayout: SliderLayout? = null
     internal var sessionManager: SessionManager? = null
     internal var apiService: ApiInterface? = null
     internal var loading: ProgressDialog? = null
     private var ivPaud: ImageView? = null
+    private var ivChat: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,13 +79,49 @@ class HomeFragment : Fragment() {
         //        sliderLayout = view.findViewById(R.id.imageSlider);
         //        sliderLayout.setIndicatorAnimation(SliderLayout.Animations.THIN_WORM); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         //        sliderLayout.setScrollTimeInSec(2); //set scroll delay in seconds :
-        spinnerTingkatan = view.findViewById<View>(R.id.spinnerTingkatan) as Spinner
-        spinnerDataMatpel = view.findViewById<View>(R.id.spinnerMatpel) as Spinner
-        spinnerKabupaten = view.findViewById<View>(R.id.spinnerKabupaten) as Spinner
-        btnCari = view.findViewById<View>(R.id.btn_cari) as Button
+        val slider = view.findViewById<View>(R.id.slider) as ViewPager
+        val sliderIndicator = view.findViewById<View>(R.id.sliderIndicator) as TabLayout
+
+
+        val slideList = listOf(
+                AmImage("https://d1bpj0tv6vfxyp.cloudfront.net/slider/20190301132637.3381657571667.jpg", title= "Get Up To 20% Off", subTitle= "Medical Checkups"),
+                AmImage("https://d1bpj0tv6vfxyp.cloudfront.net/slider/20190206100027.128-1294346682.jpg", title= "Merdeka Days 25% Off", subTitle= "Medical Checkups")
+        )
+
+        val context: Context
+
+        var sliderNumberPage: Int = slideList.size
+        var sliderCurrentPage: Int = slideList.size
+        slider.adapter = AmSliderAdapter(requireContext(), slideList)
+        sliderIndicator.setupWithViewPager(slider)
+        slider.setPageTransformer(true, AmSliderTransformation())
+
+        val handler = Handler()
+        val update = Runnable {
+
+            if (sliderCurrentPage == sliderNumberPage){
+                sliderCurrentPage = 0
+            }
+
+            slider.setCurrentItem(sliderCurrentPage++, true)
+        }
+
+        val swipeTimer = Timer()
+        swipeTimer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post(update)
+            }
+        }, 3000, 3000)
+
+//        spinnerDataMatpel = view.findViewById<View>(R.id.spinnerMatpel) as Spinner
+//        spinnerKabupaten = view.findViewById<View>(R.id.spinnerKabupaten) as Spinner
         ivPaud = view.findViewById<View>(R.id.iv_paud) as ImageView
 
         ivPaud!!.setOnClickListener { startActivity(Intent(activity, CariGuruActivity::class.java)) }
+
+        ivChat = view.findViewById<View>(R.id.iv_msg) as ImageView
+
+        ivChat!!.setOnClickListener {startActivity(Intent(activity, Chat::class.java))}
 
         //        sliderLayout = view.findViewById(R.id.thumbnail);
         //        sliderLayout.setIndicatorAnimation(SliderLayout.Animations.THIN_WORM); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
@@ -96,7 +131,7 @@ class HomeFragment : Fragment() {
         // change color in primaryDark
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity!!.window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            activity!!.window.statusBarColor = resources.getColor(R.color.colorAccent)
+            activity!!.window.statusBarColor = resources.getColor(R.color.backgroundColor)
         }
         // change color in primaryDark
 
@@ -104,8 +139,16 @@ class HomeFragment : Fragment() {
         activity!!.window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         // change icon color status bar
 
+//        initSlider(requireContext());
+
         return view
     }
+
+    fun initSlider(context: Context) {
+
+    }
+
+
 
     //    private void setSliderViews() {
     //

@@ -164,14 +164,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/SpinKit"
+        android:id="@+id/SpinKitBtn"
         style="@style/SpinKitView.Large.Wave"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="168dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:SpinKit_Color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/btn_cari"
         app:layout_constraintEnd_toEndOf="@+id/button4"
@@ -205,6 +205,33 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/SpinKitTingkatan"
         tools:ignore="MissingConstraints" />
+
+    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/SpinKitKabupaten"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="64dp"
+        app:SpinKit_Color="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
+
+    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/SpinKitCari"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="invisible"
+        app:SpinKit_Color="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5" />
 
     <!--<Button-->
         <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->

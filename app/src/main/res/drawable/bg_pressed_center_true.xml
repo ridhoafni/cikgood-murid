@@ -3,7 +3,4 @@
     <solid
         android:color="@color/grayPressed"/>
 
-    <corners
-        android:topRightRadius="20dp"
-        android:topLeftRadius="20dp"/>
 </shape>

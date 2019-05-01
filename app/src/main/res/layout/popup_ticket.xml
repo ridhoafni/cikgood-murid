@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="330dp"
-    android:layout_height="400dp"
+    android:layout_height="250dp"
     android:layout_gravity="center" >
      <RelativeLayout
         android:elevation="2dp"
@@ -42,171 +42,57 @@
         android:textColor="@color/bluePrimary"
         android:textSize="30sp" />
     
-        <TextView 
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="14dp"
-	    android:layout_below="@+id/popup_ticket_tv1"
+        <TextView
+			android:fontFamily="@font/mmedium"
+        	android:layout_marginLeft="16dp"
+        	android:layout_marginTop="14dp"
+	    	android:layout_below="@+id/popup_ticket_tv1"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
 	        android:id="@+id/popup_ticket_tv2"
-	        android:textColor="@color/blackPrimary"
-	        android:text="Maskapai"
+	        android:textColor="@android:color/holo_red_dark"
+	        android:text="Info !"
+			android:gravity="center"
 	        android:textSize="20sp"/>       
 		
             
-			<TextView 
-        android:layout_marginLeft="11dp"
-	        android:id="@+id/popup_ticket_tv3"
+			<TextView
+				android:fontFamily="@font/mregular"
+        		android:layout_marginLeft="16dp"
+	        	android:id="@+id/popup_ticket_tv3"
 		        android:layout_height="wrap_content"
 		        android:layout_width="wrap_content"
 		        android:textColor="@color/grayPrimary"
-		        android:text="Choose your best Maspakai"
-	    android:layout_below="@+id/popup_ticket_tv2"
-		        android:textSize="16sp"/> 
-        
-    <RadioGroup
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="16dp"
-	    android:layout_below="@+id/popup_ticket_tv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiogroup0"
-        android:orientation="horizontal">
-	<RadioButton
-	    android:id="@+id/maskapainbtn0"
-        android:layout_width="wrap_content"
-         android:layout_height="30dp"
-         android:paddingLeft="10dp"
-         android:paddingRight="10dp"
-        android:background="@drawable/radio_btn"
-        android:button="@color/transparant"
-        android:checked="true"
-        android:textColor="@color/blackPrimary"
-        android:textSize="18sp"
-        android:text="Garuda"
-        	            android:gravity="center"/>
-	<RadioButton
-	    android:layout_marginLeft="16dp"
-	    android:id="@+id/maskapainbtn1"
-        android:layout_width="wrap_content"
-         android:layout_height="30dp"
-         android:paddingLeft="10dp"
-         android:paddingRight="10dp"
-        android:background="@drawable/radio_btn"
-        android:button="@color/transparant"
-        android:textColor="@color/blackPrimary"
-        android:textSize="18sp"
-        android:text="Citilink"
-        	            android:gravity="center"/>
-	<RadioButton
-	    android:layout_marginLeft="16dp"
-	    android:id="@+id/maskapainbtn2"
-        android:layout_width="wrap_content"
-         android:layout_height="30dp"
-         android:paddingLeft="10dp"
-         android:paddingRight="10dp"
-        android:background="@drawable/radio_btn"
-        android:button="@color/transparant"
-        android:textColor="@color/blackPrimary"
-        android:textSize="18sp"
-        android:text="Lion Air"
-        	            android:gravity="center"/>
-	
-    </RadioGroup>
-    
-    
-		<View 
-        android:layout_marginLeft="11dp"
-		    android:layout_marginTop="16dp"
+		        android:text="Saldo yang anda miliki tidak mencukupi !"
+	    		android:layout_below="@+id/popup_ticket_div"
+		        android:textSize="16sp"/>
+
+			<View
+        	android:layout_marginLeft="16dp"
+				android:layout_marginRight="16dp"
+			android:layout_marginTop="16dp"
 		    android:layout_marginBottom="16dp"
 		    android:background="@color/divider_bg"
 	        android:layout_height="1dp"
-	    android:layout_below="@+id/radiogroup0"
+	    	android:layout_below="@+id/popup_ticket_tv2"
 	        android:id="@+id/popup_ticket_div"
 	        android:layout_width="match_parent"/>
-    
-        <TextView 
-        android:layout_marginLeft="11dp"
-	    android:layout_below="@+id/popup_ticket_div"
-	        android:layout_height="wrap_content"
-	        android:layout_width="wrap_content"
-	        android:id="@+id/popup_ticket_tv4"
-	        android:textColor="@color/blackPrimary"
-	        android:text="Flight Departure"
-	        android:textSize="20sp"/>       
-		
-            
-			<TextView
-        android:layout_marginLeft="11dp" 
-	        android:id="@+id/popup_ticket_tv5"
-		        android:layout_height="wrap_content"
-		        android:layout_width="wrap_content"
-		        android:textColor="@color/grayPrimary"
-		        android:text="Your flight departure time"
-	    android:layout_below="@+id/popup_ticket_tv4"
-		        android:textSize="16sp"/> 
-        
-    <RadioGroup
-        android:layout_marginLeft="11dp"
-        android:layout_marginTop="16dp"
-	    android:layout_below="@+id/popup_ticket_tv5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiogroup1"
-        android:orientation="horizontal">
-	<RadioButton
-	    android:id="@+id/tglbtn0"
-        android:layout_width="wrap_content"
-         android:layout_height="30dp"
-         android:paddingLeft="10dp"
-         android:paddingRight="10dp"
-        android:background="@drawable/radio_btn"
-        android:button="@color/transparant"
-        android:checked="true"
-        android:textColor="@color/blackPrimary"
-        android:textSize="18sp"
-        android:text="Tomorrow 08:00"
-        	            android:gravity="center"/>
-	<RadioButton
-	    android:layout_marginLeft="16dp"
-	    android:id="@+id/tglbtn1"
-        android:layout_width="wrap_content"
-         android:layout_height="30dp"
-         android:paddingLeft="10dp"
-         android:paddingRight="10dp"
-        android:background="@drawable/radio_btn"
-        android:button="@color/transparant"
-        android:textColor="@color/blackPrimary"
-        android:textSize="18sp"
-        android:text="07/04/2019"
-        	            android:gravity="center"/>
-	
-    </RadioGroup>
-    
-			<TextView
-        android:layout_marginLeft="11dp" 
-	        android:id="@+id/popup_ticket_tv6"
-		        android:layout_height="wrap_content"
-		        android:layout_width="wrap_content"
-		        android:textColor="@color/grayPrimary"
-		        android:layout_marginTop="10dp"
-		        android:text="The Tickets will expire in 08/04/2019"
-	    android:layout_below="@+id/radiogroup1"
-		        android:textSize="16sp"/> 
+
     <Button
-        android:id="@+id/popup_nofunds_btn1"
+		android:layout_marginTop="18dp"
+        android:id="@+id/btn_tambah_saldo_pop"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
+		android:layout_below="@+id/popup_ticket_tv3"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_big_blue_primary"
+        android:background="@drawable/bg_btn_accent_primary"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:text="PROCESS"
+        android:text="ISI SALDO"
         android:textColor="@color/white"
-        android:textSize="24sp" />
-    
-    
+        android:textSize="20sp" />
+
 </RelativeLayout>
 </RelativeLayout>

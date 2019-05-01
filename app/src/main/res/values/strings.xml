@@ -1,6 +1,6 @@
 <resources>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="app_name">Cikgood</string>
+    <string name="app_name">CikGood</string>
     <string name="title_shop">Shop</string>
     <string name="title_gifts">Gifts</string>
     <string name="title_cart">Cart</string>
@@ -113,4 +113,21 @@
     <string name="loginsuccess">Login Success</string>
     <string name="login">Login</string>
     <string name="cari_guru">Cari Guru Anda Disini</string>
+    <string name="pilihmatpel">Pilih Mata Pelajaran</string>
+    <string name="pesantambahan">Pesan Tambahan</string>
+    <string name="tglmulai">Tanggal Mulai</string>
+    <string name="hari">Waktu belajar (Hari) per minggu</string>
+    <string name="jam">Waktu belajar (Jam) per minggu</string>
+    <string name="pwdlama">Password Lama</string>
+    <string name="pwdbaru">Password Baru</string>
+    <string name="pwdbarulagi">Ulangi Password Baru</string>
+    <string name="ubahpwd">Ubah Password</string>
+    <string name="edit_akun">Edit Akun</string>
+    <string name="logout">Log Out</string>
+    <string name="porgot_pwd">Forgot Password?</string>
+
+    <string-array name="jk">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
 </resources>

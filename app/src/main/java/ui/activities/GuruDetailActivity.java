@@ -93,7 +93,7 @@ public class GuruDetailActivity extends AppCompatActivity {
     Button btnPemesanan;
     Toolbar toolbarDetail;
     int id;
-    String nama, univ, jurusan, gelar, photo;
+    String nama, univ, jurusan, gelar, photo, nama2;
     ApiInterface apiService;
     private Context context;
     RecyclerView recyclerView, recyclerViewLokasi, recyclerViewPendidikan,
@@ -103,6 +103,7 @@ public class GuruDetailActivity extends AppCompatActivity {
     LokasiAdapter lokasiAdapter;
     PendidikanAdapter pendidikanAdapter;
     MengajarAdapter mengajarAdapter;
+    FloatingActionButton floatingActionButtonMessage;
 
     private List<Lokasi> lokasis = new ArrayList<>();
     private List<PengalamanKerja> datas = new ArrayList<>();
@@ -119,6 +120,8 @@ public class GuruDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_guru_detail);
         Intent i = getIntent();
         id = i.getIntExtra(KEY_ID_GURU, 0);
+        nama2 = i.getStringExtra(KEY_NAMA_GURU);
+        String photo2 = i.getStringExtra(KEY_PHOTO_GURU);
 
         System.out.println("ID ANDA: "+id);
 
@@ -127,6 +130,18 @@ public class GuruDetailActivity extends AppCompatActivity {
         iv_foto2     = findViewById(R.id.img_item_photo);
         tv_bio      = findViewById(R.id.tv_item_bio_detail);
         btnPemesanan = findViewById(R.id.btn_pemesanan);
+        floatingActionButtonMessage = findViewById(R.id.fab);
+
+        floatingActionButtonMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent msg = new Intent(GuruDetailActivity.this, MessageActivity.class);
+                msg.putExtra("nama", nama2);
+                msg.putExtra("id", id);
+                msg.putExtra("photo_profile", photo2);
+                startActivity(msg);
+            }
+        });
 
         btnPemesanan.setOnClickListener(new View.OnClickListener() {
             @Override

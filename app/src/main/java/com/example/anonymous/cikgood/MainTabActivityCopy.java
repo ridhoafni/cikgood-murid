@@ -23,8 +23,8 @@ import java.util.List;
 
 import ui.activities.LoginActivity;
 import ui.fragments.HomeFragment;
-import ui.fragments.ThreeFragment;
-import ui.fragments.TwoFragment;
+import ui.fragments.Pesanan;
+import ui.fragments.RiwayatPesananan;
 
 public class MainTabActivityCopy extends AppCompatActivity {
     private static final String TAG = "MainTabActivity";
@@ -132,8 +132,8 @@ public class MainTabActivityCopy extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new HomeFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
-        adapter.addFragment(new ThreeFragment(), "THREE");
+        adapter.addFragment(new RiwayatPesananan(), "TWO");
+        adapter.addFragment(new Pesanan(), "THREE");
         viewPager.setAdapter(adapter);
     }
 

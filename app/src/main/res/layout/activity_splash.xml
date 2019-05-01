@@ -13,35 +13,34 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
-        <!--<ImageView-->
-        <!--android:id="@+id/iv"-->
-        <!--android:src="@drawable/cars"-->
-        <!--android:padding="10dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_width="150dp"-->
-        <!--android:layout_height="150dp"/>-->
+        <ImageView
+        android:id="@+id/iv"
+        android:src="@drawable/logo_accent"
+        android:layout_gravity="center"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
         <TextView
-            android:fontFamily="@font/mlight"
+            android:fontFamily="@font/mmedium"
             android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="CIKGOOD"
-            android:textSize="40sp"
+            android:text="CikGood"
+            android:textSize="30sp"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
         <TextView
-            android:fontFamily="@font/mregular"
+            android:layout_marginTop="@dimen/padding_5"
+            android:fontFamily="@font/mlight"
             android:id="@+id/tv_sloan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:text="Belajar jadi lebih mudah"
-            android:textSize="12sp"
-            android:textColor="@color/colorGreyDrag"
+            android:textSize="16sp"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

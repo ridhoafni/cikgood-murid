@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundPrimary"
+    android:background="@color/backgroundColor"
     tools:context="ui.activities.NavigationView">
 
     <!--<android.support.design.widget.AppBarLayout-->
@@ -29,7 +29,7 @@
         android:layout_height="56dp"
         android:layout_gravity="bottom"
         app:tabTextColor="@drawable/tablayout_icon_color"
-        android:background="@android:color/white"
+        android:background="@drawable/bg_layout_navigation"
         app:elevation="8dp"
         app:itemIconTint="@drawable/item_selected"
         app:itemTextColor="@drawable/item_selected"

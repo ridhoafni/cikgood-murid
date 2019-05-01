@@ -8,7 +8,7 @@ import android.view.WindowManager;
 
 import com.example.anonymous.cikgood.R;
 
-public class addfunds extends AppCompatActivity {
+public class TambahSaldo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

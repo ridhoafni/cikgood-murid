@@ -15,18 +15,21 @@
 
 
         <TextView
+            android:fontFamily="@font/mlight"
             android:id="@+id/tv_lok_kota"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             tools:text=""/>
 
         <TextView
+            android:fontFamily="@font/mlight"
             android:layout_marginRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"/>
 
         <TextView
+            android:fontFamily="@font/mlight"
             android:id="@+id/tv_lok_kecamatan"
             android:layout_width="80dp"
             android:layout_height="wrap_content"

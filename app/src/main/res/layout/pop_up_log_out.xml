@@ -1,9 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ui.activities.PopUpLogOut">
+    android:layout_width="330dp"
+    android:layout_height="230dp"
+    android:layout_gravity="center" >
+    <RelativeLayout
+        android:elevation="2dp"
+        android:id="@+id/home_activity_v2"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/avatar_stroke_bold"
+        android:gravity="center" >
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/ticket_checkout_img1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/user" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="400dp"
+        android:elevation="1dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_big_white_primary"
+        android:id="@+id/popup_nofunds_bg"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/popup_ticket_tv1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="11dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/bluePrimary"
+            android:textSize="30sp" />
+
+        <TextView
+            android:fontFamily="@font/mmedium"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_below="@+id/popup_ticket_tv1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/popup_ticket_tv2"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="Warning !"
+            android:gravity="center"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:fontFamily="@font/mregular"
+            android:layout_marginLeft="16dp"
+            android:id="@+id/popup_ticket_tv3"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/grayPrimary"
+            android:text="Apakah yakin ingin keluar...?"
+            android:layout_below="@+id/popup_ticket_div"
+            android:textSize="16sp"/>
+
+        <View
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/divider_bg"
+            android:layout_height="1dp"
+            android:layout_below="@+id/popup_ticket_tv2"
+            android:id="@+id/popup_ticket_div"
+            android:layout_width="match_parent"/>
+
+        <Button
+            android:layout_marginLeft="50dp"
+            android:id="@+id/btn_tidak"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/popup_ticket_tv3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="23dp"
+            android:background="@drawable/bg_btn_accent_primary"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Tidak"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:layout_marginTop="18dp"
+            android:id="@+id/btn_ya"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/popup_ticket_tv3"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_btn_accent_primary"
+            android:layout_marginRight="50dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Ya"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

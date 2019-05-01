@@ -5,20 +5,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,21 +20,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.anonymous.cikgood.R;
-import com.example.anonymous.cikgood.adapters.GuruAdapter;
 import com.example.anonymous.cikgood.adapters.JadwalAdapter;
 import com.example.anonymous.cikgood.adapters.LokasiAdapter;
 import com.example.anonymous.cikgood.adapters.MengajarAdapter;
 import com.example.anonymous.cikgood.adapters.PendidikanAdapter;
 import com.example.anonymous.cikgood.adapters.PengalamanKerjaAdapter;
 import com.example.anonymous.cikgood.config.ServerConfig;
-import com.example.anonymous.cikgood.models.CariGuru;
 import com.example.anonymous.cikgood.models.Guru;
 import com.example.anonymous.cikgood.models.Jadwal;
 import com.example.anonymous.cikgood.models.Lokasi;
@@ -50,8 +38,6 @@ import com.example.anonymous.cikgood.models.Mengajar;
 import com.example.anonymous.cikgood.models.Pendidikan;
 import com.example.anonymous.cikgood.models.PengalamanKerja;
 import com.example.anonymous.cikgood.response.ResponGuruDetail;
-import com.example.anonymous.cikgood.response.ResponseCariGuru;
-import com.example.anonymous.cikgood.response.ResponseGuru;
 import com.example.anonymous.cikgood.response.ResponseJadwal;
 import com.example.anonymous.cikgood.response.ResponseLokasi;
 import com.example.anonymous.cikgood.response.ResponseMengajar;
@@ -59,22 +45,15 @@ import com.example.anonymous.cikgood.response.ResponsePendidikan;
 import com.example.anonymous.cikgood.response.ResponsePengalamanKerja;
 import com.example.anonymous.cikgood.rests.ApiClient;
 import com.example.anonymous.cikgood.rests.ApiInterface;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.BlurTransformation;
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import ui.fragments.SdFragment;
-import ui.fragments.SearchFragmentCopy;
-import ui.fragments.SmaFragment;
-import ui.fragments.SmpFragment;
 
-public class GuruDetailActivity extends AppCompatActivity {
+public class GuruDetailActivityCopy extends AppCompatActivity {
 
 //    Intent intentPesan = new Intent(getApplicationContext(), PemesananActivity.class);
 //    private static final String KEY_ID_GURU     = "id_guru";
@@ -255,7 +234,7 @@ public class GuruDetailActivity extends AppCompatActivity {
 //                        nama = guru.getNama();
                         photo = guru.getPhotoProfile();
 
-                    Glide.with(GuruDetailActivity.this)
+                    Glide.with(GuruDetailActivityCopy.this)
                             .load(ServerConfig.GURU_PATH+guru.getPhotoProfile())
                             .apply(new RequestOptions().override(200, 300))
                             .into(iv_foto);
@@ -294,7 +273,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (response.body().getMaster().size()>0){
                         jadwals = response.body().getMaster();
-                        jadwalAdapter = new JadwalAdapter(GuruDetailActivity.this, jadwals);
+                        jadwalAdapter = new JadwalAdapter(GuruDetailActivityCopy.this, jadwals);
                         recyclerViewJadwal.setAdapter(jadwalAdapter);
                     }
                 }
@@ -316,7 +295,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (response.body().getMaster().size()>0){
                         mengajars = response.body().getMaster();
-                        mengajarAdapter = new MengajarAdapter(GuruDetailActivity.this, mengajars);
+                        mengajarAdapter = new MengajarAdapter(GuruDetailActivityCopy.this, mengajars);
                         recyclerViewMengajar.setAdapter(mengajarAdapter);
                     }
                 }
@@ -338,7 +317,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (response.body().getMaster().size()>0){
                         pendidikans = response.body().getMaster();
-                        pendidikanAdapter = new PendidikanAdapter(GuruDetailActivity.this, pendidikans);
+                        pendidikanAdapter = new PendidikanAdapter(GuruDetailActivityCopy.this, pendidikans);
                         recyclerViewPendidikan.setAdapter(pendidikanAdapter);
 
                         Pendidikan pendidikan = pendidikans.get(0);
@@ -367,7 +346,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (response.body().getMaster().size()>0){
                         datas = response.body().getMaster();
-                        pengalamanKerjaAdapter = new PengalamanKerjaAdapter(GuruDetailActivity.this, datas);
+                        pengalamanKerjaAdapter = new PengalamanKerjaAdapter(GuruDetailActivityCopy.this, datas);
                         recyclerView.setAdapter(pengalamanKerjaAdapter);
                     }
                 }
@@ -389,7 +368,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     if (response.body().getMaster().size()>0){
                         lokasis = response.body().getMaster();
-                        lokasiAdapter = new LokasiAdapter(GuruDetailActivity.this, lokasis);
+                        lokasiAdapter = new LokasiAdapter(GuruDetailActivityCopy.this, lokasis);
                         recyclerViewLokasi.setAdapter(lokasiAdapter);
                     }
                 }

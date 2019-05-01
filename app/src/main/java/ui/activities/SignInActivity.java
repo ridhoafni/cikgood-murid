@@ -34,7 +34,7 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     public final String TAG = LoginActivity.class.getSimpleName();
-    TextView tvCreateNewAccount;
+    Button tvCreateNewAccount;
     SubmitButton btnLogin;
     LinearLayout linearLayout;
     SessionManager sessionManager;
@@ -50,7 +50,7 @@ public class SignInActivity extends AppCompatActivity {
         btnLogin = (SubmitButton) findViewById(R.id.sbtn_login_loading);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
-        linearLayout = (LinearLayout) findViewById(R.id.linearLayoutLogin);
+//        linearLayout = (LinearLayout) findViewById(R.id.linearLayoutLogin);
 
 
         apiService      = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
@@ -64,7 +64,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
 
-        tvCreateNewAccount = (TextView)findViewById(R.id.tv_create_new_account);
+        tvCreateNewAccount = (Button) findViewById(R.id.tv_create_new_account);
         tvCreateNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,8 +83,19 @@ public class SignInActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         // change icon color status bar
 
-        animationLayout = AnimationUtils.loadAnimation(this, R.anim.smaltobig);
-        linearLayout.setAnimation(animationLayout);
+//        animationLayout = AnimationUtils.loadAnimation(this, R.anim.smaltobig);
+//        linearLayout.setAnimation(animationLayout);
+
+        // change color in primaryDark
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.splashPrimary));
+        }
+        // change color in primaryDark
+
+        // change icon color status bar
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // change icon color status bar
 
     }
 

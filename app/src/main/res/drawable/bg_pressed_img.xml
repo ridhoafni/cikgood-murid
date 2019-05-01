@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@drawable/bg_pressed_top_true"
+        android:drawable="@drawable/bg_pressed_img_true"
         android:state_pressed="true"/>
 
     <item
-        android:drawable="@drawable/bg_pressed_top_false"/>
+        android:drawable="@drawable/bg_pressed_img_false"/>
 
 </selector>

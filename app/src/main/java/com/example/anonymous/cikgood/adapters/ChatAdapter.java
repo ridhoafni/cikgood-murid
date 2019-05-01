@@ -1,4 +1,4 @@
-package com.example.anonymous.catering.adapters;
+package com.example.anonymous.cikgood.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.anonymous.catering.R;
-import com.example.anonymous.catering.models.Chat;
+import com.example.anonymous.cikgood.R;
+import com.example.anonymous.cikgood.models.Chat;
 
 import java.util.List;
 

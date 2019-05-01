@@ -3,16 +3,14 @@ package ui.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -24,12 +22,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.anonymous.cikgood.R;
 import com.example.anonymous.cikgood.adapters.MengajarAdapter;
 import com.example.anonymous.cikgood.config.ServerConfig;
-import com.example.anonymous.cikgood.models.DataMatpel;
 import com.example.anonymous.cikgood.models.GuruDataMatpel;
-import com.example.anonymous.cikgood.models.Mengajar;
-import com.example.anonymous.cikgood.models.Tingkatan;
 import com.example.anonymous.cikgood.response.ResponseGuruDataMatpel;
-import com.example.anonymous.cikgood.response.ResponseMengajar;
 import com.example.anonymous.cikgood.rests.ApiClient;
 import com.example.anonymous.cikgood.rests.ApiInterface;
 
@@ -42,7 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PemesananActivity extends AppCompatActivity {
+public class PemesananActivityCopy extends AppCompatActivity {
 
     public static final String KEY_ID_GURU = "id_guru";
     public static final String KEY_PHOTO_GURU = "photo_profile";
@@ -67,7 +61,7 @@ public class PemesananActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pemesanan);
+        setContentView(R.layout.activity_pemesanan_copy);
 
         spinnerDurasiPertemuan = (Spinner)findViewById(R.id.spinner_durasi_pertemuan);
         spinnerDurasiPertemuanJam = (Spinner)findViewById(R.id.spinner_durasi_pertemuan_jam);
@@ -143,13 +137,13 @@ public class PemesananActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent_maps;
-                intent_maps = new Intent(PemesananActivity.this, OjekActivity.class);
-                intent_maps.putExtra(OjekActivity.KEY_ID_GURU, id);
-                intent_maps.putExtra(OjekActivity.KEY_NAMA_GURU,nama);
-                intent_maps.putExtra(OjekActivity.KEY_GELAR_GURU,  gelar);
-                intent_maps.putExtra(OjekActivity.KEY_UNIV_GURU,  univ);
-                intent_maps.putExtra(OjekActivity.KEY_JURUSAN_GURU,  jurusan);
-                intent_maps.putExtra(OjekActivity.KEY_PHOTO_GURU,  photo);
+                intent_maps = new Intent(PemesananActivityCopy.this, OjekActivity.class);
+//                intent_maps.putExtra(OjekActivity.KEY_ID_GURU, id);
+//                intent_maps.putExtra(OjekActivity.KEY_NAMA_GURU,nama);
+//                intent_maps.putExtra(OjekActivity.KEY_GELAR_GURU,  gelar);
+//                intent_maps.putExtra(OjekActivity.KEY_UNIV_GURU,  univ);
+//                intent_maps.putExtra(OjekActivity.KEY_JURUSAN_GURU,  jurusan);
+//                intent_maps.putExtra(OjekActivity.KEY_PHOTO_GURU,  photo);
                 startActivity(intent_maps);
             }
         });
@@ -177,7 +171,7 @@ public class PemesananActivity extends AppCompatActivity {
                             listSpinnerGuruDataMatpel.add(x);
                         }
 
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(PemesananActivity.this,
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(PemesananActivityCopy.this,
                                 android.R.layout.simple_spinner_item, listSpinnerGuruDataMatpel);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinnerMatpel.setAdapter(adapter);

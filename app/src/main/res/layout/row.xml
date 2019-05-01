@@ -6,39 +6,59 @@
 
 <View android:layout_width="match_parent"
     android:layout_height="1dp"
-    android:layout_marginTop="@dimen/activity_horizontal_margin"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:background="@color/colorGrey"
     xmlns:android="http://schemas.android.com/apk/res/android" />
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_marginTop="@dimen/padding_5"-->
+<!--    android:layout_marginBottom="@dimen/padding_5"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content">-->
+<LinearLayout
+    android:paddingBottom="@dimen/padding_5"
+    android:paddingTop="@dimen/padding_5"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:background="@android:drawable/ic_delete"/>
     <TextView
+        android:textColor="@color/grayPrimary"
+        android:textSize="12sp"
+        android:fontFamily="@font/mlight"
         android:gravity="center_vertical"
-        android:id="@+id/textout2"
-        android:layout_width="80dp"
-        android:text="Text View"
+        android:id="@+id/tv_hari"
+        android:layout_width="50dp"
+        android:text="Hari"
+        android:layout_alignParentLeft="true"
         android:layout_height="@dimen/padding_40"/>
     <TextView
+        android:textColor="@color/grayPrimary"
+        android:textSize="12sp"
+        android:fontFamily="@font/mlight"
+        android:gravity="center_vertical"
+        android:id="@+id/textout2"
+        android:layout_toLeftOf="@+id/tv_hari"
+        android:layout_width="80dp"
+        android:text="Tanggal"
+        android:layout_height="@dimen/padding_40"/>
+    <TextView
+        android:textSize="12sp"
+        android:textColor="@color/grayPrimary"
+        android:fontFamily="@font/mlight"
         android:id="@+id/textout"
         android:gravity="center_vertical"
-        android:text="Text View"
-        android:layout_width="100dp"
-        android:layout_height="@dimen/padding_40"
-        android:layout_toRightOf="@+id/textout2"
-        android:layout_toLeftOf="@id/remove"/>
-</RelativeLayout>
+        android:text="Sesi"
+        android:layout_width="120dp"
+        android:layout_height="@dimen/padding_40"/>
+
+    <Button
+        android:id="@+id/remove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_delete_black_24dp"/>
+
+</LinearLayout>
+
+<!--</RelativeLayout>-->
 </LinearLayout>
