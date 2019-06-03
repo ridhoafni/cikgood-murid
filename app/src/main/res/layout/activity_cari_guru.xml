@@ -1,208 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/layoutParent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackgroundPrimary"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroundPrimary"
-    tools:context="ui.activities.RegisterAccountActivity">
+    android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="match_parent"
-        android:layout_height="310dp"
-        android:background="@drawable/bg_gradient_accent_primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/mregular"
-        android:text="@string/cari_guru"
-        android:textAlignment="center"
-        android:textColor="#FFF"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_layout_white"
-        android:orientation="vertical"
-        android:paddingTop="30dp"
-        android:paddingBottom="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/colorBackgroundSecondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="vertical">
+            app:titleTextColor="@android:color/white"
+            app:popupTheme="@style/MenuStyle">
 
             <TextView
+                android:fontFamily="@font/googlesans_bold"
+                android:id="@+id/toolbarTitle"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/mlight"
-                android:text="@string/tingkatan"
-                android:textColor="#8D8D8D"
-                android:textSize="20sp" />
+                android:text="@string/pencarian_guru"
+                android:gravity="left"
+                android:textColor="@color/colorTextAccent" />
 
-            <Spinner
-                android:id="@+id/spinner_tingkatan"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_input_edit"
-                android:fontFamily="@font/_mmedium"
-                android:lines="1"
-                android:paddingLeft="12dp"
-                android:textColor="@color/blakPrimary" />
-        </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bar_layout"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="16dp">
 
         <LinearLayout
+            style="@style/AppTheme.Layout.Parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/mlight"
-                android:text="@string/matpel"
-                android:textColor="#8D8D8D"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/spinner_matpel"
+            <LinearLayout
+                android:id="@+id/layoutForm"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_input_edit"
-                android:fontFamily="@font/_mmedium"
-                android:lines="1"
-                android:paddingLeft="12dp"
-                android:textColor="@color/blakPrimary" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    style="@style/AppTheme.Layout.Parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_round"
+                    android:orientation="vertical"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/component_medium"
+                        android:layout_marginBottom="@dimen/component_small"
+                        android:text="@string/tingkatan"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="@dimen/text_small" />
+
+                    <Spinner
+                        android:id="@+id/spinner_tingkatan"
+                        style="@style/AppTheme.EditTextNotPaddingTop.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/component_extra_super"
+                        android:layout_marginTop="@dimen/component_small"
+                        android:background="@drawable/input_secondary"
+                        android:drawablePadding="@dimen/component_medium"
+                        android:fontFamily="@font/googlesans_regular"
+                        android:hint="Email"
+                        android:inputType="text"
+                        android:lines="1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/component_medium"
+                        android:layout_marginBottom="@dimen/component_small"
+                        android:text="@string/matpel"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="@dimen/text_small" />
+
+                    <Spinner
+                        android:id="@+id/spinner_matpel"
+                        style="@style/AppTheme.EditTextNotPaddingTop.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/component_extra_super"
+                        android:layout_marginTop="@dimen/component_small"
+                        android:background="@drawable/input_secondary"
+                        android:drawablePadding="@dimen/component_medium"
+                        android:fontFamily="@font/googlesans_regular"
+                        android:hint="@string/nama_lengkap"
+                        android:inputType="textPersonName"
+                        android:lines="1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/component_medium"
+                        android:layout_marginBottom="@dimen/component_small"
+                        android:text="@string/kabupaten"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="@dimen/text_small" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_Complete_kabupaten"
+                        style="@style/AppTheme.EditText.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/component_small"
+                        android:background="@drawable/input_secondary"
+                        android:drawablePadding="@dimen/component_medium"
+                        android:fontFamily="@font/googlesans_regular"
+                        android:hint="@string/kabupaten"
+                        android:inputType="text"
+                        android:lines="1" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_cari"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="150dp"
+                    android:layout_height="@dimen/input_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-20dp"
+                    android:background="@drawable/button_primary"
+                    android:fontFamily="@font/googlesans_bold"
+                    android:paddingStart="@dimen/component_extra_big"
+                    android:paddingEnd="@dimen/component_extra_big"
+                    android:text="@string/text_cari"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/text_small" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="@font/mlight"
-                android:text="@string/kabupaten"
-                android:textColor="#8D8D8D"
-                android:textSize="20sp" />
-
-            <AutoCompleteTextView
-                android:id="@+id/auto_Complete_kabupaten"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_input_edit"
-                android:fontFamily="@font/_mmedium"
-                android:inputType="text"
-                android:lines="1"
-                android:paddingLeft="12dp"
-                android:textColor="@color/blakPrimary" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="212dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/btn_outline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-    </LinearLayout>
-
-    <Button
-        android:fontFamily="@font/mmedium"
-        android:id="@+id/btn_cari"
-        android:layout_width="210dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
-        android:background="@android:color/transparent"
-        android:text="@string/cariguru"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/SpinKitBtn"
-        style="@style/SpinKitView.Large.Wave"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="invisible"
-        app:SpinKit_Color="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_cari"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.93"
-        app:layout_constraintStart_toStartOf="@+id/btn_cari"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout4"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/SpinKitTingkatan"
-        style="@style/SpinKitView.Large.Circle"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="8dp"
-        app:SpinKit_Color="@color/colorAccent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.987"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+    </ScrollView>
 
     <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/SpinKitMatpel"
         style="@style/SpinKitView.Large.Circle"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
         app:SpinKit_Color="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpinKitTingkatan"
         tools:ignore="MissingConstraints" />
 
@@ -211,84 +179,45 @@
         style="@style/SpinKitView.Large.Circle"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="49dp"
         android:layout_marginEnd="64dp"
         app:SpinKit_Color="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SpinKitMatpel" />
 
-    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/SpinKitCari"
-        style="@style/SpinKitView.Large.Wave"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+<!--    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/SpinKitCari"-->
+<!--        style="@style/SpinKitView.Large.Wave"-->
+<!--        android:layout_width="90dp"-->
+<!--        android:layout_height="90dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="400dp"-->
+<!--        android:layout_marginEnd="132dp"-->
+<!--        android:visibility="invisible"-->
+<!--        app:SpinKit_Color="@color/colorAccent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.976"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/scrollView2" />-->
+
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/SpinKitTingkatan"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:visibility="invisible"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="64dp"
         app:SpinKit_Color="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view5" />
+        app:layout_constraintTop_toTopOf="@+id/scrollView2" />
 
-    <!--<Button-->
-        <!--android:layout_marginTop="@dimen/activity_horizontal_margin"-->
-        <!--android:id="@+id/btn_continue"-->
-        <!--android:layout_width="220dp"-->
-        <!--android:layout_height="55dp"-->
-        <!--android:layout_marginEnd="20dp"-->
-        <!--android:background="@drawable/bg_btn_accent_primary"-->
-        <!--android:fontFamily="@font/_mmedium"-->
-        <!--android:text="continue"-->
-        <!--android:textColor="#FFF"-->
-        <!--android:textSize="20sp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
-
-    <LinearLayout
-        android:id="@+id/btn_back"
-        android:layout_width="90dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_layout_white"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/btn_signup"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_back" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view5"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.844"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+    
 
 </android.support.constraint.ConstraintLayout>

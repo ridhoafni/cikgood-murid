@@ -79,23 +79,25 @@ public class GuruDetailActivity extends AppCompatActivity {
 //    Intent intentPesan = new Intent(getApplicationContext(), PemesananActivity.class);
 //    private static final String KEY_ID_GURU     = "id_guru";
 
-    public static final String KEY_ID_GURU = "id_guru";
-    public static final String KEY_NAMA_GURU = "nama";
-    public static final String KEY_PHOTO_GURU = "photo_profile";
-    public static final String KEY_JURUSAN_GURU = "jurusan";
-    public static final String KEY_UNIV_GURU = "nama_institusi";
-    public static final String KEY_GELAR_GURU = "gelar";
+    public static final String KEY_ID_GURU      = "id_guru";
+    public static final String KEY_NAMA_GURU    = "nama";
+    public static final String KEY_PHOTO_GURU   = "photo_profile";
+    public static final String KEY_EMAIL_GURU   = "email";
 
     public static final String URL = ServerConfig.API_ENDPOINT;
+
+    int id;
+
     LinearLayout layout;
-    TextView tv_nama, tv_pen, tv_bio;
-    ImageView iv_foto, iv_foto2;
     Button btnPemesanan;
     Toolbar toolbarDetail;
-    int id;
-    String nama, univ, jurusan, gelar, photo, nama2;
-    ApiInterface apiService;
     private Context context;
+    ImageView iv_foto, iv_foto2;
+    TextView tv_nama, tv_pen, tv_bio;
+    String nama, univ, jurusan, gelar, photo, nama2, email;
+
+    ApiInterface apiService;
+
     RecyclerView recyclerView, recyclerViewLokasi, recyclerViewPendidikan,
     recyclerViewMengajar, recyclerViewJadwal;
     PengalamanKerjaAdapter pengalamanKerjaAdapter;
@@ -118,10 +120,11 @@ public class GuruDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guru_detail);
-        Intent i = getIntent();
-        id = i.getIntExtra(KEY_ID_GURU, 0);
-        nama2 = i.getStringExtra(KEY_NAMA_GURU);
-        String photo2 = i.getStringExtra(KEY_PHOTO_GURU);
+        Intent i        = getIntent();
+        id              = i.getIntExtra(KEY_ID_GURU, 0);
+        nama2           = i.getStringExtra(KEY_NAMA_GURU);
+        String photo2   = i.getStringExtra(KEY_PHOTO_GURU);
+        email           = i.getStringExtra(KEY_EMAIL_GURU);
 
         System.out.println("ID ANDA: "+id);
 
@@ -139,6 +142,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                 msg.putExtra("nama", nama2);
                 msg.putExtra("id", id);
                 msg.putExtra("photo_profile", photo2);
+                msg.putExtra("email", email);
                 startActivity(msg);
             }
         });
@@ -261,7 +265,7 @@ public class GuruDetailActivity extends AppCompatActivity {
                         ArrayList<Guru> gurus = new ArrayList<>();
                         gurus.add(response.body().getMaster());
                         Guru guru = gurus.get(0);
-                        nama = guru.getNama();
+//                        nama = guru.getNama();
                         collapsingToolbarLayout.setTitle(nama);
 //                      tv_pendidikan.setText(guru.getRiwayat_pendidikan());
                         tv_bio.setText(guru.getBiodata());
@@ -270,9 +274,12 @@ public class GuruDetailActivity extends AppCompatActivity {
 //                        nama = guru.getNama();
                         photo = guru.getPhotoProfile();
 
+//                    Picasso.get()
+//                            .load(ServerConfig.GURU_PATH+guru.getPhotoProfile())
+//                            .into(iv_foto);
+
                     Glide.with(GuruDetailActivity.this)
                             .load(ServerConfig.GURU_PATH+guru.getPhotoProfile())
-                            .apply(new RequestOptions().override(200, 300))
                             .into(iv_foto);
 
 
@@ -425,6 +432,7 @@ public class GuruDetailActivity extends AppCompatActivity {
         intentPesan.putExtra(PemesananActivity.KEY_GELAR_GURU, gelar);
         intentPesan.putExtra(PemesananActivity.KEY_UNIV_GURU, univ);
         intentPesan.putExtra(PemesananActivity.KEY_JURUSAN_GURU, jurusan);
+        intentPesan.putExtra(PemesananActivity.KEY_EMAIL_GURU, email);
         startActivity(intentPesan);
     }
 }

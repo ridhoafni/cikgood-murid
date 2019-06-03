@@ -4,31 +4,32 @@ package ui.fragments
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.support.annotation.RequiresApi
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
+import android.view.*
 import android.widget.*
 
 import com.example.anonymous.cikgood.R
+import com.example.anonymous.cikgood.adapters.GuruFavAdapter
 import com.example.anonymous.cikgood.config.ServerConfig
-import com.example.anonymous.cikgood.models.DataMatpel
-import com.example.anonymous.cikgood.models.Kabupaten
-import com.example.anonymous.cikgood.models.Tingkatan
-import com.example.anonymous.cikgood.response.ResponseCariGuru
-import com.example.anonymous.cikgood.response.ResponseDataMatpel
-import com.example.anonymous.cikgood.response.ResponseKabupaten
-import com.example.anonymous.cikgood.response.ResponseTingkatan
+import com.example.anonymous.cikgood.models.*
+import com.example.anonymous.cikgood.network.ApiServices
+import com.example.anonymous.cikgood.response.*
 import com.example.anonymous.cikgood.rests.ApiClient
 import com.example.anonymous.cikgood.rests.ApiInterface
 import com.example.anonymous.cikgood.utils.SessionManager
@@ -40,6 +41,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ui.activities.*
+import ui.activities.Chat
+import java.text.NumberFormat
 import java.util.*
 
 
@@ -52,36 +55,46 @@ class HomeFragment : Fragment() {
     private val CvBikes: CardView? = null
     private val CvBluebird: CardView? = null
     private val CvOthers: CardView? = null
-//    private var slider: ViewPager? = null
-//    internal var spinnerTingkatan: Spinner? = null
-//    internal var spinnerDataMatpel: Spinner? = null
-//    internal var spinnerKabupaten: Spinner? = null
     internal var tingkatan: Int = 0
     internal var matpel: Int = 0
     internal var kota: String? = null
 //    internal var sliderLayout: SliderLayout? = null
-    internal var sessionManager: SessionManager? = null
+    var sessionManager: SessionManager? = null
     internal var apiService: ApiInterface? = null
     internal var loading: ProgressDialog? = null
     private var ivPaud: ImageView? = null
+    private var ivRounded: ImageView? = null
+    private var ivRounded2: ImageView? = null
+    private var ivRounded3: ImageView? = null
     private var ivChat: ImageView? = null
+    private var tvNama: TextView?= null
+    private var tvSaldo: TextView?= null
+    private var datas: List<User> = ArrayList()
+    private var guruFavAdapter: GuruFavAdapter? = null
+    private var gridGuru: RecyclerView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View
         view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        sessionManager = SessionManager(activity)
+
+        apiService = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface::class.java)
+
+        val nama = sessionManager!!.muridProfile.get(SessionManager.NAMA)
+
+
         //        sliderLayout = view.findViewById(R.id.imageSlider);
         //        sliderLayout.setIndicatorAnimation(SliderLayout.Animations.THIN_WORM); //set indicator animation by using SliderLayout.Animations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         //        sliderLayout.setScrollTimeInSec(2); //set scroll delay in seconds :
         val slider = view.findViewById<View>(R.id.slider) as ViewPager
         val sliderIndicator = view.findViewById<View>(R.id.sliderIndicator) as TabLayout
-
 
         val slideList = listOf(
                 AmImage("https://d1bpj0tv6vfxyp.cloudfront.net/slider/20190301132637.3381657571667.jpg", title= "Get Up To 20% Off", subTitle= "Medical Checkups"),
@@ -113,9 +126,98 @@ class HomeFragment : Fragment() {
             }
         }, 3000, 3000)
 
+        var id: String? = sessionManager!!.muridProfile.get(SessionManager.ID_MURID)
+
 //        spinnerDataMatpel = view.findViewById<View>(R.id.spinnerMatpel) as Spinner
 //        spinnerKabupaten = view.findViewById<View>(R.id.spinnerKabupaten) as Spinner
         ivPaud = view.findViewById<View>(R.id.iv_paud) as ImageView
+        ivRounded = view.findViewById<View>(R.id.ivRound) as ImageView
+        ivRounded2 = view.findViewById<View>(R.id.ivRound2) as ImageView
+        ivRounded3 = view.findViewById<View>(R.id.ivRound3) as ImageView
+        tvNama = view.findViewById<View>(R.id.textView4) as TextView
+        tvSaldo = view.findViewById<View>(R.id.tv_saldo) as TextView
+        gridGuru = view.findViewById<View>(R.id.gridGurus) as RecyclerView
+
+        apiService?.getSaldo(id!!.toInt())!!.enqueue(object : Callback<ResponFindSaldo> {
+                override fun onResponse(call: Call<ResponFindSaldo>, response: Response<ResponFindSaldo>) {
+                    if (response.isSuccessful) {
+                        val saldo = response.body()!!.master.totalSaldo
+                        val localeID = Locale("in", "ID")
+                        val formatRupiah = NumberFormat.getCurrencyInstance(localeID)
+//                        Log.d("result saldo", "" + saldo + "")
+                        tv_saldo.text = formatRupiah.format(saldo)
+//                        tv_saldo.text = saldo.toString()
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponFindSaldo>, t: Throwable) {
+
+                }
+            })
+
+
+        apiService?.guruFindAll()!!.enqueue(object : Callback<ResponseGuru> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onFailure(call: Call<ResponseGuru>, t: Throwable) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onResponse(call: Call<ResponseGuru>, response: Response<ResponseGuru>) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                if (response.isSuccessful){
+                    if (response.body()!!.master.size > 0){
+                        datas = response.body()!!.master
+                        guruFavAdapter = GuruFavAdapter(activity, datas)
+                        var layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(getContext(), LinearLayout.HORIZONTAL, false)
+                        gridGurus.layoutManager = layoutManager
+                        gridGurus.itemAnimator = DefaultItemAnimator()
+                        gridGurus.adapter = guruFavAdapter
+                    }
+                }
+            }
+        })
+
+        tvNama?.text = nama
+
+//        var bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.ic_artikel01)
+//        var rnd: RoundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
+//        rnd.cornerRadius = 150f
+//        ivRounded?.setImageDrawable(rnd)
+
+        val curveRadius = 20F
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            ivRounded?.outlineProvider = object : ViewOutlineProvider(){
+                @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+
+                override fun getOutline(view: View?, outline: Outline?) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    outline?.setRoundRect(0, 0, view!!.width, (view.height+curveRadius).toInt(), curveRadius)
+                }
+            }
+            ivRounded2?.outlineProvider = object : ViewOutlineProvider(){
+                @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+
+                override fun getOutline(view: View?, outline: Outline?) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    outline?.setRoundRect(0, 0, view!!.width, (view.height+curveRadius).toInt(), curveRadius)
+                }
+            }
+            ivRounded3?.outlineProvider = object : ViewOutlineProvider(){
+                @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+
+                override fun getOutline(view: View?, outline: Outline?) {
+                    //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    outline?.setRoundRect(0, 0, view!!.width, (view.height+curveRadius).toInt(), curveRadius)
+                }
+            }
+            ivRounded?.clipToOutline = true
+            ivRounded2?.clipToOutline = true
+            ivRounded3?.clipToOutline = true
+        }
 
         ivPaud!!.setOnClickListener { startActivity(Intent(activity, CariGuruActivity::class.java)) }
 
@@ -188,17 +290,17 @@ class HomeFragment : Fragment() {
     //
     override fun onResume() {
         super.onResume()
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+//        (activity as AppCompatActivity).supportActionBar!!.hide()
     }
 
     override fun onStop() {
         super.onStop()
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+//        (activity as AppCompatActivity).supportActionBar!!.hide()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        (activity as AppCompatActivity).supportActionBar!!.hide()
+//        (activity as AppCompatActivity).supportActionBar!!.hide()
     }
 
     companion object {

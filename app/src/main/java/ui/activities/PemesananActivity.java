@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -28,6 +29,7 @@ import com.example.anonymous.cikgood.adapters.MengajarAdapter;
 import com.example.anonymous.cikgood.config.ServerConfig;
 import com.example.anonymous.cikgood.models.GuruDataMatpel;
 import com.example.anonymous.cikgood.models.Saldo;
+import com.example.anonymous.cikgood.response.ResponFindSaldo;
 import com.example.anonymous.cikgood.response.ResponseGuruDataMatpel;
 import com.example.anonymous.cikgood.response.ResponseSaldo;
 import com.example.anonymous.cikgood.rests.ApiClient;
@@ -51,21 +53,25 @@ public class PemesananActivity extends AppCompatActivity {
     public static final String KEY_ID_GURU      = "id_guru";
     public static final String KEY_GELAR_GURU   = "gelar";
     public static final String KEY_JURUSAN_GURU = "jurusan";
-    public static final String KEY_ADDRESS      = "alamat_lengkap";
     public static final String KEY_PHOTO_GURU   = "photo_profile";
+    public static final String KEY_ADDRESS      = "alamat_lengkap";
     public static final String KEY_UNIV_GURU    = "nama_institusi";
+    public static final String KEY_EMAIL_GURU    = "email";
 
     private Locale localeID = new Locale("in", "ID");
     private NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 
+    ApiInterface apiInterface;
+
     private int Click=0;
     private Integer money;
     private int my_money = 250000;
+    int saldo;
     private String pesan_tambahan;
     private Integer jumlah_pesanan = 0;
     private int id, tarif, harga, murid_id;
     private double selectedSpinnerDurasiJam;
-    private String nama, gelar, univ, jurusan, photo, x, selectedSpinnerMatpel, selectedSpinnerDurasiPertemuan, alamat, matpel_sected;
+    private String nama, gelar, univ, jurusan, photo, x, selectedSpinnerMatpel, selectedSpinnerDurasiPertemuan, alamat, matpel_sected, email;
 
     private ApiInterface apiService;
     private PemesananJadwalActivity pemesananJadwalActivity;
@@ -84,9 +90,29 @@ public class PemesananActivity extends AppCompatActivity {
     private Button btnIncrease, btnDecrease,btnSelanjutnya, btnAlertSaldo, btnTambah10, btnTambahSaldo;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pemesanan);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_chevron);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent i = new Intent(PemesananActivity.this, GuruDetailActivity.class);
+//                i.setFlags(i.FLAG_ACTIVITY_CLEAR_TASK | i.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(i);
+//                finish();
+                onBackPressed();
+            }
+        });
+
+        apiInterface = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
 
         // findViewById
         tvNamaGuru                = (TextView) findViewById(R.id.tv_nama);
@@ -117,8 +143,8 @@ public class PemesananActivity extends AppCompatActivity {
         murid_id = Integer.parseInt((sessionManager.getMuridProfile().get("id")));
 
         Log.d("log murid id", ""+murid_id);
-
         // getIntent
+        email = getIntent().getStringExtra(KEY_EMAIL_GURU);
         univ = getIntent().getStringExtra(KEY_UNIV_GURU);
         nama = getIntent().getStringExtra(KEY_NAMA_GURU);
         alamat = getIntent().getStringExtra(KEY_ADDRESS);
@@ -127,11 +153,13 @@ public class PemesananActivity extends AppCompatActivity {
         jurusan = getIntent().getStringExtra(KEY_JURUSAN_GURU);
         id = getIntent().getIntExtra(KEY_ID_GURU, 0);
 
+        getDataSaldo(murid_id);
+
         // Event tambah saldo
         btnTambahSaldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PemesananActivity.this, TambahSaldo.class));
+                startActivity(new Intent(PemesananActivity.this, ui.activities.Saldo.class));
             }
         });
 
@@ -179,15 +207,15 @@ public class PemesananActivity extends AppCompatActivity {
         // method initialized spinner pertemuan
         initSpinnerDurasiPertemuanJam();
 
-        if(my_money == 0) {
-            final Integer money = 0;
+        if(saldo == 0) {
+//            final Integer money = Integer.valueOf(tvJumlahSaldo.getText().toString());
 
             // make object Locale to indo
             Locale localeID = new Locale("in", "ID");
             NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
 
             // set text
-            tvJumlahSaldo.setText(formatRupiah.format(money));
+//            tvJumlahSaldo.setText(formatRupiah.format(money));
             btnSelanjutnya.animate().translationY(250).alpha(0).setDuration(350).start();
             btnSelanjutnya.setEnabled(false);
             tvJumlahSaldo.setTextColor(Color.parseColor("#D1206B"));
@@ -201,7 +229,7 @@ public class PemesananActivity extends AppCompatActivity {
             tvJumlahSaldo.setText(formatRupiah.format(money));
         }
 
-        money = my_money;
+//        money = my_money;
         btnDecrease.animate().alpha(0).setDuration(300).start();
         btnDecrease.setEnabled(false);
         btnAlertSaldo.setAlpha(0);
@@ -272,6 +300,27 @@ public class PemesananActivity extends AppCompatActivity {
         });
 
         }
+
+    private void getDataSaldo(int id) {
+        apiInterface.getSaldo(id).enqueue(new Callback<ResponFindSaldo>() {
+            @Override
+            public void onResponse(Call<ResponFindSaldo> call, Response<ResponFindSaldo> response) {
+                if (response.isSuccessful()){
+                    saldo = response.body().getMaster().getTotalSaldo();
+
+                    Locale localeID = new Locale("in", "ID");
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+                    Log.d("result saldo", ""+saldo+"");
+                    tvJumlahSaldo.setText(formatRupiah.format(saldo));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponFindSaldo> call, Throwable t) {
+
+            }
+        });
+    }
 
     private void initSpinnerDurasiPertemuanJam() {
         String[] array_durasi_pertemuan = {"1", "1.5", "2", "2.5", "3"};
@@ -399,7 +448,7 @@ public class PemesananActivity extends AppCompatActivity {
 
              double hasil = (number1_tarif * number2_jam * number3);
 
-        if(hasil > money) {
+        if(hasil > saldo) {
 
             DialogAlertSaldo();
 
@@ -413,7 +462,7 @@ public class PemesananActivity extends AppCompatActivity {
             tvTotalPertemuan.setBackgroundResource(R.drawable.sign_in_edittext_bg_pressed2);
         }
 
-        if(hasil < money) {
+        if(hasil < saldo) {
             btnSelanjutnya.animate().translationY(0).alpha(1).setDuration(350).start();
             btnSelanjutnya.setEnabled(true);
             btnIncrease.animate().translationY(0).alpha(1).setDuration(350).start();
@@ -437,6 +486,10 @@ public class PemesananActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent pembayaranSelanjutnya = new Intent(PemesananActivity.this, PemesananJadwalActivity.class);
                 pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_ID_GURU, id);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_EMAIL_GURU, email);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_NAMA_GURU, nama);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_PHOTO_GURU, photo);
+                pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_SALDO, saldo);
                 pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_ID_MURID, murid_id);
                 pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_HARGA_TOTAL, hasil);
                 pembayaranSelanjutnya.putExtra(PemesananJadwalActivity.KEY_DURASI, number2_jam);

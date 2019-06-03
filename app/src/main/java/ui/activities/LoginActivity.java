@@ -239,9 +239,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
                         System.out.println("Response JK : "+response.body().getData().getJk());
 
-                        sessionManager.createLoginSession(id_murid, nama, no_hp, email, password, alamat, jk,
-                                nisn, kelas, nama_sekolah,
-                                photo);
+//                        sessionManager.createLoginSession(id_murid, nama, no_hp, email, password, alamat, jk,
+//                                nisn, kelas, nama_sekolah,
+//                                photo);
 
                         Intent intent = new Intent(getApplicationContext(), NavigationView.class);
                         Toast.makeText(getApplicationContext(), response.body().getMessage().toString(), Toast.LENGTH_LONG).show();

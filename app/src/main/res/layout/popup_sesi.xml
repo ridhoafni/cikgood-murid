@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="330dp"
+    android:layout_height="215dp"
+    android:layout_gravity="center" >
+
+    <RelativeLayout
+        android:layout_width="330dp"
+        android:layout_height="300dp"
+        android:elevation="1dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_big_white_primary"
+        android:id="@+id/popup_nofunds_bg"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="11dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/bluePrimary"
+            android:textSize="30sp" />
+
+        <TextView
+            android:fontFamily="@font/mmedium"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="14dp"
+            android:layout_below="@+id/popup_ticket_tv1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/popup_ticket_tv2"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="Sesi !"
+            android:gravity="center"
+            android:textSize="20sp"/>
+
+        <View
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/divider_bg"
+            android:layout_height="1dp"
+            android:layout_below="@+id/popup_ticket_tv2"
+            android:id="@+id/popup_ticket_div"
+            android:layout_width="match_parent"/>
+
+        <Spinner
+            android:layout_below="@+id/popup_ticket_div"
+            android:layout_toRightOf="@+id/tv_jam"
+            android:id="@+id/spinner_jams"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_input_edit"
+            android:fontFamily="@font/_mmedium"
+            android:lines="1"
+            android:textColor="@color/blakPrimary" />
+
+        <Button
+            android:layout_marginTop="18dp"
+            android:id="@+id/btn_oke"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_below="@+id/spinner_jams"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_btn_accent_primary"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Oke"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

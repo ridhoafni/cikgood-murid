@@ -82,12 +82,17 @@
     <string name="lulusan">Lulusan dari</string>
     <string name="peng_kerja">Pengalaman Kerja</string>
     <string name="peng_mengajar">Pengalaman Mengajar</string>
-    <string name="jadwal">Jadwal</string>
-    <string name="pesan_tambahan">Contoh: saya mengerti konsep api kesulitan mengerjakan soal dll...</string>
-    <string name="durasi_per_pertemuan">Durasi Per Pertemuan</string>
+    <string name="pesan_tambahan">Pesan Tambahan</string>
+    <string name="durasi_per_pertemuan">Durasi Pertemuan</string>
     <string name="jumlah_per_min">Jumlah Pertemuan</string>
     <string name="tambahan">Pesan Tambahan</string>
     <string name="pesan">Pesan</string>
+    <string name="text_dash">-</string>
+    <string name="text_profile_picture">Profile Picture</string>
+    <string name="text_good_afternoon">Good Afternoon</string>
+    <string name="text_good_evening">Good Evening</string>
+    <string name="text_good_night">Good Night</string>
+    <string name="text_good_morning">Good Morning</string>
     <array name="spinner">
         <item>Airtel</item>
         <item>Vodafone</item>
@@ -106,7 +111,7 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
-    <string name="signin">SIGN IN</string>
+    <string name="text_signin">SIGN IN</string>
     <string name="new_account">NEW ACCOUNT</string>
     <string name="signup">Sign Up</string>
     <string name="loginfailed">Login Failed, Try Again !!</string>
@@ -124,7 +129,43 @@
     <string name="ubahpwd">Ubah Password</string>
     <string name="edit_akun">Edit Akun</string>
     <string name="logout">Log Out</string>
-    <string name="porgot_pwd">Forgot Password?</string>
+    <string name="text_forgot_pwd">Lupa Password?</string>
+    <string name="selanjutnya">Selanjutnya</string>
+    <string name="buat_pesanan">Buat Pesanan</string>
+    <string name="ringkasan_belanja">Ringkasan Pemesanan</string>
+    <string name="total_petemuan">Total Pertemuan</string>
+    <string name="durasi">Durasi</string>
+    <string name="total_harga">Total Harga</string>
+    <string name="tambah_jadwal">Tambah Jadwal</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="pilih_pembayaran">Pilih Pembayaran</string>
+    <string name="total_durasi">Total Durasi</string>
+    <string name="text_reset">Reset</string>
+    <string name="text_email_address">Email Address</string>
+    <string name="update">Update</string>
+    <string name="text_password">Password</string>
+    <string name="text_nama_lengkap">Nama Lengkap</string>
+    <string name="text_no_hp">No Handphone</string>
+    <string name="text_nama_sekolah">Nama Sekolah</string>
+    <string name="text_change_photo">Change</string>
+    <string name="text_jk">Jenis Kelamin</string>
+    <string name="text_male">Laki-Laki</string>
+    <string name="text_female">Perempuan</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_pem_total">Total</string>
+    <string name="pencarian_guru">Pencarian Guru</string>
+    <string name="text_cari">Cari</string>
+    <string name="pemesanan">Pemesanan</string>
+    <string name="jadwal">Jadwal</string>
+    <string name="agama">Agama</string>
+    <string name="profile">Profile</string>
+    <string name="text_ringkasan_pemesanan">Ringkasan Pemesanan</string>
+    <string name="text_tanggal_pemesanan">Tanggal Pemesanan</string>
+    <string name="text_jadwal">Jadwal</string>
+    <string name="text_pesanan_detail">Pesanan Detail</string>
+    <string name="text_detil_pesanan">Detail Pemesanan</string>
+    <string name="text_dont_have_an_account">Belum punya akun?</string>
+    <string name="text_register_now">Daftar sekarang</string>
 
     <string-array name="jk">
         <item>Laki-Laki</item>

@@ -3,90 +3,555 @@
     android:layout_height="match_parent"
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
-    android:background="@color/backgroundPrimary"
+    android:background="@color/colorGrey"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/ticket_checkout_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toRightOf="@id/btn_back"
+            android:paddingLeft="16dp"
+            android:text="Pemesanan"
+            android:textColor="@color/blackPrimary"
+            android:textSize="20sp" />
+    </LinearLayout>
+
     <android.support.v4.widget.NestedScrollView
+        android:layout_marginTop="43dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="45dp">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="25dp">
 
-            <ImageView
-                android:id="@+id/ticket_checkout_v1"
+            <RelativeLayout
+                android:id="@+id/rl_profile"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@drawable/bgheader_pisa"
-                android:scaleType="centerCrop" />
-
-            <View
-                android:id="@+id/ticket_checkout_v2"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="0dp"
-                android:background="@drawable/get_started_window_bg_overlay_blue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/ticket_checkout_tv1"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="Pemesanan Jadwal"
-                android:textColor="@color/white"
-                android:textSize="24sp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout">
+
+                <TextView
+                    android:id="@+id/tv_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ridho Afni"
+                    android:textColor="@color/blakPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_matpel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_nama"
+                    android:text="Bahasa Indonesia SMP"
+                    android:textColor="@color/blakPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_tarif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_matpel"
+                    android:text="Rp80,000"
+                    android:textColor="@color/greenPrimary"
+                    android:textSize="12sp" />
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/bg_circle_img_view" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="2.5dp"
+                    android:layout_marginRight="18dp"
+                    android:src="@drawable/icon_nopic" />
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/rl_top_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_profile">
+
+                <TextView
+                    android:id="@+id/tv_informasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/mregular"
+                    android:paddingLeft="8dp"
+                    android:text="@string/ringkasan_belanja"
+                    android:textColor="@color/blakPrimary"
+                    android:paddingBottom="10dp"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_top_no_hp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_top_email">
+
+                <TextView
+                    android:id="@+id/tv_no_hp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/img_no_hp"
+                    android:fontFamily="@font/mregular"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/total_petemuan"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_pertemuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="3dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="3 Pertemuan"
+                    android:textColor="@color/blakPrimary"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_durasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_top_no_hp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/img_no_hp"
+                    android:fontFamily="@font/mregular"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/durasi"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_durasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="3 Jam"
+                    android:textColor="@color/blakPrimary"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_total_durasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_durasi">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/img_no_hp"
+                    android:fontFamily="@font/mregular"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/total_durasi"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_total_durasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="3 Jam"
+                    android:textColor="@color/blakPrimary"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/rl_metode_pembayaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_total_durasi">
+
+                <TextView
+                    android:id="@+id/metode_pem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/mregular"
+                    android:paddingLeft="8dp"
+                    android:text="@string/metode_pembayaran"
+                    android:textColor="@color/blakPrimary"
+                    android:paddingBottom="8dp"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/rg_metode_pembayaran"
+                    android:layout_toRightOf="@+id/metode_pem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <RadioButton
+                        android:id="@+id/rb_saldo"
+                        android:layout_width="80dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:checked="true"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:layout_marginRight="8dp"
+                        android:text="Saldo"
+                        android:textColor="@drawable/radio_flat_text_selector" />
+
+                    <RadioButton
+                        android:id="@+id/rb_tunai"
+                        android:gravity="center"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/radio_flat_selector"
+                        android:button="@android:color/transparent"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:text="Tunai"
+                        android:textColor="@drawable/radio_flat_text_selector" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/rl_top_agama"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="1dp"-->
+<!--                android:background="@drawable/bg_pressed_center"-->
+<!--                android:paddingLeft="16dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.0"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/rl_durasi">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_jk"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/mregular"-->
+<!--                    android:paddingLeft="8dp"-->
+<!--                    android:paddingTop="10dp"-->
+<!--                    android:paddingBottom="15dp"-->
+<!--                    android:text="total_harga"-->
+<!--                    android:textColor="@color/grayPrimary"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tv_jk_isi"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    android:paddingLeft="8dp"-->
+<!--                    android:paddingRight="16dp"-->
+<!--                    android:paddingBottom="8dp"-->
+<!--                    android:text="Rp175.000"-->
+<!--                    android:textColor="@color/greenPrimary"-->
+<!--                    android:textSize="14sp" />-->
+<!--            </RelativeLayout>-->
+
+            <RelativeLayout
+                android:id="@+id/rl_pembayaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pressed_center"
+                android:paddingLeft="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_metode_pembayaran">
+
+                <TextView
+                    android:id="@+id/tv_total_harga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/img_no_hp"
+                    android:fontFamily="@font/mregular"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="16dp"
+                    android:text="@string/total_harga"
+                    android:textColor="@color/blackPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_total_harga_isi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_total_harga"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="Rp250.000"
+                    android:textColor="@color/greenPrimary"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_buat_pemesanan"
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:textAllCaps="false"
+                    android:layout_below="@+id/rl_top_agama"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_btn_green_primary"
+                    android:paddingRight="10dp"
+                    android:text="@string/buat_pesanan"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pressed_center"
+                android:orientation="vertical"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mregular"
+                    android:paddingTop="8dp"
+                    android:text="Lokasi"
+                    android:textColor="@color/blackPrimary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/divider_bg" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="The leaning of the Tower of Pisa comes into the story in 1173, when consruction began."
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/divider_bg"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/et_alamat"
+                            android:layout_width="265dp"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:textSize="12sp"
+                            android:hint="Alamat Lengkap"
+                            android:textColor="@color/blakPrimary" />
+
+                        <TextView
+                            android:id="@+id/tv_maps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:text="MAP"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_maps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <fragment
+                            android:id="@+id/map"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="@dimen/padding_5" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ticket_checkout_layout"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/ticket_checkout_tv1"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_layout_white"
+                android:background="@drawable/bg_pressed_center"
                 android:orientation="vertical"
                 android:paddingLeft="24dp"
                 android:paddingTop="8dp"
                 android:paddingRight="24dp"
-                android:layout_marginBottom="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_tv1">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
 
                 <TextView
                     android:id="@+id/ticket_checkout_tv2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/mmedium"
+                    android:fontFamily="@font/mregular"
                     android:text="Jadwal"
                     android:textColor="@color/blackPrimary"
-                    android:textSize="20sp" />
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/view"
@@ -121,196 +586,86 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/mlight"
-                        android:text="@string/hari"
-                        android:textColor="#8D8D8D"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/et_tanggal_mulai"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:background="@drawable/bg_input_edit"
-                        android:fontFamily="@font/_mmedium"
-                        android:lines="1"
-                        android:paddingLeft="12dp"
-                        android:textColor="@color/blackPrimary"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/mlight"
-                        android:text="@string/jam"
-                        android:textColor="#8D8D8D"
-                        android:textSize="16sp" />
-
-                    <Spinner
-                        android:id="@+id/spinner_jams"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:background="@drawable/bg_input_edit"
-                        android:fontFamily="@font/_mmedium"
-                        android:lines="1"
-                        android:paddingLeft="12dp"
-                        android:textColor="@color/blakPrimary" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/ticket_checkout_layout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_layout_white"
-                android:orientation="vertical"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
-                android:paddingBottom="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout">
-
-                <TextView
-                    android:id="@+id/ticket_checkout_tv8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/mmedium"
-                    android:text="Detail Jadwal"
-                    android:textColor="@color/blackPrimary"
-                    android:textSize="20sp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ScrollView
-                        android:layout_width="match_parent"
+                    <RelativeLayout
+                        android:id="@+id/rl_tanggal_mulai"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <LinearLayout
-                            android:id="@+id/container"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical" />
-
-
-                    </ScrollView>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
                         <TextView
+                            android:id="@+id/tv_tgl_bulan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:autoLink="web"
-                            android:text="http://android-er.blogspot.com/"
-                            android:textStyle="bold" />
+                            android:text="01-MEI-2019" />
 
                         <TextView
-                            android:id="@+id/relist"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="#E0E0E0"
-                            android:textStyle="bold" />
+                            android:id="@+id/tv_hari"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_tgl_bulan"
+                            android:text="Jum'at"
+                            android:textSize="27sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:layout_marginRight="45dp">
+
+                        <ImageView
+                            android:id="@+id/iv_to"
+                            android:layout_width="35dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="5dp"
+                            android:paddingLeft="5dp"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_sesi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/info"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="#D0D0D0"
-                            android:gravity="bottom"
-                            android:textStyle="italic" />
+                            android:id="@+id/tv_jam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="09:00-14:00" />
 
-                    </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_sesi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv_jam"
+                            android:text="Pagi"
+                            android:textSize="27sp" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:textAllCaps="false"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_btn_grey_primary"
+                    android:text="@string/tambah_jadwal"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp"/>
 
-            <Button
-                android:id="@+id/btn_lanjut"
-                android:layout_width="230dp"
-                android:layout_height="40dp"
-                android:layout_below="@+id/ticket_checkout_layout2"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/bg_btn_green_primary"
-                android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
-                android:paddingRight="10dp"
-                android:text="Selanjutnya"
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout2" />
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
 
-            <LinearLayout
-                android:id="@+id/btn_back_signup"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_below="@+id/ticket_checkout_layout2"
-                android:layout_marginBottom="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_layout_white"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ticket_checkout_layout2">
-
-                <ImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="30dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_back" />
             </LinearLayout>
 
 
-            <Button
-                android:id="@+id/btn_add"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="36dp"
-                android:background="@drawable/btn_circle_big_accent_primary"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ticket_checkout_layout" />
 
         </android.support.constraint.ConstraintLayout>
 

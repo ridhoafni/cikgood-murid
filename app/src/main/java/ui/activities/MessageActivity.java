@@ -57,6 +57,7 @@ public class MessageActivity extends AppCompatActivity {
     private List<Chat> chats;
     private RecyclerView recyclerView2;
     Context context;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +65,8 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         sessionManager = new SessionManager(MessageActivity.this);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_chevron);
+        toolbar.setTitle("");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +88,7 @@ public class MessageActivity extends AppCompatActivity {
         idUserNow = (sessionManager.getMuridProfile().get("id"));
 
         intent = getIntent();
-        final int userId = intent.getIntExtra("id", 0);
+        userId = intent.getIntExtra("id", 0);
         final String nama = intent.getStringExtra("nama");
         final String photo = intent.getStringExtra("photo_profile");
 
@@ -192,6 +192,45 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("message", message);
 
         reference.child("Chats").push().setValue(hashMap);
+
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
+                .child(idUserNow)
+                .child(String.valueOf(userId));
+
+        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    String id = String.valueOf(userId);
+                    chatRef.child("id").setValue(id);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        final DatabaseReference chatRef2 = FirebaseDatabase.getInstance().getReference("Chatlist2")
+                .child(String.valueOf(userId))
+                .child(idUserNow);
+
+        chatRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    String id = String.valueOf(userId);
+                    chatRef2.child("id").setValue(id);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

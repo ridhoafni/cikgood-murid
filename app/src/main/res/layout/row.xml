@@ -23,39 +23,44 @@
 
     <TextView
         android:textColor="@color/grayPrimary"
-        android:textSize="12sp"
         android:fontFamily="@font/mlight"
         android:gravity="center_vertical"
-        android:id="@+id/tv_hari"
+        android:id="@+id/tv_hari_row"
         android:layout_width="50dp"
         android:text="Hari"
         android:layout_alignParentLeft="true"
         android:layout_height="@dimen/padding_40"/>
     <TextView
         android:textColor="@color/grayPrimary"
-        android:textSize="12sp"
         android:fontFamily="@font/mlight"
         android:gravity="center_vertical"
         android:id="@+id/textout2"
         android:layout_toLeftOf="@+id/tv_hari"
-        android:layout_width="80dp"
+        android:layout_width="75dp"
         android:text="Tanggal"
         android:layout_height="@dimen/padding_40"/>
+
+   <TextView
+       android:text=", "
+       android:paddingRight="5dp"
+       android:paddingLeft="5dp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+   </TextView>
+
     <TextView
-        android:textSize="12sp"
         android:textColor="@color/grayPrimary"
         android:fontFamily="@font/mlight"
         android:id="@+id/textout"
         android:gravity="center_vertical"
         android:text="Sesi"
-        android:layout_width="120dp"
-        android:layout_height="@dimen/padding_40"/>
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/remove"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:background="@drawable/ic_delete_black_24dp"/>
 
 </LinearLayout>

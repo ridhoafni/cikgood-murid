@@ -14,6 +14,7 @@ public class SessionManager {
     public static final String IS_LOGGED_IN = "isLoggedIn";
     public static final String ID_MURID = "id";
     public static final String NAMA = "nama";
+    public static final String TOKEN = "token";
     public static final String HP = "no_hp";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
@@ -35,13 +36,14 @@ public class SessionManager {
         editor              = sharedPreferences.edit();
     }
 
-    public void createLoginSession(Integer id, String nama, String no_hp,
+    public void createLoginSession(Integer id, String nama, String token, String no_hp,
                                    String email, String password, String alamat,
                                    String jk, String nisn, String kelas, String nama_sekolah,
                                    String photo){
         editor.putBoolean(IS_LOGGED_IN, true);
         editor.putInt(ID_MURID, id);
         editor.putString(NAMA, nama);
+        editor.putString(TOKEN, token);
         editor.putString(HP, no_hp);
         editor.putString(EMAIL, email);
         editor.putString(PASSWORD, password);
@@ -58,6 +60,7 @@ public class SessionManager {
         HashMap<String,String> murid = new HashMap<>();
         murid.put(ID_MURID, String.valueOf(sharedPreferences.getInt(ID_MURID,0)));
         murid.put(NAMA, sharedPreferences.getString(NAMA,null));
+        murid.put(TOKEN, sharedPreferences.getString(TOKEN,null));
         murid.put(HP, sharedPreferences.getString(HP,null));
         murid.put(EMAIL, sharedPreferences.getString(EMAIL,null));
         murid.put(PASSWORD, sharedPreferences.getString(PASSWORD,null));

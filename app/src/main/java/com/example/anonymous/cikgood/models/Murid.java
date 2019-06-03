@@ -22,6 +22,9 @@ public class Murid {
     private String nama;
     @SerializedName("no_hp")
     @Expose
+    private String token;
+    @SerializedName("token")
+    @Expose
     private String noHp;
     @SerializedName("email")
     @Expose
@@ -62,6 +65,14 @@ public class Murid {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getNoHp() {

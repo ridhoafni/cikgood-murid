@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import ui.fragments.Pesanan;
-import ui.fragments.RiwayatPesananan;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -14,7 +13,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
         childFragments = new Fragment[] {
-                new RiwayatPesananan(), //1
                 new Pesanan() //2
         };
     }

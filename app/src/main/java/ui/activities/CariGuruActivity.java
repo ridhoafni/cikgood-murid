@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -52,7 +53,7 @@ public class CariGuruActivity extends AppCompatActivity {
     SessionManager sessionManager;
     ApiInterface apiService;
     ProgressDialog loading;
-    ProgressBar progressBarTingkatan, progressBarMatpel, progressBarKabupaten, progressBarCari, progressBarBtn;
+    ProgressBar progressBarTingkatan, progressBarMatpel, progressBarKabupaten, progressBarCari;
 
 
 
@@ -68,8 +69,18 @@ public class CariGuruActivity extends AppCompatActivity {
         progressBarTingkatan = findViewById(R.id.SpinKitTingkatan);
         progressBarMatpel = findViewById(R.id.SpinKitMatpel);
         progressBarKabupaten = findViewById(R.id.SpinKitKabupaten);
-        progressBarCari = findViewById(R.id.SpinKitCari);
-        progressBarBtn = findViewById(R.id.SpinKitBtn);
+//        progressBarCari = findViewById(R.id.SpinKitCari);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_chevron);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCari = new Intent(CariGuruActivity.this, NavigationView.class);
+                intentCari.putExtra("FromCariGuru", "4");
+                startActivity(intentCari);
+            }
+        });
 
         btnCari.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,18 +119,6 @@ public class CariGuruActivity extends AppCompatActivity {
 //        initSpinnerKabupaten();
         initSpinnerTingkatan();
         initSpinnerKabupaten();
-        // change color in primaryDark
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent));
-        }
-        // change color in primaryDark
-
-        // change icon color status bar
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        // change icon color status bar
-
-
     }
 
     private void initSpinnerTingkatan(){
@@ -242,8 +241,7 @@ public class CariGuruActivity extends AppCompatActivity {
 
     private void initSpinnerKabupaten(){
 //        loading = ProgressDialog.show(getActivity(), null, "harap tunggu...", true, false);
-        progressBarKabupaten.setVisibility(View.VISIBLE);
-        progressBarBtn.setVisibility(View.VISIBLE);
+//        progressBarKabupaten.setVisibility(View.VISIBLE);
 
         apiService.getDataKabupaten().enqueue(new Callback<ResponseKabupaten>() {
             @Override
@@ -251,8 +249,7 @@ public class CariGuruActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 //                    loading.dismiss();
 
-                    progressBarKabupaten.setVisibility(View.INVISIBLE);
-                    progressBarBtn.setVisibility(View.INVISIBLE);
+//                    progressBarKabupaten.setVisibility(View.INVISIBLE);
                     List<Kabupaten> semuaKabupatenItems = response.body().getMaster();
                     List<String> listSpinner = new ArrayList<String>();
                     for (int i = 0; i < semuaKabupatenItems.size(); i++){
@@ -282,7 +279,7 @@ public class CariGuruActivity extends AppCompatActivity {
 
     private void cariGuru() {
 //        loading = ProgressDialog.show(this, null, "harap tunggu...", true, false);
-        progressBarCari.setVisibility(View.INVISIBLE);
+//        progressBarCari.setVisibility(View.INVISIBLE);
 
 
         kota = autoCompleteKabupaten.getText().toString();
@@ -297,7 +294,7 @@ public class CariGuruActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseCariGuru> call, Response<ResponseCariGuru> response) {
                 System.out.println("Response Home "+response);
                 if (response.isSuccessful()){
-                    progressBarCari.setVisibility(View.VISIBLE);
+//                    progressBarCari.setVisibility(View.VISIBLE);
 
                     Intent i ;
                     i = new Intent(CariGuruActivity.this, GuruActivity.class);

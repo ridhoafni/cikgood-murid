@@ -2,523 +2,514 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:paddingBottom="8dp"
     android:background="@color/backgroundPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- tambah comment -->
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:background="@color/white"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="45dp">-->
+<!--        <ImageView-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:id="@+id/btn_back"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="18dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:src="@drawable/ic_back" />-->
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+<!--        <TextView-->
+<!--            android:id="@+id/ticket_checkout_tv1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_toRightOf="@id/btn_back"-->
+<!--            android:paddingLeft="16dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="Pemesanan"-->
+<!--            android:textColor="@color/blackPrimary"-->
+<!--            android:textSize="20sp" />-->
+<!--    </LinearLayout>-->
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/colorBackgroundSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:titleTextColor="@android:color/white"
+            app:popupTheme="@style/MenuStyle">
+
+            <TextView
+                android:fontFamily="@font/googlesans_bold"
+                android:id="@+id/toolbarTitle"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pemesanan"
+                android:gravity="left"
+                android:textColor="@color/colorTextAccent" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_marginTop="43dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="45dp">
 
-<!--        <ImageView-->
-<!--            android:id="@+id/ticket_checkout_v1"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:background="@drawable/bgheader_pisa"-->
-<!--            android:scaleType="centerCrop" />-->
-
-<!--        <View-->
-<!--            android:id="@+id/ticket_checkout_v2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_alignParentTop="true"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginStart="0dp"-->
-<!--            android:layout_marginTop="0dp"-->
-<!--            android:layout_marginEnd="0dp"-->
-<!--            android:background="@drawable/get_started_window_bg_overlay_blue" />-->
-<LinearLayout
-    android:orientation="horizontal"
-    android:id="@+id/linearLayout"
-    android:background="@color/white"
-    android:layout_width="match_parent"
-    android:layout_height="50dp">
-    <ImageView
-        android:layout_marginStart="24dp"
-        android:id="@+id/btn_back"
-        android:layout_width="30dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/ic_back" />
-
-    <TextView
-        android:id="@+id/ticket_checkout_tv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btn_back"
-        android:paddingLeft="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="10dp"
-        android:text="Pemesanan"
-        android:textColor="@color/blackPrimary"
-        android:textSize="20sp" />
-</LinearLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/home_activity_v2"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_below="@+id/linearLayout"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/avatar_stroke_bold"
-            android:elevation="1dp"
-            android:gravity="center">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:src="@drawable/icon_nopic" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_nama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/home_activity_v2"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/home_activity_v2"
-            android:text="Ridho Afni"
-            android:textColor="@color/blackPrimary"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_gelar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_nama"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/home_activity_v2"
-            android:text="S1"
-            android:textColor="@color/grayPrimary"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_univ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_nama"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/tv_gelar"
-            android:text="Uin Suska"
-            android:textColor="@color/grayPrimary"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_jurusan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_nama"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/tv_univ"
-            android:text="Teknik Informatika"
-            android:textColor="@color/grayPrimary"
-            android:textSize="12sp" />
-
-        <LinearLayout
-            android:id="@+id/ticket_checkout_layout"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_below="@+id/linearLayout"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/bg_layout_white"
-            android:orientation="vertical"
-            android:paddingLeft="24dp"
-            android:paddingTop="20dp"
-            android:paddingRight="24dp"
-            android:paddingBottom="10dp">
-
-
-            <TextView
-                android:id="@+id/ticket_checkout_tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Detailnya"
-                android:textColor="@color/blackPrimary"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/ticket_checkout_tv3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tap arrow to view story"
-                    android:textColor="@color/grayPrimary"
-                    android:textSize="16sp" />
-
-                <ImageView
-                    android:id="@+id/ticket_checkoutdrop"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/ic_dropdown" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/divider_bg" />
-
-
-            <TextView
-                android:id="@+id/ticket_checkout_tv7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="8dp"
-                android:text="The leaning of the Tower of Pisa comes into the story in 1173, when consruction began."
-                android:textColor="@color/grayPrimary"
-                android:textSize="18sp"
-                android:visibility="gone" />
-
-            <View
-                android:id="@+id/ticket_checkoutview"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/divider_bg"
-                android:visibility="gone" />
-
-            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:overScrollMode="never"
-                android:scrollbars="none">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/mlight"
-                            android:text="@string/matpel"
-                            android:textColor="#8D8D8D"
-                            android:textSize="16sp" />
-
-                        <Spinner
-                            android:id="@+id/spinner_matpel"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/bg_input_edit"
-                            android:fontFamily="@font/_mmedium"
-                            android:lines="1"
-                            android:paddingLeft="12dp"
-                            android:textColor="@color/blakPrimary" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/mlight"
-                            android:text="@string/durasi_per_pertemuan"
-                            android:textColor="#8D8D8D"
-                            android:textSize="16sp" />
-
-                        <Spinner
-                            android:id="@+id/spinner_durasi_pertemuan_jam"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/bg_input_edit"
-                            android:fontFamily="@font/_mmedium"
-                            android:lines="1"
-                            android:paddingLeft="12dp"
-                            android:textColor="@color/blakPrimary" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/mlight"
-                            android:text="@string/jumlah_per_min"
-                            android:textColor="#8D8D8D"
-                            android:textSize="16sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:orientation="horizontal">
-
-
-                            <TextView
-                                android:id="@+id/ticket_checkout_tv6"
-                                android:layout_width="70dp"
-                                android:layout_height="30dp"
-                                android:layout_marginRight="16dp"
-                                android:background="@drawable/sign_in_edittext_bg_pressed"
-                                android:gravity="center"
-                                android:text="1"
-                                android:textColor="@color/blackPrimary"
-                                android:textSize="18sp" />
-
-                            <Button
-                                android:id="@+id/ticket_checkout_btn_pls"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:layout_marginRight="12dp"
-                                android:background="@drawable/btn_circle_plus"
-                                android:text="+"
-                                android:textColor="@color/white" />
-
-                            <Button
-                                android:id="@+id/ticket_checkout_btn_min"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
-                                android:layout_marginRight="16dp"
-                                android:background="@drawable/btn_circle_minus"
-                                android:text="-"
-                                android:textColor="@color/white" />
-
-                            <Button
-                                android:id="@+id/ticket_checkout_btn_pls10"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp"
-                                android:layout_marginLeft="14dp"
-                                android:background="@drawable/btn_circle_plus"
-                                android:text="+ 10"
-                                android:textColor="@color/white" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="10dp"
-                                android:fontFamily="@font/mlight"
-                                android:text="@string/pesantambahan"
-                                android:textColor="#8D8D8D"
-                                android:textSize="16sp" />
-
-                            <EditText
-                                android:id="@+id/et_pesan_tambahan"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:background="@drawable/bg_input_edit"
-                                android:fontFamily="@font/_mmedium"
-                                android:lines="1"
-                                android:paddingLeft="12dp"
-                                android:textColor="@color/blakPrimary" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </ScrollView>
-        </LinearLayout>
-
-
-<!--        <ScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_below="@+id/ticket_checkout_layout"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginBottom="0dp"-->
-<!--            android:overScrollMode="never"-->
-<!--            android:scrollbars="none">-->
+            android:layout_height="match_parent"
+            android:paddingBottom="25dp">
 
             <RelativeLayout
-                android:id="@+id/ticket_checkout_r1"
+                android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/ticket_checkout_layout">
+                android:background="@color/backgroundPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp">
+
+
+
+                <RelativeLayout
+                    android:id="@+id/home_activity_v2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/linearLayout"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/avatar_stroke_bold"
+                    android:elevation="1dp"
+                    android:gravity="center">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/thumbnail"
+                        android:layout_width="61dp"
+                        android:layout_height="61dp"
+                        android:src="@drawable/icon_nopic" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_nama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/home_activity_v2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/home_activity_v2"
+                    android:text="Ridho Afni"
+                    android:textColor="@color/blackPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_gelar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_nama"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/home_activity_v2"
+                    android:text="S1"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_univ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_nama"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tv_gelar"
+                    android:text="Uin Suska"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_jurusan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_nama"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/tv_univ"
+                    android:text="Teknik Informatika"
+                    android:textColor="@color/grayPrimary"
+                    android:textSize="12sp" />
+
+                <android.support.v7.widget.AppCompatRatingBar
+                    android:id="@+id/rating_pemesanan_profil"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_gelar"
+                    android:numStars="5"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/home_activity_v2"
+                    android:rating="3"
+                    android:stepSize="1"
+                    android:theme="@style/RatingBar" />
 
                 <LinearLayout
-                    android:layout_marginTop="16dp"
-                    android:id="@+id/ticket_checkout_layout2"
+                    android:id="@+id/ticket_checkout_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/bg_layout_white"
+                    android:layout_below="@+id/linearLayout"
+                    android:layout_marginTop="75dp"
+                    android:background="@drawable/bg_pressed_center"
                     android:orientation="vertical"
                     android:paddingLeft="24dp"
-                    android:paddingTop="10dp"
+                    android:paddingTop="20dp"
                     android:paddingRight="24dp"
-                    android:paddingBottom="16dp">
+                    android:paddingBottom="10dp">
 
                     <TextView
-                        android:id="@+id/ticket_checkout_tv8"
+                        android:id="@+id/ticket_checkout_tv2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Total Harga"
+                        android:text="Detail Pemesanan"
+                        android:paddingBottom="8dp"
                         android:textColor="@color/blackPrimary"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/ticket_checkout_tv9"
+                            android:id="@+id/ticket_checkout_tv3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Saldo sekarang"
+                            android:text="Tap untuk melihat detail"
                             android:textColor="@color/grayPrimary"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
-                        <TextView
-                            android:id="@+id/ticket_checkout_tv10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="4dp"
-                            android:text="Rp. 228"
-                            android:textColor="@color/bluePrimary"
-                            android:textSize="16sp" />
-
-                        <Button
-                            android:id="@+id/ticket_checkout_btn_alert"
+                        <ImageView
+                            android:id="@+id/ticket_checkoutdrop"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/btn_circle_minus"
-                            android:text="!"
-                            android:textColor="@color/white" />
-
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/ic_dropdown" />
                     </LinearLayout>
 
                     <View
+                        android:id="@+id/view"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="@color/divider_bg" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+
+                    <TextView
+                        android:id="@+id/ticket_checkout_tv7"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:lineSpacingExtra="8dp"
+                        android:text="The leaning of the Tower of Pisa comes into the story in 1173, when consruction began."
+                        android:textColor="@color/grayPrimary"
+                        android:textSize="18sp"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/ticket_checkoutview"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/divider_bg"
+                        android:visibility="gone" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="14dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="6dp"
+                                    android:fontFamily="@font/mlight"
+                                    android:text="@string/matpel"
+                                    android:textColor="#8D8D8D"
+                                    android:textSize="14sp" />
+
+                                <Spinner
+                                    android:id="@+id/spinner_matpel"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/bg_input_edit"
+                                    android:fontFamily="@font/_mmedium"
+                                    android:lines="1"
+                                    android:paddingLeft="12dp"
+                                    android:textColor="@color/blakPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="14dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="6dp"
+                                    android:fontFamily="@font/mlight"
+                                    android:text="@string/durasi_per_pertemuan"
+                                    android:textColor="#8D8D8D"
+                                    android:textSize="14sp" />
+
+                                <Spinner
+                                    android:id="@+id/spinner_durasi_pertemuan_jam"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/bg_input_edit"
+                                    android:fontFamily="@font/_mmedium"
+                                    android:lines="1"
+                                    android:paddingLeft="12dp"
+                                    android:textColor="@color/blakPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="16dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="6dp"
+                                    android:fontFamily="@font/mlight"
+                                    android:text="@string/jumlah_per_min"
+                                    android:textColor="#8D8D8D"
+                                    android:textSize="14sp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+
+                                    <TextView
+                                        android:id="@+id/ticket_checkout_tv6"
+                                        android:layout_width="70dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginRight="16dp"
+                                        android:background="@drawable/sign_in_edittext_bg_pressed"
+                                        android:gravity="center"
+                                        android:text="1"
+                                        android:textColor="@color/blackPrimary"
+                                        android:textSize="18sp" />
+
+                                    <Button
+                                        android:id="@+id/ticket_checkout_btn_pls"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginRight="12dp"
+                                        android:background="@drawable/btn_circle_plus"
+                                        android:text="+"
+                                        android:textColor="@color/white" />
+
+                                    <Button
+                                        android:id="@+id/ticket_checkout_btn_min"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_marginRight="16dp"
+                                        android:background="@drawable/btn_circle_minus"
+                                        android:text="-"
+                                        android:textColor="@color/white" />
+
+                                    <Button
+                                        android:id="@+id/ticket_checkout_btn_pls10"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="25dp"
+                                        android:layout_marginLeft="55dp"
+                                        android:background="@drawable/btn_circle_plus"
+                                        android:text="+ 5"
+                                        android:textColor="@color/white" />
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+
+                                <EditText
+                                    android:id="@+id/et_pesan_tambahan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/bg_input_edit"
+                                    android:fontFamily="@font/_mmedium"
+                                    android:lines="1"
+                                    android:hint="@string/pesan_tambahan"
+                                    android:paddingLeft="12dp"
+                                    android:textColor="@color/blakPrimary" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ticket_checkout_r1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/ticket_checkout_layout">
+
+                    <LinearLayout
+                        android:layout_marginTop="16dp"
+                        android:id="@+id/ticket_checkout_layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_pressed_center"
+                        android:orientation="vertical"
+                        android:paddingLeft="24dp"
+                        android:paddingTop="16dp"
+                        android:paddingRight="24dp"
+                        android:paddingBottom="16dp">
 
                         <TextView
-                            android:id="@+id/ticket_checkout_tv11"
+                            android:id="@+id/ticket_checkout_tv8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Pembayaran"
-                            android:textColor="@color/greenPrimary"
+                            android:text="Total Harga"
+                            android:layout_marginBottom="8dp"
+                            android:textColor="@color/blackPrimary"
                             android:textSize="16sp" />
 
-                        <TextView
-                            android:id="@+id/ticket_checkout_tv12"
-                            android:layout_width="150dp"
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:gravity="left"
-                            android:text="Rp. 20"
-                            android:textColor="@color/greenPrimary"
-                            android:textSize="25sp" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/ticket_checkout_tv9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Saldo sekarang"
+                                android:textColor="@color/grayPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_alignParentRight="true"
+                                android:id="@+id/ticket_checkout_tv10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:text="Rp. 228"
+                                android:textColor="@color/bluePrimary"
+                                android:textSize="20sp" />
+
+                            <Button
+                                android:layout_marginRight="8dp"
+                                android:layout_toLeftOf="@+id/ticket_checkout_tv10"
+                                android:visibility="visible"
+                                android:id="@+id/ticket_checkout_btn_alert"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/btn_circle_minus"
+                                android:text="!"
+                                android:textColor="@color/white" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/divider_bg" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/ticket_checkout_tv11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total Pembayaran"
+                                android:textColor="@color/grayPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/ticket_checkout_tv12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:text="Rp. 20"
+                                android:textColor="@color/greenPrimary"
+                                android:textSize="20sp" />
+                        </RelativeLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/ticket_checkout_btn1"
+                        android:layout_width="230dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_below="@+id/ticket_checkout_layout2"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="22dp"
+                        android:background="@drawable/bg_btn_green_primary"
+                        android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
+                        android:paddingRight="10dp"
+                        android:text="Selanjutnya"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
 
-                <Button
-                    android:id="@+id/ticket_checkout_btn1"
-                    android:layout_width="230dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/ticket_checkout_layout2"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="22dp"
-                    android:background="@drawable/bg_btn_green_primary"
-                    android:drawableRight="@drawable/ic_arrow_forward_white_24dp"
-                    android:paddingRight="10dp"
-                    android:text="Selanjutnya"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/btn_back"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="40dp"-->
-                    <!--android:layout_below="@+id/ticket_checkout_layout2"-->
-                    <!--android:layout_marginStart="20dp"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:background="@drawable/bg_layout_white"-->
-                    <!--android:gravity="center"-->
-                    <!--android:orientation="vertical">-->
-
-                    <!--<ImageView-->
-                        <!--android:id="@+id/iv_lokasi"-->
-                        <!--android:layout_width="30dp"-->
-                        <!--android:layout_height="18dp"-->
-                        <!--android:src="@drawable/ic_back" />-->
-                <!--</LinearLayout>-->
-
-                <Button
-                    android:id="@+id/btn_tambah_saldo"
-                    android:layout_below="@+id/ticket_checkout_layout2"
-                    android:layout_width="40dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="24dp"
-                    android:background="@drawable/btn_circle_big_green_primary"
-                    android:gravity="center"
-                    android:text="+"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    <Button
+                        android:id="@+id/btn_tambah_saldo"
+                        android:layout_below="@+id/ticket_checkout_layout2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@drawable/btn_circle_big_green_primary"
+                        android:gravity="center"
+                        android:text="+"
+                        android:layout_marginBottom="8dp"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
 
             </RelativeLayout>
-<!--        </ScrollView>-->
 
-    </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.constraint.ConstraintLayout>

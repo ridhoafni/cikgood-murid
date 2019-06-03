@@ -1,19 +1,159 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorBackgroundPrimary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <style name="CodeFontBold" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/googlesans_bold</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/component_small</item>
+    </style>
+
+    <style name="CodeFontBold.BLACK">
+        <item name="android:textColor">@color/blackPrimary</item>
+    </style>
+
+    <style name="CodeFontBold.BLUE">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="CodeFontHint" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/googlesans_regular</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/component_small</item>
+        <item name="android:textColor">@color/grayPrimary</item>
+    </style>
+
+    <style name="CodeFontSubTitle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/googlesans_bold</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackPrimary</item>
+    </style>
+
+    <style name="CodeFontTitle" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:fontFamily">@font/googlesans_bold</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackPrimary</item>
+    </style>
+
+    <style name="CodeFontTitle.BLUE">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.EditText">
+        <item name="am_font_family">GoogleSans</item>
+        <item name="am_font_style">regular</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:paddingLeft">@dimen/component_big</item>
+        <item name="android:paddingRight">@dimen/component_big</item>
+        <item name="android:paddingTop">@dimen/component_medium_small</item>
+        <item name="android:paddingBottom">@dimen/component_medium_small</item>
+    </style>
+
+    <style name="AppTheme.EditTextNotPaddingTop">
+        <item name="am_font_family">GoogleSans</item>
+        <item name="am_font_style">regular</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:paddingLeft">@dimen/component_big</item>
+        <item name="android:paddingRight">@dimen/component_big</item>
+    </style>
+
+    <style name="AppTheme.Layout" />
+
+    <style name="AppTheme.Button">
+        <item name="am_font_family">GoogleSans</item>
+        <item name="am_font_style">bold</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">@color/colorButtonTextPrimary</item>
+        <item name="android:paddingLeft">@dimen/component_big</item>
+        <item name="android:paddingRight">@dimen/component_big</item>
+        <item name="android:paddingTop">@dimen/component_normal</item>
+        <item name="android:paddingBottom">@dimen/component_normal</item>
+        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:minHeight">@dimen/input_height</item>
+        <item name="android:maxHeight">@dimen/input_height</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="AppTheme.ButtonIcon">
+        <item name="am_font_family">GoogleSans</item>
+        <item name="am_font_style">bold</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">@color/colorButtonTextPrimary</item>
+        <item name="android:paddingLeft">@dimen/component_big</item>
+        <item name="android:paddingRight">@dimen/component_big</item>
+        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:minHeight">@dimen/input_height</item>
+        <item name="android:maxHeight">@dimen/input_height</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="AppTheme.Layout.Parent">
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="AppTheme.EditText.Secondary">
+    <item name="am_edit_text_style">secondary</item>
+    <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <style name="AppTheme.EditTextNotPaddingTop.Secondary">
+        <item name="am_edit_text_style">secondary</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppThemeSaldo" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppThemeSaldo2" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:windowLightStatusBar">true</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="cardCornerRadius">2dp</item>
-        <item name="cardElevation">2dp</item>
-        <item name="contentPaddingBottom">24dp</item>
-        <item name="contentPaddingTop">24dp</item>
-        <item name="contentPaddingLeft">16dp</item>
-        <item name="contentPaddingRight">16dp</item>
-        <item name="cardBackgroundColor">@color/indigo</item>
     </style>
 
     <style name="RatingBar" parent="Theme.AppCompat">
@@ -21,9 +161,41 @@
         <item name="colorControlActivated">@color/materialyello</item>
     </style>
 
+    <style name="AppTheme.Margin">
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginBottom">@dimen/activity_horizontal_margin</item>
+    </style>
+    <style name="AppTheme.Margin.Horizontal">
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+    <style name="AppTheme.Layout.Horizontal">
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="AppTheme.Margin.Vertical">
+        <item name="android:layout_marginTop">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginBottom">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="AppTheme.Layout.Vertical">
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+    </style>
+
     <style name="DialogTrans" parent="android:style/Theme.Dialog">
         <item name="android:windowNoTitle">true</item>
         <!-- color primary  <item name="android:windowAnimationStyle">@style/ThemeWindowAnimationTransition</item>       -->
+    </style>
+
+    <style name="AppTheme.RatingBar" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="colorControlNormal">@color/colorPlaceHolder</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
     </style>
 
     <style name="MenuStyle" parent="Theme.AppCompat.Light">
@@ -38,20 +210,6 @@
         <item name="android:textColorPrimary">@android:color/holo_blue_light</item>
         <!-- actionMenuTextColor adalah warna teks action (menu item)  -->
         <item name="actionMenuTextColor">@android:color/holo_green_light</item>
-        <!-- Memberi warna accent untuk input field seperti checkbox -->
-        <!--<item name="colorAccent">@color/cursorAccent</item>-->
-        <!--&lt;!&ndash; memberi warna view saat normal. &ndash;&gt;-->
-        <!--<item name="colorControlNormal">@color/controlNormal</item>-->
-        <!--&lt;!&ndash; Memberi warna saat view aktif (sedang diberi tanda cek atau di switch) &ndash;&gt;-->
-        <!--<item name="colorControlActivated">@color/controlActivated</item>-->
-        <!--&lt;!&ndash; Memberi warna kontrol untuk efek ripples atau pemilihan list &ndash;&gt;-->
-        <!--<item name="colorControlHighlight">@color/controlActivated</item>-->
-
-        <!-- Tambahkan jika ingin memberi efek ripple saat memilih salah satu ikon -->
-        <!--
-        <item name="selectableItemBackground">?android:selectableItemBackground</item>
-        <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
-        -->
     </style>
 
     <!-- Mengatur style title yang ada di dalam Toolbar -->
@@ -153,18 +311,13 @@
         <item name="android:tabStripEnabled">false</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <style name="MyMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="MyMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+<!--    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+<!--    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->
 
     <style name="ButtonBorder" parent="Widget.AppCompat.Button.Colored"/>
     <style name="ButtonBorder.Accent">

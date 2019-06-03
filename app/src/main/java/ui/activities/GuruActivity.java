@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -54,6 +55,7 @@ public class GuruActivity extends AppCompatActivity {
     public static final String TINGKATAN = "tingkatan";
     public static final String MATPEL = "matpel";
     public static final String KOTA = "kota";
+    public static final String EMAIL = "email";
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -70,8 +72,19 @@ public class GuruActivity extends AppCompatActivity {
         mShimmerViewContainer = findViewById(R.id.shimmer_view_container);
         ButterKnife.bind(this);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Data Guru");
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_chevron);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                onBackPressed();
+                Intent intent = new Intent(GuruActivity.this, NavigationView.class);
+                intent.putExtra("FromGuruActivity", "1");
+                startActivity(intent);
+            }
+
+        });
+
 
         guruAdapter = new GuruAdapter(this, datas);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

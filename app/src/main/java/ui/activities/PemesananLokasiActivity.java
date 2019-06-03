@@ -18,6 +18,7 @@ import com.example.anonymous.cikgood.response.ResponseCreatePemesanan;
 import com.example.anonymous.cikgood.response.ResponseLogin;
 import com.example.anonymous.cikgood.rests.ApiClient;
 import com.example.anonymous.cikgood.rests.ApiInterface;
+import com.google.android.gms.maps.model.LatLng;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +50,8 @@ public class PemesananLokasiActivity extends AppCompatActivity {
     private double durasi, total_harga;
     private int guru_id, murid_id, tarif, jml_pemesanan;
     private String alamat, jadwal, tgl, matpel, pesan_tambahan;
+
+    private LatLng latLng = null;
 
     /* Declare & make object of ApiInterface */
     ApiInterface apiService;

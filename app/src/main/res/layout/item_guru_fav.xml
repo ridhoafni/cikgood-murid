@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content"
+    android:paddingRight="@dimen/activity_horizontal_margin_small"
+    android:paddingLeft="@dimen/activity_horizontal_margin_small"
+    android:layout_height="wrap_content"
+    android:elevation="0dp"
+    android:fadingEdge="none"
+    android:nestedScrollingEnabled="false"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/iv_image_guru"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="0.5dp"
+        android:background="@drawable/bg_layout02" />
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="95dp"
+        android:background="@drawable/bg_pressed"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_nama_guru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mmedium"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="Ridho Afni"
+            android:textColor="@color/blakPrimary"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_guru_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mregular"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="Guru Fisika"
+            android:textColor="@color/grayPrimary"
+            android:textSize="10sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="@dimen/padding_5"
+                android:background="@drawable/bg_btn_chat"
+                android:text="Chat"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bg_btn_plus"
+                android:text="+"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

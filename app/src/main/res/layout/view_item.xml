@@ -1,0 +1,30 @@
+<RelativeLayout android:id="@+id/rl_top_no_hp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_pressed_center"
+    android:clickable="true"
+    android:layout_marginBottom="1dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_pressed_img_true" />
+
+    <TextView
+        android:id="@+id/username"
+        style="@style/CodeFontBold"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text="Ridho afni"/>
+
+</RelativeLayout>

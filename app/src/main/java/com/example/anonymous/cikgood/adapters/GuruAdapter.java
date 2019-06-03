@@ -65,7 +65,7 @@ public class GuruAdapter extends RecyclerView.Adapter<GuruAdapter.GuruViewHolder
         guruViewHolder.textViewNama.setText(guru.getNama());
         guruViewHolder.textViewPendidikan.setText(guru.getJurusan());
         guruViewHolder.textViewBiodata.setText(guru.getBiodata());
-        guruViewHolder.textViewStatus.setText(guru.getStatus());
+//        guruViewHolder.textViewStatus.setText(guru.getStatus());
         int harga = Integer.parseInt(guru.getTarif());
         guruViewHolder.textViewHarga.setText(formatRupiah.format(harga));
         guruViewHolder.cvGuru.setOnClickListener(new CustomOnItemClickListener(i, new CustomOnItemClickListener.OnItemClickCallback() {
@@ -76,11 +76,13 @@ public class GuruAdapter extends RecyclerView.Adapter<GuruAdapter.GuruViewHolder
 //                String pen      = getAllDataGuru.get(position).getNamaInstitusi();
                 String bio      = getAllDataGuru.get(position).getBiodata();
                 String photo    = getAllDataGuru.get(position).getPhotoProfile();
+                String email    = getAllDataGuru.get(position).getEmail();
                 Intent i = new Intent(context, GuruDetailActivity.class);
                 System.out.println("IDNYA :"+id);
                 i.putExtra(GuruDetailActivity.KEY_ID_GURU, id);
                 i.putExtra(GuruDetailActivity.KEY_NAMA_GURU, nama);
                 i.putExtra(GuruDetailActivity.KEY_PHOTO_GURU, photo);
+                i.putExtra(GuruDetailActivity.KEY_EMAIL_GURU, email);
                 context.startActivity(i);
                 Toast.makeText(context, "You are click " +id, Toast.LENGTH_SHORT).show();
             }
@@ -100,7 +102,7 @@ public class GuruAdapter extends RecyclerView.Adapter<GuruAdapter.GuruViewHolder
         @BindView(R.id.tv_rating) TextView textViewRating;
         @BindView(R.id.tv_biodata) TextView textViewBiodata;
         @BindView(R.id.tv_harga) TextView textViewHarga;
-        @BindView(R.id.tv_status) TextView textViewStatus;
+//        @BindView(R.id.tv_status) TextView textViewStatus;
         @BindView(R.id.linear_layout) LinearLayout cvGuru;
 
         public GuruViewHolder(@NonNull View itemView) {

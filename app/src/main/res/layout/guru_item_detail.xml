@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="ui.activities.GuruDetailActivity"
     android:orientation="vertical"
-    android:padding="10dp"
     android:background="@color/colorGrey"
     android:gravity="center"
     android:id="@+id/ll">
@@ -15,14 +14,14 @@
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/component_medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/component_medium"
                 android:layout_gravity="center_horizontal"
                 xmlns:android="http://schemas.android.com/apk/res/android">>
 
@@ -32,12 +31,12 @@
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:text="Rating"
-                        android:textSize="16sp"
+                        style="@style/CodeFontBold.BLACK"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"/>
 
                     <RatingBar
-                        android:paddingTop="20dp"
+                        android:paddingTop="23dp"
                         android:id="@+id/ratingBar2"
                         style="?ratingBarStyleSmall"
                         android:layout_width="wrap_content"
@@ -56,7 +55,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
-                        android:textSize="@dimen/activity_horizontal_margin"
+                        style="@style/CodeFontBold"
                         android:layout_marginLeft="2dp"
                         android:layout_toEndOf="@+id/ratingBar"
                         android:layout_toRightOf="@id/ratingBar"
@@ -71,42 +70,21 @@
 
     <LinearLayout
         android:clipToPadding="false"
-        android:gravity="center"
+        android:gravity="left"
+        android:padding="@dimen/component_medium"
         android:orientation="vertical"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            xmlns:tools="http://schemas.android.com/tools">
-
-            <TableLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/activity_vertical_margin"
-                android:layout_gravity="center_horizontal"
-                xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-                <TableRow>
-
-                    <TextView
-                        android:fontFamily="@font/mlight"
-                        android:id="@+id/tv_item_bio_detail"
-                        android:layout_width="340dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:lineSpacingExtra="6dp"
-                        tools:text="Biodata"
-                        android:textColor="#8D8D8D"/>
-                </TableRow>
-
-            </TableLayout>
-
-        </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/tv_item_bio_detail"
+            style="@style/CodeFontHint"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:textSize="14sp"
+            android:lineSpacingExtra="6dp"
+            tools:text="Biodata"/>
 
     </LinearLayout>
 
@@ -132,13 +110,10 @@
                 android:src="@drawable/ic_map_black_24dp"/>
 
             <TextView
-                android:fontFamily="@font/mregular"
                 android:layout_toRightOf="@+id/iv_lokasi"
                 android:id="@+id/tv_lokasi"
-                android:textColor="@android:color/black"
+                style="@style/CodeFontSubTitle"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/lokasi_mengajar"/>
 
             <android.support.v7.widget.RecyclerView
@@ -170,13 +145,10 @@
                 android:src="@drawable/ic_school_black_24dp"/>
 
             <TextView
-                android:fontFamily="@font/mregular"
+                style="@style/CodeFontSubTitle"
                 android:layout_toRightOf="@+id/iv_lulusan"
                 android:id="@+id/tv_lulusan"
-                android:textColor="@android:color/black"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/lulusan"/>
 
             <android.support.v7.widget.RecyclerView
@@ -218,13 +190,10 @@
                 android:src="@drawable/ic_work_black_24dp"/>
 
             <TextView
-                android:fontFamily="@font/mregular"
                 android:layout_toRightOf="@+id/iv_peng_kerja_"
                 android:id="@+id/tv_peng_kerja"
-                android:textColor="@android:color/black"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontSubTitle"
                 android:text="@string/peng_kerja"/>
 
             <android.support.v7.widget.RecyclerView
@@ -260,14 +229,11 @@
                 android:src="@drawable/ic_class_black_24dp"/>
 
             <TextView
-                android:fontFamily="@font/mregular"
                 android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                style="@style/CodeFontSubTitle"
                 android:layout_toRightOf="@+id/iv_peng_mengajar_"
                 android:id="@+id/tv_peng_mengajar"
-                android:textColor="@android:color/black"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="@string/peng_mengajar"/>
 
             <android.support.v7.widget.RecyclerView
@@ -300,13 +266,10 @@
                 android:src="@drawable/ic_access_time_black_24dp"/>
 
             <TextView
-                android:fontFamily="@font/mregular"
                 android:layout_toRightOf="@+id/iv_jadwal"
                 android:id="@+id/tv_jadwal"
-                android:textColor="@android:color/black"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontSubTitle"
                 android:text="@string/jadwal"/>
 
             <android.support.v7.widget.RecyclerView
@@ -350,12 +313,7 @@
                 <TableRow
                     android:paddingBottom="8dp">
                     <TextView
-                        android:fontFamily="@font/mmedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:typeface="sans"
+                        style="@style/CodeFontBold.BLACK"
                         android:text="Pesan Guru:"
                         android:textColor="@android:color/black"/>
                 </TableRow>
@@ -369,17 +327,14 @@
                 <TableRow
                     android:paddingTop="8dp">
                     <TextView
-                        android:fontFamily="@font/mlight"
+                        style="@style/CodeFontHint"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
                         android:singleLine="false"
                         android:lines="2"
                         android:maxLines="10"
                         android:textStyle="bold"
-                        android:typeface="sans"
-                        android:text="Cocok dengan guru ini? Tekan tombol di bawah untuk \nmemesan les dengan guru ini."
-                        android:textColor="@android:color/darker_gray"/>
+                        android:text="Cocok dengan guru ini? Tekan tombol di bawah untuk \nmemesan les dengan guru ini." />
                 </TableRow>
 
             </TableLayout>
@@ -393,6 +348,7 @@
             android:layout_height="40dp"
             android:background="@drawable/bg_btn_accent_primary"
             android:textColor="@android:color/white"
+            android:textAllCaps="false"
             android:text="Pesan Guru"/>
 
     </LinearLayout>
@@ -422,16 +378,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginLeft="2dp"
                     android:text="Bingung? Hubungi kami di" />
 
                 <TextView
-                    android:fontFamily="@font/mmedium"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:text=" +6282252416420"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"/>
+                    style="@style/CodeFontBold.BLACK"
+                    android:text=" +6282252416420"/>
 
             </TableRow>
 

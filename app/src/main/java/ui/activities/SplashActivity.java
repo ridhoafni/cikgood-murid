@@ -22,16 +22,16 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(getColor(R.color.colorAccent));
         setContentView(R.layout.activity_splash);
-        iv = (ImageView) findViewById(R.id.iv);
+//        iv = (ImageView) findViewById(R.id.iv);
         tv = (TextView) findViewById(R.id.tv);
         tv_slogan = (TextView) findViewById(R.id.tv_sloan);
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransation);
         Animation myanim2 = AnimationUtils.loadAnimation(this, R.anim.smaltobig);
         tv.startAnimation(myanim);
-        iv.startAnimation(myanim2);
+//        iv.startAnimation(myanim2);
         tv_slogan.startAnimation(myanim);
-        iv.startAnimation(myanim2);
-        final Intent i = new Intent(this, SliderActivity.class);
+//        iv.startAnimation(myanim2);
+        final Intent i = new Intent(this, SignInActivity.class);
 //        final Intent i = new Intent(this, AmSliderTransformation.class);
         Thread timer = new Thread(){
             public void run(){

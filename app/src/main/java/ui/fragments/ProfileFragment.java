@@ -1,6 +1,5 @@
 package ui.fragments;
 
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +24,31 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.anonymous.cikgood.R;
+import com.example.anonymous.cikgood.adapters.GuruAdapter;
 import com.example.anonymous.cikgood.adapters.InsertMapsActivity;
+import com.example.anonymous.cikgood.config.ServerConfig;
+import com.example.anonymous.cikgood.response.ResponFindSaldo;
+import com.example.anonymous.cikgood.rests.ApiClient;
+import com.example.anonymous.cikgood.rests.ApiInterface;
+import com.example.anonymous.cikgood.utils.SessionManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import es.dmoral.toasty.Toasty;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import ui.activities.EditAkun;
+import ui.activities.GuruActivity;
+import ui.activities.JadwalActivity;
 import ui.activities.LoginActivity;
 import ui.activities.MainActivity;
 import ui.activities.PemesananActivity;
+import ui.activities.ResetPassword;
+import ui.activities.Saldo;
 import ui.activities.TambahSaldo;
 import ui.activities.UbahPassword;
 
@@ -41,10 +57,15 @@ import ui.activities.UbahPassword;
  * A simple {@link } subclass.
  */
 public class ProfileFragment extends Fragment {
+    ApiInterface apiInterface;
+    SessionManager sessionManager ;
 
-    private RelativeLayout saldo, ubahPwd;
-    TextView editAkun, logout;
+    private RelativeLayout saldo, ubahPwd, rlJadwal;
+    TextView editAkun, logout,tv_nama,tv_alamat,tv_email,tv_hp,tv_jk, tv_saldo ;
     private Dialog mDialog;
+
+    int id;
+
 //    private FirebaseAuth.AuthStateListener authListener;
 //    private FirebaseAuth auth;
 
@@ -64,10 +85,33 @@ public class ProfileFragment extends Fragment {
         View view;
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        saldo = (RelativeLayout) view.findViewById(R.id.rl_saldo);
-        editAkun = (TextView)view.findViewById(R.id.rl_edit_akun);
-        ubahPwd = (RelativeLayout)view.findViewById(R.id.rl_edit_ubah_pwd);
-        logout = (TextView) view.findViewById(R.id.rl_logout);
+        sessionManager = new SessionManager(getActivity());
+
+        apiInterface = ApiClient.getClient(ServerConfig.API_ENDPOINT).create(ApiInterface.class);
+
+        id = Integer.parseInt(sessionManager.getMuridProfile().get("id"));
+
+        ubahPwd     = (RelativeLayout)view.findViewById(R.id.rl_edit_ubah_pwd);
+        saldo       = (RelativeLayout) view.findViewById(R.id.rl_saldo);
+        rlJadwal    = (RelativeLayout)view.findViewById(R.id.rl_jadwal);
+        logout      = (TextView) view.findViewById(R.id.buttonSignOut);
+        editAkun    = (TextView)view.findViewById(R.id.buttonEdit);
+        tv_email    = (TextView) view.findViewById(R.id.labelEmail);
+        tv_nama     = (TextView) view.findViewById(R.id.labelName);
+        tv_alamat   = (TextView) view.findViewById(R.id.tv_alamat);
+        tv_hp       = (TextView) view.findViewById(R.id.labelNoHp);
+        tv_jk       = (TextView) view.findViewById(R.id.labelSex);
+        tv_saldo    = (TextView) view.findViewById(R.id.tv_saldo);
+
+        /*set text widget*/
+        tv_nama.setText(sessionManager.getMuridProfile().get("nama"));
+        tv_alamat.setText(sessionManager.getMuridProfile().get("alamat"));
+        tv_email.setText(sessionManager.getMuridProfile().get("email"));
+        tv_hp.setText(sessionManager.getMuridProfile().get("no_hp"));
+        tv_jk.setText(sessionManager.getMuridProfile().get("jk"));
+        tv_saldo.setText(sessionManager.getMuridProfile().get("saldo"));
+
+        getDataSaldo(id);
 
         mDialog = new Dialog(getActivity(), R.style.DialogTrans);
 
@@ -81,9 +125,17 @@ public class ProfileFragment extends Fragment {
         ubahPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), UbahPassword.class));
+                startActivity(new Intent(getActivity(), ResetPassword.class));
             }
         });
+
+        rlJadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), JadwalActivity.class));
+            }
+        });
+
 
         editAkun.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,72 +147,42 @@ public class ProfileFragment extends Fragment {
         saldo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), TambahSaldo.class));
+                startActivity(new Intent(getActivity(), Saldo.class));
             }
         });
 
         // change color in primaryDark
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+            getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.grayPrimary));
         }
-        // change color in primaryDark
 
-        // Find the toolbar view inside the activity layout
-//        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
-//        toolbar.setTitle("Profile");
-//        toolbar.getResources().setTitleTextColor(R.color.colorAc cent);
-//        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black);
-
-        // click button back pada title bar
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-
-        //get firebase auth instance
-//        auth = FirebaseAuth.getInstance();
-
-        //get current user
-//        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-//        signOut = (Button) view.findViewById(R.id.sign_out);
-//
-//        signOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                    startActivity(new Intent(getActivity(), MainActivity.class));
-//
-//            }
-//        });
-
-//        authListener = new FirebaseAuth.AuthStateListener() {
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-//                FirebaseUser user = firebaseAuth.getCurrentUser();
-//                if (user == null) {
-//                    // user auth state is changed - user is null
-//                    // launch login activity
-//                    startActivity(new Intent(getActivity(), LoginActivity.class));
-//                }
-//            }
-//        };
-
-//        signOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Logout();
-//            }
-//        });
         // change icon color status bar
         getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         // change icon color status bar
         return view;
 
+    }
+
+    private void getDataSaldo(int id) {
+        apiInterface.getSaldo(id).enqueue(new Callback<ResponFindSaldo>() {
+            @Override
+            public void onResponse(Call<ResponFindSaldo> call, Response<ResponFindSaldo> response) {
+                if (response.isSuccessful()){
+                    int saldo = response.body().getMaster().getTotalSaldo();
+
+                    Locale localeID = new Locale("in", "ID");
+                    NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+                    Log.d("result saldo", ""+saldo+"");
+                    tv_saldo.setText(formatRupiah.format(saldo));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponFindSaldo> call, Throwable t) {
+
+            }
+        });
     }
 
     private void dialogLogout() {

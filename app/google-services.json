@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "570370088753-ghj7cscjlma88t823732tggfn7b5gs3p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.anonymous.cikgood",
+            "certificate_hash": "d77a1b3a0bdf0adfb6d69064ec36600f16b0c7a5"
+          }
+        },
+        {
           "client_id": "570370088753-nn9jqmproqee2hkk54rtd3fn3odv53re.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -25,15 +33,50 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570370088753-nn9jqmproqee2hkk54rtd3fn3odv53re.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570370088753:android:87cb46169deb30f1",
+        "android_client_info": {
+          "package_name": "com.example.anonymous.cikgood_guru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570370088753-l95k0pn9pn8kbbqjajjlbacjeb559qu7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.anonymous.cikgood_guru",
+            "certificate_hash": "d77a1b3a0bdf0adfb6d69064ec36600f16b0c7a5"
+          }
         },
-        "ads_service": {
-          "status": 2
+        {
+          "client_id": "570370088753-nn9jqmproqee2hkk54rtd3fn3odv53re.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKzG-Hr-IdiMHiWWNObLamis46X61tN5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570370088753-nn9jqmproqee2hkk54rtd3fn3odv53re.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

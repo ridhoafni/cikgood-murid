@@ -34,8 +34,9 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     public final String TAG = LoginActivity.class.getSimpleName();
-    Button tvCreateNewAccount;
+    TextView tvCreateNewAccount;
     SubmitButton btnLogin;
+    TextView tvForgotPwd;
     LinearLayout linearLayout;
     SessionManager sessionManager;
     ApiInterface apiService;
@@ -48,8 +49,16 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         btnLogin = (SubmitButton) findViewById(R.id.sbtn_login_loading);
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
+        inputEmail = (EditText) findViewById(R.id.inputEmailAddress);
+        inputPassword = (EditText) findViewById(R.id.inputPassword);
+        tvForgotPwd = (TextView) findViewById(R.id.buttonForgotPassword);
+
+        tvForgotPwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignInActivity.this, ForgotPassword.class));
+            }
+        });
 //        linearLayout = (LinearLayout) findViewById(R.id.linearLayoutLogin);
 
 
@@ -64,11 +73,11 @@ public class SignInActivity extends AppCompatActivity {
         });
 
 
-        tvCreateNewAccount = (Button) findViewById(R.id.tv_create_new_account);
+        tvCreateNewAccount = (TextView) findViewById(R.id.buttonRegister);
         tvCreateNewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SignInActivity.this, RegisterAccountActivity.class));
+                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
             }
         });
 
@@ -150,6 +159,7 @@ public class SignInActivity extends AppCompatActivity {
 
                         Integer id_murid = response.body().getData().getId();
                         String nama = response.body().getData().getNama();
+                        String token= response.body().getData().getToken();
                         String no_hp = response.body().getData().getNoHp();
                         String email = response.body().getData().getEmail();
                         String password = response.body().getData().getPassword();
@@ -162,7 +172,7 @@ public class SignInActivity extends AppCompatActivity {
 
                         System.out.println("Response JK : "+response.body().getData().getJk());
 
-                        sessionManager.createLoginSession(id_murid, nama, no_hp, email, password, alamat, jk,
+                        sessionManager.createLoginSession(id_murid, nama, token, no_hp, email, password, alamat, jk,
                                 nisn, kelas, nama_sekolah,
                                 photo);
 
@@ -171,7 +181,7 @@ public class SignInActivity extends AppCompatActivity {
                         handler.postDelayed(new Runnable() {
                             public void run() {
                                 Intent intent = new Intent(getApplicationContext(), NavigationView.class);
-                                Toasty.success(getApplicationContext(), response.body().getMessage().toString(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), response.body().getMessage().toString(), Toast.LENGTH_LONG).show();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
                                 startActivity(intent);
                                 finish();
@@ -190,7 +200,7 @@ public class SignInActivity extends AppCompatActivity {
                             }
                         };
                         handler.postDelayed(r, 4000);
-                        Toasty.error(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     btnLogin.doResult(false);
@@ -203,7 +213,7 @@ public class SignInActivity extends AppCompatActivity {
                 };
                 handler.postDelayed(r, 4000);
 
-                    Toasty.info(getApplicationContext(), "Gagal login"+response.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Gagal login"+response.toString(), Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -219,7 +229,7 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 };
                 handler.postDelayed(r, 4000);
-                Toasty.warning(getApplicationContext(), "Gagal konek ke server", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Gagal konek ke server", Toast.LENGTH_LONG).show();
                 Log.e(TAG, "onFailure: "+ t.getLocalizedMessage());
             }
         });

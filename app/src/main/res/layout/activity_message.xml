@@ -20,29 +20,24 @@
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/colorTextLight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:titleTextColor="@android:color/white"
                 app:popupTheme="@style/MenuStyle">
 
+                <TextView
+                    style="@style/CodeFontBold.BLACK"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/username"
+                    android:text="Username"/>
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:src="@drawable/man"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:id="@+id/profile_image"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/username"
-                    android:layout_marginLeft="25dp"
-                    android:text="Username"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:layout_marginStart="30dp"/>
-
 
             </android.support.v7.widget.Toolbar>
 

@@ -21,7 +21,6 @@ import android.widget.Toast;
 import ui.fragments.MsgFragment;
 import ui.fragments.HomeFragment;
 import ui.fragments.SearchFragment;
-import ui.fragments.RiwayatPesananan;
 
 import com.example.anonymous.cikgood.R;
 import com.example.anonymous.cikgood.utils.SessionManager;
@@ -49,7 +48,6 @@ public class MainTabActivity extends AppCompatActivity {
 
     HomeFragment homeFragment;
     Fragment searchFragment;
-    RiwayatPesananan riwayatPesananan;
     MsgFragment msgFragment;
 
     @Override
@@ -102,12 +100,10 @@ public class MainTabActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         homeFragment = new HomeFragment();
         searchFragment   = new SearchFragment();
-        riwayatPesananan = new RiwayatPesananan();
         msgFragment     = new MsgFragment();
 
         adapter.addFragment(homeFragment, "Beranda");
         adapter.addFragment(searchFragment, "Privat");
-        adapter.addFragment(riwayatPesananan, "Pesanan");
         adapter.addFragment(msgFragment, "Chat");
         viewPager.setAdapter(adapter);
     }

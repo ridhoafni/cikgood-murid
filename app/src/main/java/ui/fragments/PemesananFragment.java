@@ -1,7 +1,6 @@
 package ui.fragments;
 
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.anonymous.cikgood.R;
@@ -56,18 +54,6 @@ public class PemesananFragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
-        // change color in primaryDark
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.white));
-        }
-        // change color in primaryDark
-
-        // change icon color status bar
-        getActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        // change icon color status bar
-
-
         return view;
     }
 
@@ -78,8 +64,8 @@ public class PemesananFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new RiwayatPesananan(), "TWO");
-        adapter.addFragment(new Pesanan(), "THREE");
+        adapter.addFragment(new HistoryPemesananFragment(), "Pemesanan");
+        adapter.addFragment(new Pesanan(), "Dipemesan");
         viewPager.setAdapter(adapter);
     }
 

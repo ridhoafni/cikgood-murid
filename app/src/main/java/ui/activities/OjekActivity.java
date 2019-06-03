@@ -68,7 +68,10 @@ import retrofit2.Response;
 public class OjekActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     public static final String KEY_TGL                  = "tgl";
+    public static final String KEY_NAMA_GURU            = "nama";
     public static final String KEY_HARGA                = "harga";
+    public static final String KEY_EMAIL                = "email";
+    public static final String KEY_SALDO                = "saldo";
     public static final String KEY_MATPEL               = "matpel";
     public static final String KEY_DURASI               = "durasi";
     public static final String KEY_SELECTED_JADWAL      = "jadwal";
@@ -76,23 +79,33 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
     public static final String KEY_ID_MURID             = "id_murid";
     public static final String KEY_HARGA_TOTAL          = "harga_total";
     public static final String KEY_JML_PEMESANAN        = "jml_pemesanan";
+    public static final String KEY_PHOTO_GURU           = "photo_profile";
     public static final String KEY_ADDRESS              = "alamat_lengkap";
     public static final String KEY_PESAN_TAMBAHAN       = "pesan_tambahan";
 
     // declare variable
-    private String alamat;
+
     private GoogleMap mMap;
+
     private Button btnPosisi;
     private LinearLayout infoPanel;
+
     public LatLng pekanbaru = null;
     public LatLng pickUpLatLng = null;
-    double lat_awal, long_awal;
     public LatLng locationLatLng = null;
+
     private TextView tvPrice, tvDistance;
+
     private CameraPosition cameraPosition;
-    private int tarif, jml_pemesanan, guru_id, murid_id;
+
+    private double lat, lng;
     private double durasi, total_harga, harga;
+
+    private String alamat, nama, photo, email;
     private String tgl, jadwal, matpel, pesan_tambahan;
+
+    private int tarif, jml_pemesanan, guru_id, murid_id, saldo;
+
     private MarkerOptions markerOptions = new MarkerOptions();
     private String API_KEY = "AIzaSyCbX09ztk-EA8E3_HvCfTY8uRF5y0Bc3q8";
 
@@ -129,11 +142,16 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // getIntent
         tgl           = getIntent().getStringExtra(KEY_TGL);
+        email         = getIntent().getStringExtra(KEY_EMAIL);
         matpel        = getIntent().getStringExtra(KEY_MATPEL);
         alamat        = getIntent().getStringExtra(KEY_ADDRESS);
+        nama          = getIntent().getStringExtra(KEY_NAMA_GURU);
+        photo         = getIntent().getStringExtra(KEY_PHOTO_GURU);
         pesan_tambahan= getIntent().getStringExtra(KEY_PESAN_TAMBAHAN);
         jadwal        = getIntent().getStringExtra(KEY_SELECTED_JADWAL);
+
         murid_id      = getIntent().getIntExtra(KEY_ID_MURID, murid_id);
+        saldo         = getIntent().getIntExtra(KEY_SALDO, 0);
         tarif         = getIntent().getIntExtra(KEY_HARGA, 0);
         harga         = getIntent().getIntExtra(KEY_HARGA, 0);
         guru_id       = getIntent().getIntExtra(KEY_ID_GURU, 0);
@@ -142,6 +160,7 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
         total_harga   = getIntent().getDoubleExtra(KEY_HARGA_TOTAL, 0);
 
         Log.d("maps tgl", ""+tgl);
+        Log.d("maps saldo", ""+saldo);
         Log.d("maps tarif", ""+tarif);
         Log.d("maps matpel", ""+matpel);
         Log.d("maps durasi", ""+durasi);
@@ -242,105 +261,6 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-    private void getAddress(Context context, double LATITUDE, double LONGITUDE) {
-
-        //Set Address
-        try {
-            // Object GoeCode
-            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-
-            // set current location true
-//            mMap.setMyLocationEnabled(true);
-
-            // GeoCode sesuai Lat & Lng
-            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
-
-            if (addresses != null && addresses.size() > 0) {
-
-                // Object LatLng
-                LatLng x = new LatLng(LATITUDE, LONGITUDE);
-
-                // get value from object List<Address>
-                lat_awal = addresses.get(0).getLatitude();
-                long_awal = addresses.get(0).getLongitude();
-                String city = addresses.get(0).getLocality();
-                String state = addresses.get(0).getAdminArea();
-                String address = addresses.get(0).getAddressLine(0);
-
-                // Marker Option
-                mMap.addMarker(markerOptions);
-                markerOptions.position(x);
-                markerOptions.title(city);
-                markerOptions.snippet(address);
-                cameraPosition = new CameraPosition.Builder().target(x).zoom(50).build();
-                CameraUpdate cu = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                mMap.animateCamera(cu);
-
-//              mMap.addMarker(new MarkerOptions().position(x).title(city).snippet(address));
-
-                // set value
-                String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-                System.out.println("Lat awal"+lat_awal);
-                System.out.println("Lng awal"+long_awal);
-
-                putExtraDataToPemesananLokasi(lat_awal, long_awal);
-
-                // setText
-                tvPrice.setText(knownName);
-                tvDistance.setText(address);
-                tvPickUpFrom.setText(address);
-
-                // set nilai alamat
-                alamat = tvPickUpFrom.getText().toString();
-
-                /** END
-                 * Logic untuk membuat layar berada ditengah2 dua koordinat
-                 */
-                // Tampilkan info panel
-
-                infoPanel.setVisibility(View.VISIBLE);
-                mMap.setPadding(10, 180, 10, 180);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return;
-    }
-
-    // Method binding data to PemesananLokasiActivity
-    private void putExtraDataToPemesananLokasi(double lat_awal, double long_awal) {
-
-        // Event binding data to PemesananLokasiActivity
-        btnPosisi.setOnClickListener(new View.OnClickListener(){
-            double lat = lat_awal;
-            double lng = long_awal;
-            @Override
-            public void onClick(View v) {
-                Log.d("Lat pemesanan", ""+lat);
-                Log.d("Lng pemesanan", ""+lng);
-                Log.d("maps jadwal2", ""+jadwal);
-
-                Intent intent;
-                intent = new Intent(OjekActivity.this, PemesananLokasiActivity.class);
-                intent.putExtra(PemesananLokasiActivity.KEY_TGL, tgl);
-                intent.putExtra(PemesananLokasiActivity.KEY_HARGA, tarif);
-                intent.putExtra(PemesananLokasiActivity.KEY_LATITUDE, lat);
-                intent.putExtra(PemesananLokasiActivity.KEY_LONGITUDE, lng);
-                intent.putExtra(PemesananLokasiActivity.KEY_MATPEL, matpel);
-                intent.putExtra(PemesananLokasiActivity.KEY_DURASI, durasi);
-                intent.putExtra(PemesananLokasiActivity.KEY_ADDRESS, alamat);
-                intent.putExtra(PemesananLokasiActivity.KEY_ID_GURU, guru_id);
-                intent.putExtra(PemesananLokasiActivity.KEY_ID_MURID, murid_id);
-                intent.putExtra(PemesananLokasiActivity.KEY_SELECTED_JADWAL, jadwal);
-                intent.putExtra(PemesananLokasiActivity.KEY_HARGA_TOTAL, total_harga);
-                intent.putExtra(PemesananLokasiActivity.KEY_JML_PEMESANAN, jml_pemesanan);
-                intent.putExtra(PemesananLokasiActivity.KEY_PESAN_TAMBAHAN, pesan_tambahan);
-                startActivity(intent);
-            }
-        });
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -358,6 +278,13 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Dapatkan Detail
                 String placeAddress = placeData.getAddress().toString();
                 LatLng placeLatLng = placeData.getLatLng();
+
+                lat = placeLatLng.latitude;
+                lng = placeLatLng.longitude;
+
+                Log.d("maps lat place", ""+placeLatLng);
+                Log.d("maps address place", ""+placeAddress);
+
                 String placeName = placeData.getName().toString();
 
                 // Cek user milih titik jemput atau titik tujuan
@@ -388,6 +315,7 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void getMarker(LatLng placeLatLng, String placeName, String placeAddress) {
         mMap.clear();
+
         mMap.addMarker(markerOptions);
         markerOptions.position(placeLatLng);
         markerOptions.title(placeName);
@@ -397,11 +325,6 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.animateCamera(cu);
         mMap.setMyLocationEnabled(true);
 
-        /** END
-         * Logic untuk membuat layar berada ditengah2 dua koordinat
-         */
-        // Tampilkan info panel
-
         String alamat_lengkap = placeName+", "+placeAddress;
         tvDistance.setText(placeAddress);
         tvPrice.setText(placeName);
@@ -409,6 +332,75 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
         infoPanel.setVisibility(View.VISIBLE);
         mMap.setPadding(10, 180, 10, 180);
     }
+
+
+    private void getAddress(Context context, double LATITUDE, double LONGITUDE) {
+
+        //Set Address
+        try {
+            // Object GoeCode
+            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+
+            // set current location true
+//            mMap.setMyLocationEnabled(true);
+
+            // GeoCode sesuai Lat & Lng
+            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+
+            if (addresses != null && addresses.size() > 0) {
+
+                // Object LatLng
+                LatLng x = new LatLng(LATITUDE, LONGITUDE);
+
+                // get value from object List<Address>
+                lat = addresses.get(0).getLatitude();
+                lng = addresses.get(0).getLongitude();
+                String city = addresses.get(0).getLocality();
+                String address = addresses.get(0).getAddressLine(0);
+
+                // Marker Option
+                mMap.addMarker(markerOptions);
+                markerOptions.position(x);
+                markerOptions.title(city);
+                markerOptions.snippet(address);
+                cameraPosition = new CameraPosition.Builder().target(x).zoom(50).build();
+                CameraUpdate cu = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                mMap.animateCamera(cu);
+
+//              mMap.addMarker(new MarkerOptions().position(x).title(city).snippet(address));
+
+                // set value
+                String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+                System.out.println("Lat awal"+lat);
+                System.out.println("Lng awal"+lng);
+
+                putExtraDataToPemesananLokasi();
+
+                // setText
+                tvPrice.setText(knownName);
+                tvDistance.setText(address);
+                tvPickUpFrom.setText(address);
+
+                // set nilai alamat
+                alamat = tvPickUpFrom.getText().toString();
+
+                Log.d("maps addres", ""+alamat);
+
+                /** END
+                 * Logic untuk membuat layar berada ditengah2 dua koordinat
+                 */
+                // Tampilkan info panel
+
+                infoPanel.setVisibility(View.VISIBLE);
+                mMap.setPadding(10, 180, 10, 180);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return;
+    }
+
 
     @SuppressLint("MissingPermission")
     @Override
@@ -420,14 +412,14 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setPadding(10, 180, 10, 10);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        mMap.setMyLocationEnabled(true);
+//        mMap.setMyLocationEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setRotateGesturesEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        pekanbaru = new LatLng(3.597031, 98.678513);
+        pekanbaru = new LatLng(0.533505, 101.447403);
         markerOptions.position(pekanbaru);
         cameraPosition = new CameraPosition.Builder().target(pekanbaru).zoom(100).build();
         CameraUpdate cu = CameraUpdateFactory.newCameraPosition(cameraPosition);
@@ -436,72 +428,38 @@ public class OjekActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    private void actionRoute(LatLng placeLatLng, int requestCode) {
-        String lokasiAwal = pickUpLatLng.latitude + "," + pickUpLatLng.longitude;
-        String lokasiAkhir = locationLatLng.latitude + "," + locationLatLng.longitude;
+    // Method binding data to PemesananLokasiActivity
+    private void putExtraDataToPemesananLokasi() {
 
-        // Clear dulu Map nya
-        mMap.clear();
-        // Panggil Retrofit
-        ApiServices api = InitLibrary.getInstance();
-        // Siapkan request
-        Call<ResponseRoute> routeRequest = api.request_route(lokasiAwal, lokasiAkhir, API_KEY);
-        // kirim request
-        routeRequest.enqueue(new Callback<ResponseRoute>() {
+        // Event binding data to PemesananLokasiActivity
+        btnPosisi.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onResponse(Call<ResponseRoute> call, Response<ResponseRoute> response) {
-                System.out.println("Response Maps:"+response);
-                if (response.isSuccessful()){
-                    // tampung response ke variable
-                    ResponseRoute dataDirection = response.body();
-                    System.out.println("Response dataDirection :"+dataDirection);
+            public void onClick(View v) {
+                Log.d("Lat pemesanan", ""+lat);
+                Log.d("Lng pemesanan", ""+lng);
+                Log.d("maps jadwal2", ""+jadwal);
 
-                    // Tambah Marker
-                    mMap.addMarker(new MarkerOptions().position(pickUpLatLng).title("Lokasi Awal"));
-                    mMap.addMarker(new MarkerOptions().position(locationLatLng).title("Lokasi Akhir"));
-                    // Dapatkan jarak dan waktu
-
-                    LatLngBounds.Builder latLongBuilder = new LatLngBounds.Builder();
-                    latLongBuilder.include(pickUpLatLng);
-                    latLongBuilder.include(locationLatLng);
-
-                    // Bounds Coordinata
-                    LatLngBounds bounds = latLongBuilder.build();
-
-                    int width = getResources().getDisplayMetrics().widthPixels;
-                    int height = getResources().getDisplayMetrics().heightPixels;
-                    int paddingMap = (int) (width * 0.2); //jarak dari
-                    CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, paddingMap);
-                    mMap.animateCamera(cu);
-
-                    /** END
-                     * Logic untuk membuat layar berada ditengah2 dua koordinat
-                     */
-
-                    // Tampilkan info panel
-                    infoPanel.setVisibility(View.VISIBLE);
-                    mMap.setPadding(10, 180, 10, 180);
-                }
+                Intent intent;
+                intent = new Intent(OjekActivity.this, PemesananJadwalActivity.class);
+                intent.putExtra(PemesananJadwalActivity.KEY_TGL, tgl);
+                intent.putExtra(PemesananJadwalActivity.KEY_SALDO, saldo);
+                intent.putExtra(PemesananJadwalActivity.KEY_HARGA, tarif);
+                intent.putExtra(PemesananJadwalActivity.KEY_LATITUDE, lat);
+                intent.putExtra(PemesananJadwalActivity.KEY_LONGITUDE, lng);
+                intent.putExtra(PemesananJadwalActivity.KEY_MATPEL, matpel);
+                intent.putExtra(PemesananJadwalActivity.KEY_DURASI, durasi);
+                intent.putExtra(PemesananJadwalActivity.KEY_ADDRESS, alamat);
+                intent.putExtra(PemesananJadwalActivity.KEY_NAMA_GURU, nama);
+                intent.putExtra(PemesananJadwalActivity.KEY_ID_GURU, guru_id);
+                intent.putExtra(PemesananJadwalActivity.KEY_EMAIL_GURU, email);
+                intent.putExtra(PemesananJadwalActivity.KEY_PHOTO_GURU, photo);
+                intent.putExtra(PemesananJadwalActivity.KEY_ID_MURID, murid_id);
+                intent.putExtra(PemesananJadwalActivity.KEY_SELECTED_JADWAL, jadwal);
+                intent.putExtra(PemesananJadwalActivity.KEY_HARGA_TOTAL, total_harga);
+                intent.putExtra(PemesananJadwalActivity.KEY_JML_PEMESANAN, jml_pemesanan);
+                intent.putExtra(PemesananJadwalActivity.KEY_PESAN_TAMBAHAN, pesan_tambahan);
+                startActivity(intent);
             }
-
-            @Override
-            public void onFailure(Call<ResponseRoute> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-    }
-
-    private void addMarker(LatLng latlng, final String title) {
-        markerOptions.position(latlng);
-        markerOptions.title(title);
-        mMap.addMarker(markerOptions);
-
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(getApplicationContext(), marker.getTitle(), Toast.LENGTH_SHORT).show();
-            }
-
         });
     }
 }

@@ -16,38 +16,31 @@
 
 
         <TextView
-            android:fontFamily="@font/mlight"
-        android:id="@+id/tv_univ"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        tools:text=""/>
+            android:id="@+id/tv_univ"
+            android:layout_width="100dp"
+            style="@style/CodeFontHint"
+            tools:text=""/>
 
         <TextView
-            android:fontFamily="@font/mlight"
-        android:layout_marginRight="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"/>
-
-        <TextView
-            android:fontFamily="@font/mlight"
-        android:id="@+id/tv_jurusan"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        tools:text=""/>
-
-        <TextView
-            android:fontFamily="@font/mlight"
             android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/CodeFontHint"
             android:text="-"/>
 
         <TextView
-            android:fontFamily="@font/mlight"
+            android:id="@+id/tv_jurusan"
+            android:layout_width="80dp"
+            style="@style/CodeFontHint"
+            tools:text=""/>
+
+        <TextView
+            android:layout_marginRight="5dp"
+            style="@style/CodeFontHint"
+            android:text="-"/>
+
+        <TextView
+            style="@style/CodeFontHint"
             android:id="@+id/tv_title"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
             tools:text=""/>
 
     </LinearLayout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/bgPrimary">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:background="@color/colorBackgroundSecondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@android:color/white"
+            app:popupTheme="@style/MenuStyle">
+
+            <TextView
+                android:fontFamily="@font/googlesans_bold"
+                android:id="@+id/toolbarTitle"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_detil_pesanan"
+                android:gravity="left"
+                android:textColor="@color/colorTextAccent" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:layout_below="@+id/ticket_information_tv1"
+        android:layout_marginTop="82dp"
+        android:background="@drawable/bg_layout_white"
+        android:id="@+id/ticket_information_layout" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile_ti"
+                android:layout_height="55dp"
+                android:layout_width="55dp"
+                android:layout_marginTop="@dimen/component_medium_small"
+                android:src="@drawable/ic_ticket_buy"/>
+
+            <LinearLayout
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="12dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/component_medium"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+
+                <TextView
+                    style="@style/CodeFontBold"
+                    android:id="@+id/tv_nama_ti"
+                    android:text="Ridho afni"/>
+                <TextView
+                    android:fontFamily="@font/googlesans_regular"
+                    style="@style/CodeFontHint"
+                    android:id="@+id/tv_matpel_ti"
+                    android:textColor="@color/grayPrimary"
+                    android:text="Bahasa Indonesia SMP"/>
+
+                <TextView
+                    style="@style/CodeFontBold.BLUE"
+                    android:id="@+id/tv_tarif_ti"
+                    android:textColor="@color/bluePrimary"
+                    android:text="Rp50,000"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/divider_bg"
+            android:layout_height="0.8dp"
+            android:layout_width="match_parent"/>
+
+        <LinearLayout
+            android:layout_marginBottom="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:fontFamily="@font/googlesans_medium"
+                style="@style/CodeFontSubTitle"
+                android:id="@+id/ticket_information_tv5"
+                android:text="@string/text_tanggal_pemesanan"/>
+
+            <TextView
+                style="@style/CodeFontHint"
+                android:id="@+id/tv_tgl_ti"
+                android:text="Monday, 22-03-2019"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/googlesans_medium"
+                    style="@style/CodeFontSubTitle"
+                    android:text="@string/text_ringkasan_pemesanan"
+                    android:id="@+id/ticket_information_tv7"/>
+
+                <TextView
+                    android:layout_below="@+id/ticket_information_tv7"
+                    style="@style/CodeFontHint"
+                    android:text="Total Pertemuan"
+                    android:id="@+id/tv_total_pertemuan"
+                    android:textSize="11sp"/>
+
+                <TextView
+                    android:layout_below="@+id/ticket_information_tv7"
+                    style="@style/CodeFontHint"
+                    android:layout_alignParentRight="true"
+                    android:text="3 x Pertemuan"
+                    android:id="@+id/tv_total_pertemuan_isi_ti"/>
+
+                <TextView
+                    android:layout_below="@+id/tv_total_pertemuan_isi_ti"
+                    style="@style/CodeFontHint"
+                    android:text="Durasi"
+                    android:id="@+id/tv_durasi"
+                    android:textSize="11sp"/>
+
+                <TextView
+                    android:layout_below="@+id/tv_total_pertemuan_isi_ti"
+                    android:layout_alignParentRight="true"
+                    android:text="3 Jam"
+                    style="@style/CodeFontHint"
+                    android:id="@+id/tv_durasi_isi"/>
+
+                <TextView
+                    android:id="@+id/tv_total_harga"
+                    style="@style/CodeFontHint"
+                    android:layout_below="@+id/tv_durasi"
+                    android:text="Total Harga" />
+
+                <TextView
+                    style="@style/CodeFontBold.BLACK"
+                    android:layout_below="@+id/tv_durasi_isi"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 250,000"
+                    android:id="@+id/tv_total_harga_isi"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CodeFontSubTitle"
+                android:text="Jadwal"
+                android:id="@+id/ticket_information_tv9"/>
+
+            <TextView
+                style="@style/CodeFontHint"
+                android:id="@+id/tv_jadwal_ti"
+                android:text="@string/text_jadwal"/>
+
+        </LinearLayout>
+
+<!--        <ImageView-->
+<!--            android:layout_height="52dp"-->
+<!--            android:layout_width="222dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:src="@drawable/ic_barcode"/>-->
+
+    </LinearLayout>
+
+</RelativeLayout>
+

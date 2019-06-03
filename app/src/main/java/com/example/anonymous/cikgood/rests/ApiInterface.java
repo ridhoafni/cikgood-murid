@@ -1,5 +1,6 @@
 package com.example.anonymous.cikgood.rests;
 
+import com.example.anonymous.cikgood.response.ResponFindSaldo;
 import com.example.anonymous.cikgood.response.ResponGuruDetail;
 import com.example.anonymous.cikgood.response.ResponseCariGuru;
 import com.example.anonymous.cikgood.response.ResponseCreatePemesanan;
@@ -13,6 +14,7 @@ import com.example.anonymous.cikgood.response.ResponseLokasi;
 import com.example.anonymous.cikgood.response.ResponseMatpel;
 import com.example.anonymous.cikgood.response.ResponseCreateMurid;
 import com.example.anonymous.cikgood.response.ResponseMengajar;
+import com.example.anonymous.cikgood.response.ResponsePemesanan;
 import com.example.anonymous.cikgood.response.ResponsePendidikan;
 import com.example.anonymous.cikgood.response.ResponsePengalamanKerja;
 import com.example.anonymous.cikgood.response.ResponseSaldo;
@@ -102,9 +104,7 @@ public interface ApiInterface {
     @GET("data-matpel/find")
     Call<ResponseGuruDataMatpel> getGuruDataMatpel(@Query("id") int guru_id);
 
-    /* Data Pemesanan */
-
-    // create data pemesanan
+    /* create data pemesanan */
     @FormUrlEncoded
     @POST("pemesanan/create")
     Call<ResponseCreatePemesanan> simpanPemesanan ( @Field("guru_id") int guru_id,
@@ -121,30 +121,27 @@ public interface ApiInterface {
                                                     @Field("harga_total") double harga_total
                                                    );
 
+    /* update data saldo */
     @FormUrlEncoded
-    @POST("pemesanan/create2")
-    Call<ResponseCreatePemesanan> simpanPemesanan2 ( @Field("guru_id") int guru_id,
-                                                     @Field("murid_id") int murid_id,
-                                                     @Field("matpel") String matpel,
-                                                     @Field("jumlah_pertemuan") int jumlah_pertemuan,
-                                                     @Field("durasi") double durasi
-
+    @POST("saldo/update")
+    Call<ResponseCreatePemesanan> updateSaldo ( @Field("pengguna_id") int pengguna_id,
+                                                @Field("total_saldo") double total_saldo
     );
-//    @FormUrlEncoded
-//    @POST("pemesanan/create")
-//    Call<ResponseCreatePemesanan> simpanPemesanan( @Field("guru_id") int guru_id,
-//                                                   @Field("murid_id") int murid_id,
-//                                                   @Field("matpel") String matpel,
-//                                                   @Field("jumlah_pertemuan") int jumlah_pertemuan,
-//                                                   @Field("durasi") double durasi,
-//                                                   @Field("alamat") String alamat,
-//                                                   @Field("lat") double lat,
-//                                                   @Field("lng") double lng,
-//                                                   @Field("jadwal") String jadwal,
-//                                                   @Field("pesan_tambahan") String pesan_tambahan,
-//                                                   @Field("harga") double harga,
-//                                                   @Field("harga_total") double harga_total
-//                                                );
 
+    /* find saldo */
+    @GET("saldo/find-by-id")
+    Call<ResponFindSaldo> getSaldo(@Query("id") int pengguna_id);
 
+    /* Update password murid */
+    @FormUrlEncoded
+    @POST("murid/update-pwd")
+    Call<ResponseCreateMurid> updatePwdMurid( @Field("id") Integer id,
+                                              @Field("password") String password );
+    /* find order that status equels diproses */
+    @GET("pemesan/find-pemesanan")
+    Call<ResponsePemesanan> findPemesananDiproses(@Query("id") Integer id);
+
+    /* find order that status equels Disetujui */
+    @GET("pemesan/find-pemesanan-history")
+    Call<ResponsePemesanan> findPemesananDisetujui(@Query("id") Integer id);
 }

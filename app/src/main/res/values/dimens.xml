@@ -12,6 +12,32 @@
     <dimen name="activityPadding">16dp</dimen>
     <dimen name="placeholderImage">60dp</dimen>
     <dimen name="placeholderTextHeight">8dp</dimen>
+    <dimen name="radius_circle">200dp</dimen>
+    <dimen name="divider">0.8dp</dimen>
+
+    <dimen name="text_super">44sp</dimen>
+    <dimen name="text_special">24sp</dimen>
+    <dimen name="text_huge">22sp</dimen>
+    <dimen name="text_extra">20sp</dimen>
+    <dimen name="text_big">18sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_tiny">10sp</dimen>
+    <dimen name="text_extra_tiny">8sp</dimen>
+
+    <dimen name="component_tiny">2dp</dimen>
+    <dimen name="component_small">4dp</dimen>
+    <dimen name="component_normal">6dp</dimen>
+    <dimen name="component_medium">8dp</dimen>
+    <dimen name="component_medium_small">12dp</dimen>
+    <dimen name="component_extra">16dp</dimen>
+    <dimen name="component_extra_big">20dp</dimen>
+    <dimen name="component_huge">26dp</dimen>
+    <dimen name="component_special">28dp</dimen>
+    <dimen name="component_super">32dp</dimen>
+    <dimen name="component_extra_super">40dp</dimen>
+    <dimen name="component_extra_super_x">80dp</dimen>
 
     <dimen name="activity_padding">16dp</dimen>
     <dimen name="placeholder_image">90dp</dimen>
@@ -30,6 +56,21 @@
     <dimen name="font_18">18dp</dimen>
     <dimen name="padding_18">18dp</dimen>
     <dimen name="padding_20">20dp</dimen>
+
+    <dimen name="divider_bold">1dp</dimen>
+    <dimen name="radius_small">6dp</dimen>
+    <dimen name="radius_input">10dp</dimen>
+
+    <dimen name="tab">55dp</dimen>
+    <dimen name="input_height">40dp</dimen>
+    <dimen name="input_height_big">50dp</dimen>
+    <dimen name="icon_medium">25dp</dimen>
+    <dimen name="profile_picture">44dp</dimen>
+    <dimen name="profile_picture_medium">55dp</dimen>
+    <dimen name="profile_picture_big">65dp</dimen>
+    <dimen name="input_small">30dp</dimen>
+    <dimen name="slider_caption_frame">55dp</dimen>
+    <dimen name="elevation">10dp</dimen>
 
     <dimen name="item_offset">10dp</dimen>
     <dimen name="detail_backdrop_height">250dp</dimen>
@@ -62,4 +103,5 @@
     <dimen name="radius">20dp</dimen>
     <dimen name="component_big">18dp</dimen>
     <dimen name="slider">150dp</dimen>
+    <dimen name="activity_horizontal_margin_small">9dp</dimen>
 </resources>

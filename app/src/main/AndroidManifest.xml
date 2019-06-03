@@ -14,50 +14,52 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_logo_cikgood_accent"
+        android:icon="@mipmap/ic_logo_cikgood"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="ui.activities.Chat"
-            android:theme="@style/Theme.Design.Light.NoActionBar"></activity>
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
+        <activity android:name="ui.activities.HistoryPemesananDetailActivity"></activity>
+        <activity android:name="ui.activities.PushActivity" />
+        <activity android:name="ui.activities.saldoTestActivity" />
+
+        <service android:name=".utils.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="ui.activities.SignUpActivity" />
+        <activity android:name="ui.activities.JadwalActivity" />
+        <activity android:name="ui.activities.Chat" />
+        <activity android:name="ui.activities.MessageActivity" />
+        <activity android:name="ui.activities.ResetPassword" />
+        <activity android:name="ui.activities.ForgotPassword" />
+        <activity android:name="ui.activities.MapsMurid" />
+        <activity android:name="ui.activities.Saldo" />
         <activity android:name="ui.activities.PopUpLogOut" />
         <activity
             android:name="ui.activities.UbahPassword"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.EditAkun"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.TicketInformation"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.TambahSaldo"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name="ui.activities.EditAkun" />
+        <activity android:name="ui.activities.TicketInformation" />
+        <activity android:name="ui.activities.TambahSaldo" />
         <activity
             android:name="ui.activities.PemesananLokasiActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.PemesananJadwalActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.MessageActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name="ui.activities.PemesananJadwalActivity" />
         <activity android:name="ui.activities.SplitKitActivity" />
         <activity android:name="ui.activities.SpinKitActivity" />
         <activity android:name="ui.activities.LoginAnimationsActivity" />
-        <activity
-            android:name="ui.activities.CariGuruActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name="ui.activities.CariGuruActivity" />
         <activity
             android:name="ui.activities.SliderActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name="ui.activities.MyProfileActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.SuccesBuyActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name="ui.activities.SuccesBuyActivity" />
         <activity
             android:name="ui.activities.GuruCheckoutActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
@@ -73,12 +75,9 @@
         <activity
             android:name="ui.activities.SuccessRegisterActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity android:name="ui.activities.RegisterAccountActivity" />
         <activity
-            android:name="ui.activities.RegisterAccountActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
-        <activity
-            android:name="ui.activities.SignInActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:name="ui.activities.SignInActivity"/>
         <activity
             android:name="ui.activities.GetStartedActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
@@ -102,15 +101,15 @@
         <activity android:name=".adapters.InsertMapsActivity" />
         <activity
             android:name="ui.activities.PemesananActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
+            android:noHistory="true" />
         <activity android:name="ui.activities.NavigationView" />
         <activity android:name="ui.activities.UploadImage" />
         <activity android:name="ui.activities.UploadImages" />
         <activity android:name="ui.activities.EditProfileActivity" />
+        <activity android:name="ui.activities.GuruDetailActivity" />
         <activity
-            android:name="ui.activities.GuruDetailActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name="ui.activities.GuruActivity" />
+            android:name="ui.activities.GuruActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name="ui.activities.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

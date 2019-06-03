@@ -5,7 +5,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="70dp">
+    android:paddingBottom="@dimen/component_medium"
+    android:layout_marginBottom="60dp">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -18,23 +19,6 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
-            <!--<TextView-->
-            <!--android:layout_marginRight="16dp"-->
-            <!--android:id="@+id/toolbar_text"-->
-            <!--style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="left"-->
-            <!--android:text="Chat" />-->
-
-            <!--<View-->
-                <!--android:id="@+id/view4"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="350dp"-->
-                <!--android:background="@drawable/bg_gradient_accent_primary2"-->
-                <!--app:layout_constraintEnd_toEndOf="parent" />-->
 
             <EditText
                 android:id="@+id/et_search"
@@ -119,24 +103,20 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/component_tiny"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/mlight"
-                            android:text="Murid"
-                            android:textColor="@color/blakPrimary"
+                            style="@style/CodeFontHint"
+                            android:text="Selamat datang"
                             android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/mmedium"
-                            android:text="Ridho Afni"
+                            android:text="-"
                             android:textColor="@color/blakPrimary"
                             android:textSize="14sp" />
 
@@ -161,17 +141,17 @@
 
                     <ImageView
                         android:id="@+id/imageView7"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
                         android:layout_marginRight="8dp"
-                        android:src="@drawable/walet" />
+                        android:src="@drawable/ic_wallet" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/mmedium"
-                        android:text="Rp.100,000"
+                        android:id="@+id/tv_saldo"
+                        style="@style/CodeFontBold.BLACK"
+                        android:text="-"
                         android:textColor="@color/blakPrimary"
+                        android:layout_marginTop="@dimen/component_medium"
                         android:textSize="15sp"
                         tools:layout_editor_absoluteX="67dp"
                         tools:layout_editor_absoluteY="150dp" />
@@ -182,15 +162,10 @@
 
             <TextView
                 android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontSubTitle"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/mregular"
                 android:text="Menu Utama"
-                android:textColor="@color/blakPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/slider" />
 
@@ -230,7 +205,7 @@
                             android:id="@+id/iv_paud"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:src="@drawable/icon_nopic" />
+                            android:src="@drawable/ic_tk" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -254,7 +229,7 @@
                             android:layout_height="64dp"
                             android:background="@drawable/bg_pressed_img"
                             android:clickable="true"
-                            android:src="@drawable/icon_nopic" />
+                            android:src="@drawable/ic_sd" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -276,7 +251,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:src="@drawable/icon_nopic" />
+                            android:src="@drawable/ic_smp" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -306,7 +281,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:src="@drawable/icon_nopic" />
+                            android:src="@drawable/ic_sma" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -328,7 +303,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:src="@drawable/icon_nopic" />
+                            android:src="@drawable/ic_kuliah" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -350,7 +325,7 @@
                         <ImageView
                             android:layout_width="64dp"
                             android:layout_height="64dp"
-                            android:src="@drawable/icon_nopic" />
+                            android:src="@drawable/ic_umum" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -369,296 +344,85 @@
 
             <TextView
                 android:id="@+id/tv_guru_favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontSubTitle"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/mregular"
                 android:text="Guru Favorite"
-                android:textColor="@color/blakPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <TextView
                 android:id="@+id/tv_see_all_promo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontHint"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/mregular"
                 android:text="LIHAT SEMUA"
-                android:textColor="@color/indigo"
-                android:textSize="10sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
-            <HorizontalScrollView
-                android:id="@+id/horizontalScrollViewGuru"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:scrollbars="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_guru_favorite">
+<!--            <HorizontalScrollView-->
+<!--                android:id="@+id/horizontalScrollViewGuru"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:scrollbars="none"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.0"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_guru_favorite">-->
 
-                <LinearLayout
-                    android:id="@+id/ll_guru_favorite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/ll_guru_favorite"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <LinearLayout
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/gridGurus"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:elevation="0dp"
+                        android:fadingEdge="none"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_marginTop="@dimen/component_medium"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:orientation="vertical">
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_guru_favorite"/>
 
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_marginBottom="0.5dp"
-                            android:background="@drawable/bg_layout02" />
+<!--                </LinearLayout>-->
 
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="95dp"
-                            android:background="@drawable/bg_pressed"
-                            android:clickable="true"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mmedium"
-                                android:gravity="center"
-                                android:paddingTop="8dp"
-                                android:text="Ridho Afni"
-                                android:textColor="@color/blakPrimary"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mregular"
-                                android:gravity="center"
-                                android:paddingBottom="8dp"
-                                android:text="Guru Fisika"
-                                android:textColor="@color/grayPrimary"
-                                android:textSize="10sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center_horizontal"
-                                android:orientation="horizontal">
-
-                                <Button
-                                    android:layout_width="60dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginRight="@dimen/padding_5"
-                                    android:background="@drawable/bg_btn_chat"
-                                    android:text="Chat"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginTop="1dp"
-                                    android:background="@drawable/bg_btn_plus"
-                                    android:text="+"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_marginBottom="0.5dp"
-                            android:background="@drawable/bg_layout02" />
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="95dp"
-                            android:background="@drawable/bg_pressed"
-                            android:clickable="true"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mmedium"
-                                android:gravity="center"
-                                android:paddingTop="8dp"
-                                android:text="Ridho Afni"
-                                android:textColor="@color/blakPrimary"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mregular"
-                                android:gravity="center"
-                                android:paddingBottom="8dp"
-                                android:text="Guru Fisika"
-                                android:textColor="@color/grayPrimary"
-                                android:textSize="10sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center_horizontal"
-                                android:orientation="horizontal">
-
-                                <Button
-                                    android:layout_width="60dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginRight="@dimen/padding_5"
-                                    android:background="@drawable/bg_btn_chat"
-                                    android:text="Chat"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginTop="1dp"
-                                    android:background="@drawable/bg_btn_plus"
-                                    android:text="+"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_marginBottom="0.5dp"
-                            android:background="@drawable/bg_layout02" />
-
-                        <LinearLayout
-                            android:layout_width="150dp"
-                            android:layout_height="95dp"
-                            android:background="@drawable/bg_pressed"
-                            android:clickable="true"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mmedium"
-                                android:gravity="center"
-                                android:paddingTop="8dp"
-                                android:text="Ridho Afni"
-                                android:textColor="@color/blakPrimary"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/mregular"
-                                android:gravity="center"
-                                android:paddingBottom="8dp"
-                                android:text="Guru Fisika"
-                                android:textColor="@color/grayPrimary"
-                                android:textSize="10sp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center_horizontal"
-                                android:orientation="horizontal">
-
-                                <Button
-                                    android:layout_width="60dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginRight="@dimen/padding_5"
-                                    android:background="@drawable/bg_btn_chat"
-                                    android:text="Chat"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white"
-                                    android:textSize="10sp" />
-
-                                <Button
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginTop="1dp"
-                                    android:background="@drawable/bg_btn_plus"
-                                    android:text="+"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
+<!--            </HorizontalScrollView>-->
 
             <TextView
                 android:id="@+id/tv_guru_artikel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontSubTitle"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/mregular"
                 android:text="Artikel"
-                android:textColor="@color/blakPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewGuru" />
+                app:layout_constraintTop_toBottomOf="@+id/gridGurus" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/CodeFontHint"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/mregular"
                 android:text="LIHAT SEMUA"
-                android:textColor="@color/indigo"
-                android:textSize="10sp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewGuru" />
+                app:layout_constraintTop_toBottomOf="@+id/gridGurus" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollViewArtikel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
                 android:scrollbars="none"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="@dimen/activity_horizontal_margin_small"
+                android:paddingRight="@dimen/activity_horizontal_margin_small"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_guru_artikel">
 
@@ -673,11 +437,13 @@
                         android:layout_marginRight="16dp"
                         android:orientation="vertical">
 
-                        <LinearLayout
+                        <ImageView
+                            android:id="@+id/ivRound"
                             android:layout_width="250dp"
                             android:layout_height="120dp"
                             android:layout_marginBottom="0.5dp"
-                            android:background="@drawable/bg_layout02" />
+                            android:src="@drawable/ic_artikel01"
+                            android:scaleType="centerCrop" />
 
                         <LinearLayout
                             android:layout_width="250dp"
@@ -687,11 +453,69 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                style="@style/CodeFontHint"
                                 android:padding="8dp"
                                 android:text="Jenis Tes Lab yang Mengharuskan Puasa Sebelum Cek "
-                                android:textColor="@color/blakPrimary" />
+                                 />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:fontFamily="@font/mmedium"
+                                    android:paddingLeft="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="Info Pendidikan"
+                                    android:textColor="@color/bluePrimary"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/mlight"
+                                    android:paddingLeft="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:text="21 Maret 2019"
+                                    android:textColor="@color/grayPrimary"
+                                    android:textSize="10sp" />
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/ivRound2"
+                            android:layout_width="250dp"
+                            android:layout_height="120dp"
+                            android:src="@drawable/ic_artikel02"
+                            android:layout_marginBottom="0.5dp"
+                            android:scaleType="centerCrop" />
+
+                        <LinearLayout
+                            android:layout_width="250dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/bg_pressed"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/CodeFontHint"
+                                android:padding="8dp"
+                                android:text="Jenis Tes Lab yang Mengharuskan Puasa Sebelum Cek "
+                               />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -731,11 +555,13 @@
                         android:layout_marginRight="16dp"
                         android:orientation="vertical">
 
-                        <LinearLayout
+                        <ImageView
+                            android:id="@+id/ivRound3"
                             android:layout_width="250dp"
                             android:layout_height="120dp"
                             android:layout_marginBottom="0.5dp"
-                            android:background="@drawable/bg_layout02" />
+                            android:src="@drawable/ic_artikel01"
+                            android:scaleType="centerCrop" />
 
                         <LinearLayout
                             android:layout_width="250dp"
@@ -745,69 +571,10 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:padding="8dp"
+                                style="@style/CodeFontHint"
                                 android:text="Jenis Tes Lab yang Mengharuskan Puasa Sebelum Cek "
-                                android:textColor="@color/blakPrimary" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="10dp"
-                                    android:fontFamily="@font/mmedium"
-                                    android:paddingLeft="8dp"
-                                    android:paddingBottom="8dp"
-                                    android:text="Info Pendidikan"
-                                    android:textColor="@color/bluePrimary"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/mlight"
-                                    android:paddingLeft="8dp"
-                                    android:paddingBottom="8dp"
-                                    android:text="21 Maret 2019"
-                                    android:textColor="@color/grayPrimary"
-                                    android:textSize="10sp" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="250dp"
-                            android:layout_height="120dp"
-                            android:layout_marginBottom="0.5dp"
-                            android:background="@drawable/bg_layout02" />
-
-                        <LinearLayout
-                            android:layout_width="250dp"
-                            android:layout_height="80dp"
-                            android:background="@drawable/bg_pressed"
-                            android:clickable="true"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:padding="8dp"
-                                android:text="Jenis Tes Lab yang Mengharuskan Puasa Sebelum Cek "
-                                android:textColor="@color/blakPrimary" />
+                                 />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
